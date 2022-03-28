@@ -1,0 +1,453 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+using MM.Domain;
+using MM.Data;
+using MM.Services;
+using MeetingMInder.WCFServices.Request;
+using MeetingMInder.WCFServices.Response;
+using MM.Core;
+using System.Web.Configuration;
+
+
+
+namespace MeetingMInder.WCFServices
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+
+    public class Service1 : IService1
+    {
+        public string GetData(int value)
+        {
+            return string.Format("You entered: {0}", value);
+        }
+
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
+        }
+
+        /// <summary>
+        /// Get All Entity
+        /// </summary>
+        /// <returns></returns>
+        public List<EntityDomain> GetEntity()
+        {
+            List<EntityDomain> objResponse = new List<EntityDomain>();
+            EntityDomain objSpcl;
+            EntityServices objService = new EntityServices();
+
+
+            IList<EntityDomain> objSp = objService.GetAllEntityServices();
+            //create List of entity
+            foreach (EntityDomain entity in objSp)
+            {
+                objSpcl = new EntityDomain();
+                objSpcl.EntityId = entity.EntityId;
+                objSpcl.EntityName = entity.EntityName;
+
+                
+                objResponse.Add(objSpcl);
+
+            }
+
+            return objResponse;
+        }
+
+        /// <summary>
+        ///  Code for Login Request
+        /// </summary>
+        /// <param name="objLogin"></param>
+        /// <returns></returns> 
+        public LoginResponse Login(LoginRequest objLogin)
+        {
+            LoginResponse objResponse = new LoginResponse();
+            UserServices objUserServices = new UserServices();
+            EntityServices objEntityService = new EntityServices();
+            EntityDetails objEntityDetails = null;
+            List<EntityDetails> objEntity = new List<EntityDetails>();
+            UserDomain objUser = objUserServices.UserLoginIpad(objLogin.UserName, objLogin.Password);
+
+            if (objUser != null)
+            {
+                if (objUser.IsEnabledOnIpad)
+                {
+                    Guid UserId = objUser.UserId;
+
+                    IList<EntityDomain> objEntityList = objEntityService.GetAllEntityByUsderId(UserId);
+
+                  
+                    //Get request url
+                    string url = System.ServiceModel.OperationContext.Current.RequestContext.RequestMessage.Headers.To.ToString();
+                    string[] webUrl = url.Split('/');
+               
+                    foreach (EntityDomain entity in objEntityList)
+                    {
+                        objEntityDetails = new EntityDetails();
+
+                        objEntityDetails.CreatedBy = entity.CreatedBy;
+                        objEntityDetails.CreatedOn = entity.CreatedOn;
+                        objEntityDetails.EntityChecker = entity.EntityChecker;
+                        objEntityDetails.EntityId = entity.EntityId;
+                        objEntityDetails.EntityLogo = ("http://" + webUrl[2] + "/" + System.Configuration.ConfigurationManager.AppSettings["EntityLogo"] + entity.EntityLogo).ToBase64Encryption();
+                        objEntityDetails.EntityName = entity.EntityName;
+                        objEntityDetails.EntityShortName = entity.EntityShortName;
+                        objEntityDetails.IsEnable = entity.IsEnable;
+                        objEntityDetails.UpdatedBy = entity.UpdatedBy;
+                        objEntityDetails.UpdatedOn = entity.UpdatedOn;
+                        objEntityDetails.EntityMeeting = string.IsNullOrEmpty(entity.EntityMeeting) ? "" : ("http://" + webUrl[2] + "/" + System.Configuration.ConfigurationManager.AppSettings["EntityLogo"] +entity.EntityMeeting).ToBase64Encryption();
+                        objEntity.Add(objEntityDetails);
+                    }
+                    objResponse.Status = true;
+                    objResponse.Entity = objEntity;
+                    objResponse.UserId = UserId;
+                    objResponse.IsAuthorized = objUser.IsAuthorized;
+                    if (objUser.IsAuthorized)
+                    {
+                        objResponse.Token = objUser.Token;
+                    }
+                    else
+                    {
+                        objResponse.Token = "";
+                    }
+                    //objResponse.Token
+                }
+                else
+                {
+                    objResponse.Status = false;
+                    objResponse.Entity = null;
+                }
+            }
+            else
+            {
+                objResponse.Status = false;
+                objResponse.Entity = null;
+            }
+
+            return objResponse;
+        }
+
+        /// <summary>
+        /// code for Reset password request
+        /// </summary>
+        /// <param name="objResetPass"></param>
+        /// <returns></returns>
+        public ResetPasswordResponse ResetPassword(ResetPasswordRequest objResetPass)
+        {
+            ResetPasswordResponse objPasswordReset = new ResetPasswordResponse();
+
+            SecurityQuestionService objService = new SecurityQuestionService();
+
+            UserServices objUserService = new UserServices();
+
+            SecurityQuestionDomain objSecurityQuestion = objService.GetSecurityQuestion(objResetPass.UserId);
+
+            if (objSecurityQuestion != null)
+            {
+
+                string strDbAnswer = Convert.ToString(objSecurityQuestion.Answer);
+                Guid strQuestionId = objSecurityQuestion.SecurityQuestionId;
+
+                if (objResetPass.SecurityQuestionId.Equals(strQuestionId))
+                {
+                    //check Answer  is same as in database answer
+                    if (strDbAnswer.ToLower().Equals(objResetPass.Answer.ToLower()))
+                    {
+                        bool isChange = objUserService.ChangePassword(objResetPass.UserId, objResetPass.OldPassword, objResetPass.NewPassword);
+                        if (isChange)
+                        {
+                            objPasswordReset.IsPasswordChanged = true;
+                        }
+                    }
+                    else
+                    {
+                        objPasswordReset.IsPasswordChanged = false;
+                    }
+                }
+                else
+                {
+                    objPasswordReset.IsPasswordChanged = false;
+                }
+            }
+            else
+            {
+                objPasswordReset.IsPasswordChanged = false;
+            }
+
+            return objPasswordReset;
+        }
+
+        /// <summary>
+        /// code for forget password request
+        /// </summary>
+        /// <param name="objForgetPass"></param>
+        /// <returns></returns>
+        public ForgetPasswordResponse ForgetPassword(ForgetPasswordRequest objForgetPass)
+        {
+            UserServices objUserService = new UserServices();
+
+            ForgetPasswordResponse objResponse = new ForgetPasswordResponse();
+
+            string objPassword= objUserService.ForgetPassword(Encryptor.EncryptString(objForgetPass.UserName), objForgetPass.SecurityQuestionId, objForgetPass.Answer);
+
+            objResponse.Password = objPassword;
+            return objResponse;
+        }
+
+        /// <summary>
+        /// Get all squcurity question and ids
+        /// </summary>
+        /// <returns></returns>
+        public List<SecurityQuestionsResponse> GetSecurityQuestion()
+        {
+            SecurityQuestionService objQuestionService = new SecurityQuestionService();
+            SecurityQuestionsResponse objSecurityQuestions = null;
+            List<SecurityQuestionsResponse> objResponse = new List<SecurityQuestionsResponse>();
+            IList<SecurityQuestionDomain> objQuestion = objQuestionService.GetAllQuestion();
+
+            foreach (SecurityQuestionDomain quest in objQuestion)
+            {
+                objSecurityQuestions = new SecurityQuestionsResponse();
+                objSecurityQuestions.SecurityQuestion = quest.SecurityQuestion;
+                objSecurityQuestions.SecurityQuestionId = quest.SecurityQuestionId;
+                objResponse.Add(objSecurityQuestions);
+            }
+            return objResponse;
+        }
+        
+        /// <summary>
+        /// Get all data for wcf services
+        /// </summary>
+        /// <param name="objRequest"></param>
+        /// <returns></returns>
+        public GetAuthenticateDataResponse GetAuthenticateData(GetAuthenticateDataRequest objRequest)
+        {
+            GetAuthenticateDataResponse objResponse = new GetAuthenticateDataResponse();
+            UserEntityServices objUserEntity = new UserEntityServices();
+            List<EntityDetails> objEntityList = new List<EntityDetails>();
+            List<ForumDetails> objForumList = new List<ForumDetails>();
+            List<MeetingDetails> objMeetingList = new List<MeetingDetails>();
+            List<AgendaDetails> objAgendaList = new List<AgendaDetails>();
+            List<NoticeDetails> objNoticeList = new List<NoticeDetails>();
+            List<MinutesDetails> objMinList = new List<MinutesDetails>();
+            string ResponseTime = "";
+            System.Data.DataSet ds = null;
+            
+            //first request
+            if (objRequest.StartTime.ToLower().Equals("0"))
+            {
+                ds = objUserEntity.GetDataForWcfDataByEntity(objRequest.UserId, objRequest.EntityId, objRequest.UdId);
+            }
+            else
+            {
+                Int64 interval = Convert.ToInt64(objRequest.StartTime);
+                DateTime dt = DateTime.Now.ToDateTime(interval) ;
+                ds = objUserEntity.GetDataForWcfWithEntity(objRequest.UserId, dt , System.DateTime.Now, objRequest.EntityId,objRequest.UdId);
+            }
+
+            if (ds.Tables.Count > 0)
+            {
+                EntityDetails objEntity = null;
+                //Get request url
+             string url =  System.ServiceModel.OperationContext.Current.RequestContext.RequestMessage.Headers.To.ToString();
+                string[] webUrl = url.Split('/');
+               
+                //var url = HttpContext.Current.Request.Url;
+                //var port = url.Port != 80 ? (":" + url.Port) : String.Empty;
+
+                //Entity details
+                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+                    objEntity = new EntityDetails();
+                    objEntity.EntityId = Guid.Parse(ds.Tables[0].Rows[i]["EntityId"].ToString());
+                    objEntity.EntityLogo = ("http://" + webUrl[2]+ "/" +(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"] + Encryptor.DecryptString(ds.Tables[0].Rows[i]["EntityLogo"].ToString()))).ToBase64Encryption();
+                        //"img/Uploads/EntityLogo/" + Encryptor.DecryptString(ds.Tables[0].Rows[i]["EntityLogo"].ToString());
+                    objEntity.EntityName = Encryptor.DecryptString(ds.Tables[0].Rows[i]["EntityName"].ToString());
+                    objEntity.EntityShortName = Encryptor.DecryptString(ds.Tables[0].Rows[i]["EntityShortName"].ToString());
+                    objEntity.IsEnable = Convert.ToBoolean(ds.Tables[0].Rows[i]["IsEnable"].ToString());
+                    objEntity.CreatedOn = Convert.ToDateTime(ds.Tables[0].Rows[i]["CreatedOn"].ToString());
+                    objEntity.UpdatedOn = Convert.ToDateTime(ds.Tables[0].Rows[i]["UpdatedOn"].ToString());
+                    objEntity.CreatedBy = Guid.Parse(ds.Tables[0].Rows[i]["CreatedBy"].ToString());
+                    objEntity.UpdatedBy = Guid.Parse(ds.Tables[0].Rows[i]["UpdatedBy"].ToString());
+                    objEntity.EntityChecker = Guid.Parse(ds.Tables[0].Rows[i]["EntityChecker"].ToString());
+                    objEntity.IsActive = Convert.ToBoolean(ds.Tables[0].Rows[i]["IsActive"].ToString());
+
+                    objEntity.EntityMeeting = string.IsNullOrEmpty(ds.Tables[0].Rows[i]["EntityMeeting"].ToString()) ? "" : ("http://" + webUrl[2] + "/" + System.Configuration.ConfigurationManager.AppSettings["EntityLogo"] + ds.Tables[0].Rows[i]["EntityMeeting"].ToString()).ToBase64Encryption();
+                    //objEntity.ApprovedBy = Guid.Parse(ds.Tables[0].Rows[i]["ApprovedBy"].ToString());
+                    objEntityList.Add(objEntity);
+                }
+                ForumDetails objForum = null;
+                //Forum details
+                for (int j = 0; j <= ds.Tables[1].Rows.Count - 1; j++)
+                {
+                    objForum = new ForumDetails();
+                    objForum.ForumId = Guid.Parse(ds.Tables[1].Rows[j]["ForumId"].ToString());
+                    objForum.ForumShortName = Encryptor.DecryptString(ds.Tables[1].Rows[j]["ForumShortName"].ToString());
+                    objForum.EntityName = Encryptor.DecryptString(ds.Tables[1].Rows[j]["EntityName"].ToString());
+                    objForum.EntityId = Guid.Parse(ds.Tables[1].Rows[j]["EntityId"].ToString());
+                    objForum.ForumChecker = Guid.Parse(ds.Tables[1].Rows[j]["ForumChecker"].ToString());
+                    objForum.IsEnable = Convert.ToBoolean(ds.Tables[1].Rows[j]["IsEnable"].ToString());
+                    objForum.MembersInfo = string.IsNullOrEmpty(ds.Tables[1].Rows[j]["MembersInfo"].ToString()) ? "" : ("http://" + webUrl[2] + "/" + System.Configuration.ConfigurationManager.AppSettings["MembesInfo"] + ds.Tables[1].Rows[j]["MembersInfo"].ToString()).ToBase64Encryption();
+
+                   // objForum.MembersInfo = string.IsNullOrEmpty(ds.Tables[1].Rows[j]["MembersInfo"].ToString()) ? "" : ("http://"+  VirtualPathUtility.ToAbsolute("~/img/Uploads/Forum/"+ds.Tables[1].Rows[j]["MembersInfo"].ToString())).ToBase64Encryption();
+                        //"img/Uploads/Forum/"+ds.Tables[1].Rows[j]["MembersInfo"].ToString();
+                    objForum.UpdatedOn = Convert.ToDateTime(ds.Tables[1].Rows[j]["UpdatedOn"].ToString());
+                    objForum.CreatedOn = Convert.ToDateTime(ds.Tables[1].Rows[j]["CreatedOn"].ToString());
+                    objForum.CreatedBy = Guid.Parse(ds.Tables[1].Rows[j]["CreatedBy"].ToString());
+                    objForum.UpdatedBy = Guid.Parse(ds.Tables[1].Rows[j]["UpdatedBy"].ToString());
+                    objForum.ForumName = Encryptor.DecryptString(ds.Tables[1].Rows[j]["ForumName"].ToString());
+                    objForum.IsActive = Convert.ToBoolean(ds.Tables[1].Rows[j]["IsActive"].ToString());
+                    
+                    objForumList.Add(objForum);
+                }
+
+                MeetingDetails objMeeting = null;
+                //Meeting details
+                for (int k = 0; k <= ds.Tables[2].Rows.Count - 1; k++)
+                {
+                    objMeeting = new MeetingDetails();
+                    objMeeting.MeetingId = Guid.Parse(ds.Tables[2].Rows[k]["MeetingId"].ToString());
+                    objMeeting.MeetingTime = Encryptor.DecryptString(ds.Tables[2].Rows[k]["MeetingTime"].ToString());
+                    objMeeting.MeetingVenue = Encryptor.DecryptString(ds.Tables[2].Rows[k]["MeetingVenue"].ToString());
+                    objMeeting.UpdatedBy = Guid.Parse(ds.Tables[2].Rows[k]["UpdatedBy"].ToString());
+                    objMeeting.CreatedBy = Guid.Parse(ds.Tables[2].Rows[k]["CreatedBy"].ToString());
+                    objMeeting.CreatedOn = Convert.ToDateTime(ds.Tables[2].Rows[k]["CreatedOn"].ToString());
+                    objMeeting.UpdatedOn = Convert.ToDateTime(ds.Tables[2].Rows[k]["UpdatedOn"].ToString());
+                    objMeeting.ForumName = Encryptor.DecryptString(ds.Tables[2].Rows[k]["ForumName"].ToString());
+                    objMeeting.EntityName = Encryptor.DecryptString(ds.Tables[2].Rows[k]["EntityName"].ToString());
+                    objMeeting.MeetingChecker = Guid.Parse(ds.Tables[2].Rows[k]["MeetingChecker"].ToString());
+                    objMeeting.EntityId = Guid.Parse(ds.Tables[2].Rows[k]["EntityId"].ToString());
+                    objMeeting.ForumId = Guid.Parse(ds.Tables[2].Rows[k]["ForumId"].ToString());
+                    objMeeting.MeetingDate = Encryptor.DecryptString(ds.Tables[2].Rows[k]["MeetingDate"].ToString());
+                    objMeeting.IsActive = Convert.ToBoolean(ds.Tables[2].Rows[k]["IsActive"].ToString());
+
+                    objMeetingList.Add(objMeeting);
+                }
+
+                NoticeDetails objNotice = null;
+                //Notice details
+                for (int l = 0; l <= ds.Tables[3].Rows.Count - 1; l++)
+                {
+                    objNotice = new NoticeDetails();
+                    objNotice.NoticeId = Guid.Parse(ds.Tables[3].Rows[l]["NoticeId"].ToString());
+                    objNotice.EntityId = Guid.Parse(ds.Tables[3].Rows[l]["EntityId"].ToString());
+                    objNotice.ForumId = Guid.Parse(ds.Tables[3].Rows[l]["ForumId"].ToString());
+                    objNotice.IsApproved = ds.Tables[3].Rows[l]["IsApproved"].ToString();
+                    objNotice.MeetingDate = Encryptor.DecryptString(ds.Tables[3].Rows[l]["MeetingDate"].ToString());
+                    objNotice.MeetingTime = Encryptor.DecryptString(ds.Tables[3].Rows[l]["MeetingTime"].ToString());
+                    objNotice.MeetingVenue = Encryptor.DecryptString(ds.Tables[3].Rows[l]["MeetingVenue"].ToString());
+                    objNotice.NoticeMessage = ds.Tables[3].Rows[l]["NoticeMessage"].ToString();
+                    objNotice.UpdatedBy = Guid.Parse(ds.Tables[3].Rows[l]["UpdatedBy"].ToString());
+                    objNotice.CreatedBy = Guid.Parse(ds.Tables[3].Rows[l]["CreatedBy"].ToString());
+                    objNotice.CreatedOn = Convert.ToDateTime(ds.Tables[3].Rows[l]["CreatedOn"].ToString());
+                    objNotice.UpdatedOn = Convert.ToDateTime(ds.Tables[3].Rows[l]["UpdatedOn"].ToString());
+                    objNotice.NoticeChecker = Guid.Parse(ds.Tables[3].Rows[l]["NoticeChecker"].ToString());
+                    objNotice.MeetingId = Guid.Parse(ds.Tables[3].Rows[l]["MeetingId"].ToString());
+                    objNotice.IsActive = Convert.ToBoolean(ds.Tables[3].Rows[l]["IsActive"].ToString());
+
+                    objNoticeList.Add(objNotice);
+                }
+
+                AgendaDetails objAgenda = null;
+                //Agenda details
+                for (int m = 0; m <= ds.Tables[4].Rows.Count - 1; m++)
+                {
+                    objAgenda = new AgendaDetails();
+                    objAgenda.AgendaId = Guid.Parse(ds.Tables[4].Rows[m]["AgendaId"].ToString());
+                    objAgenda.AgendaName = ds.Tables[4].Rows[m]["AgendaName"].ToString();
+                    objAgenda.AgendaNote = ds.Tables[4].Rows[m]["AgendaNote"].ToString();
+                    objAgenda.AgendaOrder = Convert.ToInt16(ds.Tables[4].Rows[m]["AgendaOrder"].ToString());
+                    objAgenda.CreatedBy = Guid.Parse(ds.Tables[4].Rows[m]["CreatedBy"].ToString());
+                    objAgenda.UpdatedBy = Guid.Parse(ds.Tables[4].Rows[m]["UpdatedBy"].ToString());
+                    objAgenda.UpdateOn = Convert.ToDateTime(ds.Tables[4].Rows[m]["UpdateOn"].ToString());
+                    objAgenda.CreatedOn = Convert.ToDateTime(ds.Tables[4].Rows[m]["CreatedOn"].ToString());
+                    objAgenda.EntityId = Guid.Parse(ds.Tables[4].Rows[m]["EntityId"].ToString());
+                    objAgenda.EntityName = Encryptor.DecryptString(ds.Tables[4].Rows[m]["EntityName"].ToString());
+                    objAgenda.ForumId = Guid.Parse(ds.Tables[4].Rows[m]["ForumId"].ToString());
+                    objAgenda.MeetingId = Guid.Parse(ds.Tables[4].Rows[m]["MeetingId"].ToString());
+                    objAgenda.ParentAgendaId = Guid.Parse(ds.Tables[4].Rows[m]["ParentAgendaId"].ToString());
+                    objAgenda.MeetingVenue = Encryptor.DecryptString(ds.Tables[4].Rows[m]["MeetingVenue"].ToString());
+                    objAgenda.UploadedAgendaNote = string.IsNullOrEmpty(ds.Tables[4].Rows[m]["UploadedAgendaNote"].ToString()) ? "" : ("http://" + webUrl[2]+ "/" + (System.Configuration.ConfigurationManager.AppSettings["Agenda"] + ds.Tables[4].Rows[m]["UploadedAgendaNote"].ToString())).ToBase64Encryption();
+                        //"img/Uploads/Agenda/" + ds.Tables[4].Rows[m]["UploadedAgendaNote"].ToString();
+                    objAgenda.ForumName = Encryptor.DecryptString(ds.Tables[4].Rows[m]["ForumName"].ToString());
+                    objAgenda.AgendaChecker = Guid.Parse(ds.Tables[4].Rows[m]["AgendaChecker"].ToString());
+                    objAgenda.IsActive = Convert.ToBoolean(ds.Tables[4].Rows[m]["IsActive"].ToString());
+                   
+                    objAgendaList.Add(objAgenda);
+                }
+
+                MinutesDetails objMin = null;
+                //Minutes details
+                for (int s = 0; s <= ds.Tables[5].Rows.Count - 1; s++)
+                {
+                    objMin = new MinutesDetails();
+                    objMin.UploadMinuteId = Guid.Parse(ds.Tables[5].Rows[s]["UploadMinuteId"].ToString());
+                    objMin.UploadFile = string.IsNullOrEmpty(ds.Tables[5].Rows[s]["UploadFile"].ToString()) ? "" :
+                          ("http://" +webUrl[2] +"/"+(System.Configuration.ConfigurationManager.AppSettings["UploadMinutes"] + ds.Tables[5].Rows[s]["UploadFile"].ToString())).ToBase64Encryption();
+                        //"img/Uploads/UploadMinutes/" + ds.Tables[5].Rows[s]["UploadFile"].ToString();
+                    objMin.UpdatedOn = Convert.ToDateTime(ds.Tables[5].Rows[s]["UpdatedOn"].ToString());
+                    objMin.CreatedOn = Convert.ToDateTime(ds.Tables[5].Rows[s]["CreatedOn"].ToString());
+                    objMin.CreatedBy = Guid.Parse(ds.Tables[5].Rows[s]["UploadMinuteId"].ToString());
+                    objMin.UpdatedBy = Guid.Parse(ds.Tables[5].Rows[s]["UploadMinuteId"].ToString());
+
+                    objMin.MeetingDate = Encryptor.DecryptString(ds.Tables[5].Rows[s]["MeetingDate"].ToString());
+                    objMin.MeetingTime = Encryptor.DecryptString(ds.Tables[5].Rows[s]["MeetingTime"].ToString());
+                    objMin.MeetingVenue = Encryptor.DecryptString(ds.Tables[5].Rows[s]["MeetingVenue"].ToString());
+                    objMin.IsActive = Convert.ToBoolean(ds.Tables[5].Rows[s]["IsActive"].ToString());
+                    objMinList.Add(objMin);
+                }
+             
+                //Response time used for next request
+                if (ds.Tables[6].Rows.Count > 0)
+                {
+                    DateTime timestamp = Convert.ToDateTime(ds.Tables[6].Rows[0]["ResponseTime"].ToString());
+                    ResponseTime = timestamp.ToUnixTimestamp().ToString();
+                }
+                objResponse.Entity = objEntityList;
+                objResponse.Forum = objForumList;
+                objResponse.Meeting = objMeetingList;
+                objResponse.Notice = objNoticeList;
+                objResponse.Agenda = objAgendaList;
+                objResponse.UploadedMinutes = objMinList;
+                objResponse.ResponseTime = ResponseTime;
+            }
+
+            return objResponse;
+        }
+
+        /// <summary>
+        /// Insert or update attenadence
+        /// </summary>
+        /// <param name="objRequest"></param>
+        /// <returns></returns>
+        public AttendanceResponse Attendance(AttendanceRequest objRequest)
+        {
+            AttendanceResponse objResponse = new AttendanceResponse();
+            AttendanceService objAttendanceService = new AttendanceService();
+            AttendanceDomain objAtt = objAttendanceService.InsertOrUpdateAttendance(objRequest.UserId, objRequest.MeetingId, objRequest.Reason, objRequest.Attending);
+            if (objAtt != null)
+            {
+                objResponse.Status = "Done";
+            }
+            else
+            {
+                objResponse.Status = "Failed";
+            }
+
+            return objResponse;
+        }
+               
+    }
+}

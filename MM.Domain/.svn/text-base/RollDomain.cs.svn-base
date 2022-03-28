@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MM.Domain
+{
+  public  class RollDomain
+  {
+      #region "Public properties of Roll"
+      public Guid RollMasterId { get; set; }
+      public string RollName { get; set; }
+      public bool EntityMaster { get; set; }
+      public bool UserMaster { get; set; }
+      public bool AccessRightMaster { get; set;}
+      public bool ApprovalMaster { get; set;}
+
+      public bool Transaction { get; set; }
+      public bool View { get; set; }
+      public bool Report { get; set;}
+      public bool Approval { get; set;}
+
+      public DateTime CreatedOn { get; set; }
+      public Guid CreatedBy { get; set; }
+      public DateTime UpdatedOn { get; set; }
+      public Guid UpdatedBy { get; set; }
+
+      public string UserName { get; set; }
+      public Guid UserId { get; set; }
+      public string FirstName { get; set; }
+      public string LastName { get; set; }
+
+      public bool RollMaster { get; set;}
+      #endregion
+  }
+}

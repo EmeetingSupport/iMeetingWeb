@@ -1,0 +1,129 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MeetingMinder.Web.Login" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" class="no-js">
+<head >
+<title>Administration Login Page</title>
+  <meta charset="UTF-8" content="" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="copyright" content="" />
+	<meta name="author" content="" />
+	<meta name="language" content="English" />
+	<meta name="robots" content="index, follow" />
+	<meta property="fb:page_id" content="XXX" /> <!-- XXX = Facebook Fan Page ID -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!-- Icons -->
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="css/screen.css" />
+	<link rel="stylesheet" href="css/colors.css" />
+	<link rel="stylesheet" href="css/jquery.tipsy.css" />
+	
+	<!-- Google WebFonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;v2' rel='stylesheet' type='text/css' />
+	
+	<!-- Modernizr adds classes to the <html> element which allow you to target specific browser functionality in your stylesheet -->
+	<script src="js/libs/modernizr-1.7.min.js"></script>
+       
+  
+</head>
+<body class="login">
+
+<asp:Panel ID="aspPanel" runat="server" DefaultButton="btnSubmit">
+<div class="login-wrapper">
+
+ <article class="content-box minimizer">
+			<header>
+				<h2>Admin Login</h2>		
+			</header>
+			<section>
+				
+				<div id="logform">
+					<form id="form1" runat="server">      
+                    
+                    <div style="margin-bottom:10px">
+                        <asp:ValidationSummary ID="vsLogin" ValidationGroup="check" runat="server" CssClass="notification error" HeaderText="Error notification" />                        
+                   </div> 
+                      <div style="margin-bottom:20px">             	
+                         <asp:Label runat="server" ID="lblmsg" cssclass="notification error" Visible="false" ></asp:Label>
+			          </div> 
+						<dl>
+							<dt>
+								<label>Login<span >*</span></label>
+							</dt>
+							<dd>
+							 <asp:TextBox ID="txtLogin" runat="server" CssClass="input"></asp:TextBox>
+                             <asp:RequiredFieldValidator ValidationGroup="check" ID="RequiredFieldValidator1" runat="server" class="invalid-side-note"
+                             ControlToValidate="txtLogin" ErrorMessage="Enter your Login" SetFocusOnError="True" Display="Dynamic">Invalid</asp:RequiredFieldValidator>
+							</dd>
+							<dt>
+								<label>Password <span >*</span></label>
+							</dt>
+							<dd>
+                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="input"></asp:TextBox>
+                              <asp:RequiredFieldValidator ValidationGroup="check" ID="RequiredFieldValidator2" runat="server" class="invalid-side-note"
+                                                                        ControlToValidate="txtPassword" ErrorMessage="Enter Password" SetFocusOnError="True"
+                                                                        Display="Dynamic">Invalid</asp:RequiredFieldValidator>							
+							</dd>
+                            <%-- <dt>
+                                    <label>
+                                    Entity <span>*</span> :
+                                    </label>
+                                </dt>
+                                <dd>
+                                <asp:DropDownList ID="ddlEntityList" runat="server" >--%>
+                                 <%--<asp:ListItem >Select Entity</asp:ListItem>--%>
+                                <%--<asp:ListItem>ICICI Prodential </asp:ListItem>
+                                <asp:ListItem>ICICI Life Insurance </asp:ListItem>
+                                 <asp:ListItem>HDFC </asp:ListItem>
+                                </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="rfvddlEntityList" runat="server" 
+                                        class="invalid-side-note" ControlToValidate="ddlEntityList" Display="Dynamic" 
+                                        ErrorMessage="Entity" SetFocusOnError="True" ValidationGroup="a">Invalid</asp:RequiredFieldValidator>
+                                </dd>
+                                
+                                 <dt>
+                                --%>      
+                                  
+					  <u> <a href="ForgotPassword.aspx">Forgot Password</a></u>
+                  
+						</dl>
+                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="check" 
+                                    onclick="btnSubmit_Click"  />		
+                                    <br />	
+                           
+					</form>
+				</div>
+				
+			</section>
+		</article>
+        </div> 
+  
+		<!-- /Full width content box -->
+	
+    <!-- JavaScript at the bottom for faster page loading -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script>	    !window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.5.1.min.js"%3E%3C/script%3E'))</script>
+	<script src="js/jquery/jquery.tipsy.js"></script>
+	<script src="js/login.js"></script>
+	
+	<script>
+	    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+	    (function (d, t) {
+	        var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
+	        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+	        s.parentNode.insertBefore(g, s)
+	    } (document, 'script'));
+	</script>
+    <script type="text/javascript">
+        setTimeout('$("a.content-box-minimizer").attr("title", "");', 1000);
+    </script>
+  </asp:Panel>
+</body>
+</html>
+

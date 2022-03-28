@@ -1,0 +1,348 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+using System.Text;
+using System.IO;
+
+namespace MeetingMinder.Web
+{
+    public partial class RollMaster : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //bind Roll list
+                BindRoll();
+            }
+        }
+        /// <summary>
+        /// Bind Roll List
+        /// </summary>
+        private void BindRoll()
+        {
+            try
+            {
+                grdRoll.DataSource = RollDataProvider.Instance.Get();
+                grdRoll.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Code to PageIndex Changing
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdRoll_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdRoll.PageIndex = e.NewPageIndex;
+                BindRoll();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Event That Fired on RowCommand
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdRoll_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToLower().Equals("delete"))
+                {
+                    bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                    if (isMaker)
+                    {
+                        string strRollMasterId = Convert.ToString(e.CommandArgument);
+                        bool IsResponse = RollDataProvider.Instance.Delete(Guid.Parse(strRollMasterId));
+                        if (!IsResponse)
+                        {
+                            ((Label)Info.FindControl("lblName")).Text = " Roll deleted successfully";
+                            Info.Visible = true;
+                            BindRoll();
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Roll deletion failed";
+                            Error.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                        Error.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Row deleting event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdRoll_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        /// Code to Row  editing event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdRoll_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            try
+            {
+                string strRollMasterId = grdRoll.DataKeys[e.NewEditIndex].Value.ToString();
+                RollDomain objRoll = RollDataProvider.Instance.GetRollById(Guid.Parse(strRollMasterId));
+                txtRollName.Text = objRoll.RollName;
+                chkView.Checked = objRoll.View;
+                chkTransaction.Checked = objRoll.Transaction;
+                chkUserMaster.Checked = objRoll.UserMaster;
+                chkReport.Checked = objRoll.Report;
+
+                chkAccessRight.Checked = objRoll.AccessRightMaster;
+                chkApproval.Checked = objRoll.Approval;
+                chkApprovalMaster.Checked = objRoll.ApprovalMaster;
+                chkEntityMaster.Checked = objRoll.EntityMaster;
+
+                chkRollMaster.Checked = objRoll.RollMaster;
+
+                btnInsert.Text = "Update";
+
+                hdnApprovalId.Value = objRoll.RollMasterId.ToString();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Function Used For Gridview Sorting
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdRoll_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            try
+            {
+                DataTable dt = (DataTable)RollDataProvider.Instance.Get().AsDataTable();
+                DataView dv = new DataView(dt);
+                if (Convert.ToString(ViewState["sortDirection"]) == "asc")
+                {
+                    ViewState["sortDirection"] = "dsc";
+                    dv.Sort = e.SortExpression + " DESC";
+                }
+                else
+                {
+                    ViewState["sortDirection"] = "asc";
+                    dv.Sort = e.SortExpression + " ASC";
+                }
+
+                grdRoll.DataSource = dv;
+                grdRoll.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Delelte Seleted Entity
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lbRemoveSelected_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StringBuilder strRollMasterIds = new StringBuilder(",");
+
+                int count = 0;
+                //get all checked  Rolls
+                for (int i = 0; i < grdRoll.Rows.Count; i++)
+                {
+
+
+
+                    CheckBox chkSelect = (CheckBox)grdRoll.Rows[i].FindControl("chkSubAdmin");
+                    if (chkSelect.Checked)
+                    {
+                        count++;
+                        string RollMasterID = Convert.ToString(grdRoll.DataKeys[i].Value.ToString());
+
+                        strRollMasterIds.Append(RollMasterID + ",");
+
+                    }
+                }
+                if (count > 0)
+                {
+                    bool bStatus = RollDataProvider.Instance.DeleteSelected(strRollMasterIds.ToString());
+                    if (!bStatus)
+                    {
+                        ((Label)Info.FindControl("lblName")).Text = "Rolls Deleted Successfully";
+                        Info.Visible = true;
+                        BindRoll();
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                        Error.Visible = true;
+                    }
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Please Select atleast one checkbox";
+                    Error.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Insert or edit values 
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnInsert_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                if (isMaker)
+                {
+                    if (txtRollName.Text != "")
+                    {
+                        RollDomain objRoll = new RollDomain();
+                        objRoll.RollName = txtRollName.Text;
+                        objRoll.AccessRightMaster = chkAccessRight.Checked;
+                        objRoll.Approval = chkApproval.Checked;
+                        objRoll.ApprovalMaster = chkApprovalMaster.Checked;
+
+                        objRoll.EntityMaster = chkEntityMaster.Checked;
+                        objRoll.Report = chkReport.Checked;
+                        objRoll.Transaction = chkTransaction.Checked;
+                        objRoll.UserMaster = chkUserMaster.Checked;
+                        objRoll.View = chkView.Checked;
+                        objRoll.RollMaster = chkRollMaster.Checked;
+
+                        if (hdnApprovalId.Value == "")
+                        {
+                            objRoll = RollDataProvider.Instance.Insert(objRoll);
+                            ((Label)Info.FindControl("lblName")).Text = " Roll  Inserted successfully";
+                            Info.Visible = true;
+
+                        }
+                        else
+                        {
+                            objRoll.RollMasterId = Guid.Parse(hdnApprovalId.Value);
+                            bool IsSubmit = RollDataProvider.Instance.Update(objRoll);
+                            if (IsSubmit)
+                            {
+                                ((Label)Info.FindControl("lblName")).Text = " Roll Updated successfully";
+                                Info.Visible = true;
+                            }
+                            else
+                            {
+                                ((Label)Error.FindControl("lblError")).Text = " Roll Updatedation fail";
+                                Error.Visible = true;
+                            }
+                        }
+                        BindRoll();
+                        ClearAll();
+
+                    }
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                    Error.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Insertion or Updation cancel
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnCancel_Click1(object sender, EventArgs e)
+        {
+            ClearAll();
+            //Response.Redirect("default.aspx");
+        }
+
+        /// <summary>
+        /// Clear form data
+        /// </summary>
+        public void ClearAll()
+        {
+            try
+            {
+                txtRollName.Text = "";
+                chkView.Checked = false;
+                chkTransaction.Checked = false;
+                chkUserMaster.Checked = false;
+                chkReport.Checked = false;
+
+                chkAccessRight.Checked = false;
+                chkApproval.Checked = false;
+                chkApprovalMaster.Checked = false;
+                chkEntityMaster.Checked = false;
+
+                btnInsert.Text = "Save";
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+    }
+}

@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using MM.Domain;
+using MM.Data;
+using System.Text;
+
+namespace MeetingMinder.Web
+{
+    public partial class ViewAgendaDetails : System.Web.UI.Page
+    {
+        public string strMenuList = "";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindAgenda();
+            }
+        }
+        /// <summary>
+        /// Bind Agenda items
+        /// </summary>
+        private void BindAgenda()
+        {
+          
+            StringBuilder strMenu = new StringBuilder("");
+            IList<AgendaDomain> objAgentList = AgendaDataProvider.Instance.GetAgendabyMeetingId(Guid.Parse("ab959a2e-e199-4ddc-9801-86c6bae8a30e"));
+
+            
+            if (objAgentList.Count > 0)
+            {
+               
+                var objParentAgenda = from agend in objAgentList
+                                 where (agend.ParentAgendaId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                                 select agend;
+                var subAgendaList = from agend in objAgentList
+                                    where (agend.ParentAgendaId != Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                                    select agend;
+
+                //DataRow[] subAgendas = dtAgentList.Select("ParentAgendaId <>  '00000000-0000-0000-0000-000000000000'");
+
+                //DataRow[] results = dtAgentList.Select("ParentAgendaId  = '00000000-0000-0000-0000-000000000000'");
+                //IEnumerable<DataRow> objAgenda = dtAgentList.AsEnumerable();
+
+                //List<DataRow> list = dtAgentList.AsEnumerable().ToList();
+
+                //IEnumerable<DataRow> objParentAgenda = results.AsEnumerable();
+                //IEnumerable<DataRow> subAgendaList = subAgendas.AsEnumerable();
+              
+
+                //var agendaName = (from agend in objParentAgenda
+
+                //                  select (new
+                //                  {
+                //                      AgendaName = agend.Field<string>("strAgendaNote"),
+                //                      AgendaId = agend.Field<Guid>("AgendaId"),
+
+                //                  })).Distinct().ToList();
+
+                //if (agendaName.Count() > 0)
+                //{
+                //    strMenu.Append("<ul id='accordion'>");
+                //    for (int i = 0; i <= agendaName.Count() - 1; i++)
+                //    {
+                //        Guid agendaId = agendaName[i].AgendaId;
+                //        strMenu.Append("<li id=" + agendaId + " class='group' ><h3>" + agendaName[i].AgendaName + "</h3>");
+
+
+                //        var subAgendaName = (from subAgenda in subAgendaList
+                //                             where (subAgenda.Field<Guid>("ParentAgendaId") == agendaId)
+                //                             select (new
+                //                             {
+                //                                 AgendaName = subAgenda.Field<string>("strAgendaNote")
+                //                             })).ToList();
+
+                //        if (subAgendaName.Count() > 0)
+                //        {
+                //            strMenu.Append("<div><ul>");
+                //            for (int j = 0; j <= subAgendaName.Count() - 1; j++)
+                //            {
+                //                strMenu.Append("<li>" + subAgendaName[j].AgendaName + "</li>");
+                //            }
+                //            strMenu.Append("</ul></div></li>");
+                //        }
+
+                //    }
+                //    strMenu.Append("</ul>");
+                //}
+                //strMenuList = strMenu.ToString();
+                //lblList.Text = strMenuList;
+
+                var agendaName = (from agend in objParentAgenda
+
+                                  select (new
+                                  {
+                                      AgendaName = agend.AgendaNote,
+                                      AgendaId = agend.AgendaId
+
+                                  })).Distinct().ToList();
+
+                if (agendaName.Count() > 0)
+                {
+                    strMenu.Append("<ul id='accordion'>");
+                    for (int i = 0; i <= agendaName.Count() - 1; i++)
+                    {
+                        Guid agendaId = agendaName[i].AgendaId;
+                        strMenu.Append("<li id=" + agendaId + " class='group' ><h3>" + agendaName[i].AgendaName + "</h3>");
+
+
+                        var subAgendaName = (from subAgenda in subAgendaList
+                                             where (subAgenda.ParentAgendaId == agendaId)
+                                             select (new
+                                             {
+                                                 AgendaName = subAgenda.AgendaNote
+                                             })).ToList();
+
+                        if (subAgendaName.Count() > 0)
+                        {
+                            strMenu.Append("<div><ul>");
+                            for (int j = 0; j <= subAgendaName.Count() - 1; j++)
+                            {
+                                strMenu.Append("<li>" + subAgendaName[j].AgendaName + "</li>");
+                            }
+                            strMenu.Append("</ul></div></li>");
+                        }
+
+                    }
+                    strMenu.Append("</ul>");
+                }
+                strMenuList = strMenu.ToString();
+                lblList.Text = strMenuList;
+            }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            string idOrders = hdnListItems.Value;
+            if (idOrders.Length > 0)
+            {
+                string sql = "";
+                idOrders = idOrders.Remove(idOrders.Length - 1);
+                string[] arryOrderIds = idOrders.Split(',');
+                for (int i = 1; i <= arryOrderIds.Count(); i++)
+                {
+                    sql += " UPDATE Agenda set AgendaOrder= " + i + " WHERE AgendaId = '" + arryOrderIds[i - 1] + "'  UPDATE Agenda set AgendaOrder= " + i + " WHERE ParentAgendaId = '" + arryOrderIds[i - 1] + "' ";
+                }
+
+                bool bUpdate = AgendaDataProvider.Instance.UpdateAgendaOrders(sql);
+                if (bUpdate)
+                {
+
+                }
+
+            }
+
+
+        }
+    }
+}

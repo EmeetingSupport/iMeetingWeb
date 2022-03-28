@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/scm/svn/MeetingMinder/!svn/ver/124/MM.Data
+END
+AttendanceDataprovider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/182/MM.Data/AttendanceDataprovider.cs
+END
+MM.Data.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Data/MM.Data.csproj
+END
+RollDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/183/MM.Data/RollDataProvider.cs
+END
+UserEntityDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/183/MM.Data/UserEntityDataProvider.cs
+END
+EntityDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/186/MM.Data/EntityDataProvider.cs
+END
+UserDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/197/MM.Data/UserDataProvider.cs
+END
+AgendaDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/182/MM.Data/AgendaDataProvider.cs
+END
+DataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/scm/svn/MeetingMinder/!svn/ver/5/MM.Data/DataProvider.cs
+END
+Class1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Data/Class1.cs
+END
+NoticeDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/183/MM.Data/NoticeDataProvider.cs
+END
+ApprovalDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/scm/svn/MeetingMinder/!svn/ver/182/MM.Data/ApprovalDataProvider.cs
+END
+MeetingDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/scm/svn/MeetingMinder/!svn/ver/184/MM.Data/MeetingDataProvider.cs
+END
+ForumDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/scm/svn/MeetingMinder/!svn/ver/185/MM.Data/ForumDataProvider.cs
+END
+GlobalSettingDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/187/MM.Data/GlobalSettingDataProvider.cs
+END
+AccessRightDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/182/MM.Data/AccessRightDataProvider.cs
+END
+SecurityQuestionDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/183/MM.Data/SecurityQuestionDataProvider.cs
+END
+UploadMintesDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/183/MM.Data/UploadMintesDataProvider.cs
+END
+CheckerDataProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/scm/svn/MeetingMinder/!svn/ver/182/MM.Data/CheckerDataProvider.cs
+END

@@ -1,0 +1,192 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+
+namespace MM.Data
+{
+   public class RollDataProvider : DataProvider
+    {
+          #region "Singleton"
+
+        private static volatile RollDataProvider _instance;
+        private static object synRoot = new Object();
+
+        private RollDataProvider()
+        {
+
+        }
+
+        public static RollDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new RollDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+          #region "Fill"
+       /// <summary>
+       /// Get Rolls Details
+       /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+       /// <returns></returns>
+        private RollDomain ToRollDomain(IDataReader dr)
+        {
+            return new RollDomain
+            {
+                RollMasterId = Null.SetNullGuid(dr["RollMasterId"]),
+                AccessRightMaster = Null.SetNullBoolean(dr["AccessRightMaster"]),
+                ApprovalMaster = Null.SetNullBoolean(dr["ApprovalMaster"]),
+                EntityMaster = Null.SetNullBoolean(dr["EntityMaster"]),
+                Approval = Null.SetNullBoolean(dr["Approval"]),
+                Report = Null.SetNullBoolean(dr["Report"]),
+                RollName =  Encryptor.DecryptString(Null.SetNullString(dr["RollName"])),
+                Transaction = Null.SetNullBoolean(dr["Transaction"]),
+                UserMaster = Null.SetNullBoolean(dr["UserMaster"]),
+                View = Null.SetNullBoolean(dr["View"]),
+                
+                 CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+                UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+             
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+
+                RollMaster = Null.SetNullBoolean(dr["RollMaster"])
+                //UserId = Null.SetNullGuid(dr["AccessRight"]),
+                //FirstName = Encryptor.DecryptString(Null.SetNullString(dr["FirstName"])),
+                //LastName = Encryptor.DecryptString(Null.SetNullString(dr["LastName"])), 
+            };
+        }
+       /// <summary>
+       /// Get All Roll details
+       /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+       /// <returns></returns>
+        private IList<RollDomain> ToRollDomains(IDataReader dr)
+        {
+            IList<RollDomain> objRollDomain = new List<RollDomain>();
+            while (dr.Read())
+            {
+                objRollDomain.Add(ToRollDomain(dr));
+            }
+            return objRollDomain;
+        }
+        #endregion
+
+          #region "Get"
+       /// <summary>
+       /// Get Roll By Id
+       /// </summary>
+        /// <param name="RollMasterId">Guid specifying RollMasterId</param>
+       /// <returns></returns>
+        public RollDomain GetRollById(Guid RollMasterId)
+        {
+            RollDomain objRollDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetRollById",RollMasterId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                objRollDomain = ToRollDomain(dataReader);
+            }
+            return objRollDomain;
+        }
+
+       /// <summary>
+       /// Get  all Roll domain
+       /// </summary>
+       /// <returns></returns>
+        public IList<RollDomain> Get()
+        {
+            IList<RollDomain> objRollDomains = null;
+            using(SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString,"stp_GetAllRolls"))
+            {
+                objRollDomains = ToRollDomains(dataReader);
+            }
+            return objRollDomains;
+        }
+
+       /// <summary>
+        /// Get Roll by UserID 
+       /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+       /// <returns></returns>
+        public RollDomain GetRollByUserId(Guid UserId)
+        {
+            RollDomain objRollDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetRollByUserId", UserId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                objRollDomain = ToRollDomain(dataReader);
+            }
+            return objRollDomain;
+        }
+        #endregion
+
+          #region "Modify"
+
+       /// <summary>
+       /// Insert Roll details
+       /// </summary>
+        /// <param name="objRollDomain">Class object specifying objRollDomain</param>
+       /// <returns></returns>
+        public RollDomain Insert(RollDomain objRollDomain)
+        {
+            objRollDomain.RollMasterId = (Guid)SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertRoll",Encryptor.EncryptString(objRollDomain.RollName),objRollDomain.EntityMaster, objRollDomain.UserMaster, objRollDomain.ApprovalMaster, objRollDomain.AccessRightMaster,objRollDomain.Transaction, objRollDomain.Approval, objRollDomain.View ,objRollDomain.Report, objRollDomain.CreatedBy, objRollDomain.UpdatedBy, objRollDomain.RollMaster);
+            return objRollDomain;
+        }
+
+       /// <summary>
+       /// Update Roll Details
+       /// </summary>
+        /// <param name="objRollDomain">Class object specifying objRollDomain</param>
+       /// <returns></returns>
+        public bool Update(RollDomain objRollDomain)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateRoll", Encryptor.EncryptString(objRollDomain.RollName), objRollDomain.EntityMaster, objRollDomain.UserMaster, objRollDomain.ApprovalMaster, objRollDomain.AccessRightMaster, objRollDomain.Transaction, objRollDomain.Approval, objRollDomain.View, objRollDomain.Report, objRollDomain.RollMasterId, objRollDomain.UpdatedBy, objRollDomain.RollMaster)) > 0;
+        }
+
+       /// <summary>
+       /// Delete Roll by Id
+       /// </summary>
+        /// <param name="RollMasterId">Class object specifying objRollDomain</param>
+       /// <returns></returns>
+        public bool Delete(Guid RollMasterId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteRollById", RollMasterId)) > 0;
+        }
+
+        /// <summary>
+        /// Delete seleted Rolls by id
+        /// </summary>
+        /// <param name="RollMasterId">string specifying RollMasterId</param>
+        /// <returns></returns>
+        public bool DeleteSelected(string RollMasterId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteSelectedRolls", RollMasterId)) > 0;
+        }
+        #endregion
+    }
+}

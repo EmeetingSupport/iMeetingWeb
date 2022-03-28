@@ -1,0 +1,318 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMasterPage.Master" AutoEventWireup="true"
+    CodeBehind="AccessRightAdmin.aspx.cs" Inherits="MeetingMinder.Web.AccessRightAdmin" %>
+
+<%@ Register TagName="Error" Src="UserControls/Error.ascx" TagPrefix="userControl" %>
+<%@ Register TagName="Info" Src="UserControls/Info.ascx" TagPrefix="userControl" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">
+        function ValidateCheckBox(sender, args) {
+            var count = 0;
+            var items = document.getElementsByTagName('input');
+            for (i = 0; i < items.length; i++) {
+                if (items[i].type == "checkbox") {
+                    if (items[i].checked) {
+                        count++;
+                    }
+                }
+            }
+
+            if (count == 0) {
+                args.IsValid = false;
+            }
+            if (count > 0) {
+                args.IsValid = true;
+            }
+
+        }
+
+        function toggle(toggeldivid, toggeltext) {
+            var divelement = document.getElementById(toggeldivid);
+            var lbltext = document.getElementById(toggeltext);
+            if (divelement.style.display == "block") {
+                divelement.style.display = "none";
+                lbltext.innerHTML = "+ Show Orders";
+            }
+            else {
+                divelement.style.display = "block";
+                lbltext.innerHTML = "- Hide Orders";
+            }
+        }
+    </script>
+    <article class="content-box minimizer">
+			<header>			
+				<h2>Access Rights</h2>			
+			</header>
+			<section>              
+				<div>      
+						<fieldset>
+							<legend><font color="#AE432E"><b>Set Access Rights</b></font></legend>
+                             <dl>
+                                <div style="margin-bottom:15px">
+                                <userControl:Info ID="Info" runat="server" Visible="false" />
+                                      <userControl:Error ID="Error" runat="server" Visible="false" />   
+                                </div>
+                                 <div style="margin-bottom:15px;">
+                                    <img width="16" height="16" src="img/icons/icon_list_style_cross.png" alt="" style="vertical-align: middle"/> 
+                                   <asp:Button ID="btnT" runat="server" Text="Remove All Selected Record"  OnClientClick="return confirm('Are you sure you want to delete selected items?');" onclick="lbRemoveSelected_Click" />
+                                   <%-- <asp:LinkButton  runat="server" ID="lbRemoveSelected" Text="Remove All Selected Record" 
+                                    OnClientClick="return confirm('Are you sure you want to delete selected items?');" onclick="lbRemoveSelected_Click"  ></asp:LinkButton>--%>
+                               </div>
+                                <div style="margin-bottom:15px">
+                                    <asp:ValidationSummary ID="ValidationSummary" runat="server" 
+                                           CssClass="notification error" 
+                                           HeaderText="You must enter a valid value in the following fields:" 
+                                           ValidationGroup="a" />
+                                </div>
+                               
+                               <div>
+
+                             
+                          <asp:GridView ID="grdAccessRightUser" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="90%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="UserId"    onrowediting="grdAccessRight_RowEditing" 
+                                      OnRowDeleting="grdAccessRight_RowDeleting"  onsorting="grdAccessRight_Sorting" 
+                                      onrowcommand="grdAccessRight_RowCommand"    
+                                       onrowdatabound="grdAccessRight_RowDataBound" 
+                                       onpageindexchanging="grdAccessRightUser_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+
+                                    <asp:TemplateField>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                        <HeaderStyle  HorizontalAlign="Center" />
+                                        <HeaderTemplate>
+                                            <asp:CheckBox ID="chkHeader" onclick="javascript: fn_select_all(this);" runat="server" />
+                                         </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkSubAdmin" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                  
+                                    <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="User Name" SortExpression="UserName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                               
+
+                                     <asp:TemplateField HeaderText="Entity" >
+                                    
+                                        <ItemTemplate>
+                                           <asp:HiddenField ID="hdnId" runat="server" Value='<%# Eval("UserId") %>' />
+                                     <asp:GridView ID="grdAccessRightN" ShowHeader="false" runat="server" AutoGenerateColumns="False"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" DataKeyNames ="UserId"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                  
+                                      <asp:TemplateField HeaderText="Entity Name" SortExpression="EntityName">
+                                        <ItemTemplate>
+                                          <%# Eval("EntityName") %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                   <asp:TemplateField HeaderText="Read" SortExpression="IsRead">
+                                   <ItemStyle Wrap="true" />
+                                        <ItemTemplate>
+                                             <asp:CheckBox ID="chkIsRead" Checked='<%# Eval("IsRead") %>' Text="Read"  runat="server" />
+                                             <asp:HiddenField ID="hdnEntityId" Value='<%# Eval("EntityId") %>' runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="Add" SortExpression="IsAdd">
+                                        <ItemTemplate>
+                                             <asp:CheckBox  ID="chkIsAdd" Checked='<%# Eval("IsAdd") %>' Text="Add"  runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                          <asp:TemplateField HeaderText="Modify" SortExpression="IsUpdate">
+                                        <ItemTemplate>
+                                             <asp:CheckBox Checked='<%# Eval("IsUpdate") %>'  ID="chkIsUpdate" Text="Modify" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                         <asp:TemplateField HeaderText="Delete" SortExpression="IsDelete">
+                                        <ItemTemplate>
+                                             <asp:CheckBox Checked='<%# Eval("IsDelete") %>'  ID="chkIsDelete" Text="Delete"  runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>                                                             
+                                 </Columns>
+                                </asp:GridView>
+
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
+
+
+                                 
+
+                                   <asp:TemplateField HeaderText="Action" ControlStyle-CssClass="table-actions">
+                                         <ItemTemplate>
+                                         
+                                            <asp:ImageButton ID="lbtnEdit" CommandArgument='<%# Bind("UserId") %>' ImageUrl="img/icons/actions/page_white_edit.png" 
+                                                    CausesValidation="false" CommandName="Edit" Text="Edit" runat="server" ToolTip="Edit Item" />
+                                            <asp:ImageButton ID="lbtnDelete" CommandArgument='<%# Bind("UserId") %>' ImageUrl="img/icons/actions/page_white_delete.png" 
+                                                 CausesValidation="false" CommandName="Delete" Text="Delete" runat="server" ToolTip="Delete Item" OnClientClick='return confirm("Are you sure you want to delete this entry?");' />
+                                         </ItemTemplate>
+                                         <ItemStyle HorizontalAlign="Center" />
+                                   </asp:TemplateField>
+                                 </Columns>
+                                </asp:GridView>
+                               </div>
+                               <br />
+                                <div style="width:900px;">
+                                 <asp:UpdatePanel id="ResultsUpdatePanel" runat="server">   
+                                 <ContentTemplate>
+                                    <div style="text-align:center;">
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="ResultsUpdatePanel" DynamicLayout="true">
+                        <ProgressTemplate>
+
+                           <img src="img/jquery/ajaxLoader.gif">
+
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                                 <table width="75%">
+                                  
+                                               <tr >
+                                     <td style="width:95px;">
+                                 Role
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:DropDownList ID="ddlRoll"  Width="260px" runat="server" 
+                                            ></asp:DropDownList>
+                                  <asp:RequiredFieldValidator runat="server" ID="rfvRoll" ControlToValidate="ddlRoll" Display="Dynamic" ValidationGroup="a" ErrorMessage="Select Roll" InitialValue="0" Text="Invalid" ForeColor="Red"></asp:RequiredFieldValidator>
+                                     </td>
+                                     </tr>
+                                  
+                                               <tr runat="server" id="trDdl">
+                                     <td style="width:95px;">
+                                 Users
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:DropDownList ID="ddlUser" AutoPostBack="true"  Width="260px" runat="server" 
+                                             onselectedindexchanged="ddlUser_SelectedIndexChanged"></asp:DropDownList>
+                                  <asp:RequiredFieldValidator runat="server" ID="rfvUser" ControlToValidate="ddlUser" Display="Dynamic" ValidationGroup="a" ErrorMessage="Select User" InitialValue="0" Text="Invalid" ForeColor="Red"></asp:RequiredFieldValidator>
+                                     </td>
+                                     </tr>
+                                 <%--</table>
+                           
+
+
+
+                                  <table width="75%">--%>
+                                 <tr id="trGrid" runat="server">
+
+                                 <td style="width:95px;">
+                                 Entity
+                                 </td>
+                                 <td style="width:20px">
+                                 :
+                                 </td>
+                                 <td style="width:250px;" align="left">
+                                     <asp:GridView ID="grdAccessRight" ShowHeader="false" runat="server" AutoGenerateColumns="False"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" DataKeyNames ="UserId"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="70%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                  
+                                      <asp:TemplateField HeaderText="Entity Name" SortExpression="EntityName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblEntityName" runat="server" Text='<%# Eval("EntityName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                   <asp:TemplateField HeaderText="Read" SortExpression="IsRead">
+                                        <ItemTemplate>
+                                             <asp:CheckBox ID="chkIsRead" Text="Read"  runat="server" />
+                                             <asp:HiddenField ID="hdnEntityId" Value='<%# Eval("EntityId") %>' runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="Add" SortExpression="IsAdd">
+                                        <ItemTemplate>
+                                             <asp:CheckBox ID="chkIsAdd" Text="Add"  runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                          <asp:TemplateField HeaderText="Modify" SortExpression="IsUpdate">
+                                        <ItemTemplate>
+                                             <asp:CheckBox ID="chkIsUpdate" Text="Modify" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                         <asp:TemplateField HeaderText="Delete" SortExpression="IsDelete">
+                                        <ItemTemplate>
+                                             <asp:CheckBox ID="chkIsDelete" Text="Delete"  runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>                                                             
+                                 </Columns>
+                                </asp:GridView>
+
+                                 </td>
+                                 </tr>
+                       
+                                   
+                               <tr style="display:none">
+                               <td style="width:95px;">Access Rights</td>
+                               <td width="20px">:</td>
+                               <td style="width:250px;" align="left">
+                             <%--  <asp:CheckBox ID="chkIsRead" Text="Read" runat="server"></asp:CheckBox>
+                               <asp:CheckBox ID="chkIsAdd" Text="Add" runat="server"></asp:CheckBox>
+                               <asp:CheckBox ID="chkIsUpdate" Text="Modify" runat="server"></asp:CheckBox>
+                               <asp:CheckBox ID="chkIsDelete" Text="Delete" runat="server"></asp:CheckBox>--%>
+                               <asp:CustomValidator ID="CustomAccess" runat="server" ErrorMessage="Select Access rights" Display="Dynamic" ValidationGroup="a" ForeColor="Red" Text="Invalid" ClientValidationFunction = "ValidateCheckBox"></asp:CustomValidator>
+                               </td>
+                               </tr>
+                                     <tr id="trBtn" runat="server" align="right">
+                                        <td colspan="5" align="right"> 
+                                        <asp:Button  ID="btnSubmit" ValidationGroup="a"  runat="server" Text="Submit" onclick="btnSubmit_Click"></asp:Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" onclick="btnCancel_Click"></asp:Button>
+                                 </td>
+                                 </tr>
+                                
+                                 </table>
+                              
+                    
+                    </div>                   
+                                 </ContentTemplate>
+                                    <Triggers>
+                                    <asp:PostBackTrigger ControlID="btnSubmit" />
+                                    <asp:PostBackTrigger ControlID="btnCancel" />
+        
+    </Triggers>
+</asp:UpdatePanel>
+    
+                           
+                               </div>
+                               <br />
+                               </dl>
+                              
+						</fieldset>     
+                                                         										
+							</div>					
+				
+			</section>			
+		</article>
+    <div class="clearfix">
+    </div>
+</asp:Content>

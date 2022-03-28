@@ -1,0 +1,328 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+namespace MM.Data
+{
+    public class MeetingDataProvider : DataProvider
+    {
+        #region "Singleton"
+        private static volatile MeetingDataProvider _instance;
+        private static object _synRoot = new Object();
+
+        private MeetingDataProvider()
+        {
+        }
+
+        public static MeetingDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new MeetingDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+        #region "Fill"
+        /// <summary>
+        /// To Fill Forum Details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private MeetingDomain ToMeetingDomain(IDataReader dr)
+        {
+            return new MeetingDomain()
+            {
+                MeetingId = Null.SetNullGuid(dr["MeetingId"]),
+                MeetingVenue = Encryptor.DecryptString(Null.SetNullString(dr["MeetingVenue"])),
+                MeetingDate = Encryptor.DecryptString(Null.SetNullString(dr["MeetingDate"])),
+                MeetingTime = Encryptor.DecryptString(Null.SetNullString(dr["MeetingTime"])),
+                ForumId = Null.SetNullGuid(dr["ForumId"]),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+                UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+                CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+
+                MeetingChecker = Null.SetNullGuid(dr["MeetingChecker"])
+            };
+        }
+
+        /// <summary>
+        /// To Fill All Meeting Details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<MeetingDomain> ToMeetingDomains(IDataReader dr)
+        {
+            IList<MeetingDomain> objMeeting = new List<MeetingDomain>();
+            while (dr.Read())
+            {
+                objMeeting.Add(ToMeetingDomain(dr));
+            }
+            return objMeeting;
+
+        }
+
+
+        /// <summary>
+        /// To Fill All Meeting Details with forum and entity name
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<MeetingDomain> ToMeetingDomainsWithEntity(IDataReader dr)
+        {
+            IList<MeetingDomain> objMeeting = new List<MeetingDomain>();
+            MeetingDomain objMeet = new MeetingDomain();
+            while (dr.Read())
+            {
+                objMeet = ToMeetingDomain(dr);
+                objMeet.EntityId = Null.SetNullGuid(dr["EntityId"]);
+                objMeet.EntityName = Encryptor.DecryptString(Null.SetNullString(dr["EntityName"]));
+                objMeet.ForumName = Encryptor.DecryptString(Null.SetNullString(dr["ForumName"]));
+                objMeeting.Add(objMeet);
+            }
+            return objMeeting;
+
+        }
+        #endregion
+
+        #region "Get"
+        /// <summary>
+        /// Get Meeting Details By ID
+        /// </summary>
+        /// <param name="MeetingId">Guid specifying MeetingId</param>
+        /// <returns></returns>
+        public MeetingDomain Get(Guid MeetingId)
+        {
+            MeetingDomain meetingDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingDetailsById", MeetingId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                meetingDomain = ToMeetingDomain(dataReader);
+
+            }
+            return meetingDomain;
+        }
+
+        /// <summary>
+        /// Get All Meeting Details
+        /// </summary>
+        /// <returns></returns>
+        public IList<MeetingDomain> Get()
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllMeetingDetails"))
+            {
+                objMeetingDomains = ToMeetingDomains(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+        /// <summary>
+        /// Get Meeting Details by Forum ID
+        /// </summary>
+        /// <param name="ForumId">Guid specifying ForumId</param>
+        /// <returns></returns>
+        public IList<MeetingDomain> GetMeetingByFroumID(Guid ForumId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingDetailsByForumId", ForumId))
+            {
+                objMeetingDomains = ToMeetingDomainsWithEntity(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+        /// <summary>
+        /// Get Meeting for agneda
+        /// </summary>
+        /// <param name="ForumId">Guid specifying ForumId</param>
+        /// <returns></returns>
+        public IList<MeetingDomain> GetMeetingForAgenda(Guid ForumId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingForAgenda", ForumId))
+            {
+                objMeetingDomains = ToMeetingDomainsWithEntity(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+        /// <summary>
+        /// Get Meeting Details by Forum ID
+        /// </summary>
+        /// <param name="ForumId">Guid specifying ForumId</param>
+        /// <returns></returns>
+        public IList<MeetingDomain> GetMeetingByForUploadMinutes(Guid ForumId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingsForUploadMinutes", ForumId))
+            {
+                objMeetingDomains = ToMeetingDomainsWithEntity(dataReader);
+            }
+            return objMeetingDomains;
+        }
+        /// <summary>
+        /// Get Meeting Details with entity 
+        /// </summary>
+        /// <param name="MeetingId">Guid specifying MeetingId</param>
+        /// <returns></returns>
+        public MeetingDomain GetMeetingWithEntity(Guid MeetingId)
+        {
+            MeetingDomain meetingDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingByIdWithEntiy", MeetingId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                meetingDomain = ToMeetingDomain(dataReader);
+                meetingDomain.EntityId = Null.SetNullGuid(dataReader["EntityId"]);
+                meetingDomain.EntityName = Encryptor.DecryptString(Null.SetNullString(dataReader["EntityName"]));
+                meetingDomain.ForumName = Encryptor.DecryptString(Null.SetNullString(dataReader["ForumName"]));
+            }
+            return meetingDomain;
+        }
+
+        /// <summary>
+        /// Get Meeting by User id
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public IList<MeetingDomain> GetMeetingByUser(Guid UserId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingByUserId", UserId))
+            {
+                objMeetingDomains = ToMeetingDomainsWithEntity(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+             /// <summary>
+        /// Get Approved Meeting by User id
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public IList<MeetingDomain> GetApprovedMeetingByUser(Guid UserId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetApprovedMeetingByUser", UserId))
+            {
+                objMeetingDomains = ToMeetingDomainsWithEntity(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+        /// <summary>
+        /// Get All unapproved meeting for agenda 
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public IList<MeetingDomain> GetUnApprovedMeetingForAgenda(Guid UserId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMeetingIdOfUnapprovedAgenda", UserId))
+            {
+                objMeetingDomains = ToMeetingDomains(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+        #endregion        
+
+        #region "Modify"
+
+        /// <summary>
+        /// Insert Meeting Details
+        /// </summary>
+        /// <param name="meetingDomain">Class object specifying meetingDomain</param>
+        /// <returns></returns>
+        public MeetingDomain Insert(MeetingDomain meetingDomain)
+        {
+            meetingDomain.MeetingId = (Guid)SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertMeetingDetails", Encryptor.EncryptString(meetingDomain.MeetingDate), Encryptor.EncryptString(meetingDomain.MeetingVenue), Encryptor.EncryptString(meetingDomain.MeetingTime), meetingDomain.ForumId, meetingDomain.CreatedBy, meetingDomain.UpdatedBy, meetingDomain.MeetingChecker);
+            return meetingDomain;
+        }
+        /// <summary>
+        /// Update Meeting Details
+        /// </summary>
+        /// <param name="meetingDomain">Class object specifying meetingDomain</param>
+        /// <returns></returns>
+        public bool Update(MeetingDomain meetingDomain)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateMeetingDetailsById", meetingDomain.MeetingId, Encryptor.EncryptString(meetingDomain.MeetingDate), Encryptor.EncryptString(meetingDomain.MeetingTime), Encryptor.EncryptString(meetingDomain.MeetingVenue), meetingDomain.ForumId, meetingDomain.UpdatedBy, meetingDomain.MeetingChecker)) > 0;
+        }
+        /// <summary>
+        /// Delete Meeting Details
+        /// </summary>
+        /// <param name="MeetingId">Guid specifying MeetingId</param>
+        /// <returns></returns>
+        public bool Delete(Guid MeetingId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteMeetingDetailsById", MeetingId)) > 0;
+        }
+
+        /// <summary>
+        /// Delete Seleted meetings
+        /// </summary>
+        /// <param name="MeetingId">string specifying MeetingId</param>
+        /// <returns></returns>
+        public bool DeleteSelectedMeeting(string MeetingId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteSelectedMeetingById", MeetingId)) > 0;
+        }
+
+
+
+        /// <summary>
+        /// Change Meeting Status
+        /// </summary>
+        /// <param name="Status">string specifying Status</param>
+        /// <param name="MeetingId">Guid specifying MeetingId</param>
+        /// <returns></returns>
+        public bool UpdateMeetingStatus(string Status, Guid MeetingId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_UpdateMeetingStatus", MeetingId, Status)) > 0;
+        }
+
+        /// <summary>
+        /// Guid specifying UserId
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+           public IList<MeetingDomain> GeApprovedtMeetingByUser(Guid UserId)
+        {
+            IList<MeetingDomain> objMeetingDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllApprovedMeeting", UserId))
+            {
+                objMeetingDomains = ToMeetingDomainsWithEntity(dataReader);
+            }
+            return objMeetingDomains;
+        }
+
+        
+
+        #endregion
+
+    }
+}
+

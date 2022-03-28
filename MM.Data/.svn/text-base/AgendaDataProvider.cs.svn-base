@@ -1,0 +1,346 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+namespace MM.Data
+{
+    public class AgendaDataProvider : DataProvider
+    {
+        #region "Singleton"
+
+        private static volatile AgendaDataProvider _instance;
+        private static object synRoot = new Object();
+
+        private AgendaDataProvider()
+        {
+
+        }
+
+        public static AgendaDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new AgendaDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+        #region "Fill"
+
+
+        /// <summary>
+        /// Fill Agenda Detail
+        /// </summary>s
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private AgendaDomain ToAgendaDomain(IDataReader dr)
+        {
+            return new AgendaDomain()
+            {
+                AgendaId = Null.SetNullGuid(dr["AgendaId"]),
+                AgendaName = Null.SetNullString(dr["AgendaName"]),
+                AgendaNote = Null.SetNullString(dr["AgendaNote"]),
+                ParentAgendaId = Null.SetNullGuid(dr["ParentAgendaId"]),
+                IsPublished = Null.SetNullBoolean(dr["IsPublished"]),
+                PublishedBy = Null.SetNullGuid(dr["PublishedBy"]),
+                CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+                UpdateOn = Null.SetNullDateTime(dr["UpdateOn"]),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+                AgendaOrder = Null.SetNullInteger(dr["AgendaOrder"]),
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+                UploadedAgendaNote = Null.SetNullString(dr["UploadedAgendaNote"]),
+                MeetingId = Null.SetNullGuid(dr["MeetingId"])
+              
+            };
+        }
+
+        /// <summary>
+        /// Get Agenda domain details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<AgendaDomain> ToAgendaDomains(IDataReader dr)
+        {
+            IList<AgendaDomain> objAgendaDomain = new List<AgendaDomain>();
+            while (dr.Read())
+            {
+                objAgendaDomain.Add(ToAgendaDomain(dr));
+            }
+            return objAgendaDomain;
+        }
+
+        /// <summary>
+        /// Get Agenda titles
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<AgendaDomain> ToAgendaTitles(IDataReader dr)
+        {
+            IList<AgendaDomain> objAgendaDomain = new List<AgendaDomain>();
+            AgendaDomain objAgenda = null;
+            while (dr.Read())
+            {
+                objAgenda = new AgendaDomain();
+                objAgenda.AgendaName = Null.SetNullString(dr["AgendaName"]);
+                objAgendaDomain.Add(objAgenda);
+            }
+            return objAgendaDomain;
+        }
+
+        /// <summary>
+        /// Get Agenda with forum and entity
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<AgendaDomain> ToAgendaWithForum(IDataReader dr)
+        {
+            IList<AgendaDomain> objAgendaDomain = new List<AgendaDomain>();
+            AgendaDomain objAgenda = null;
+            while (dr.Read())
+            {
+                objAgenda = new AgendaDomain();
+                objAgenda = ToAgendaDomain(dr);
+                objAgenda.EntityId = Null.SetNullGuid(dr["EntityId"]);
+                objAgenda.EntityName = Null.SetNullString(dr["EntityName"]);
+                objAgenda.ForumId = Null.SetNullGuid(dr["ForumId"]);
+                objAgenda.ForumName = Null.SetNullString(dr["ForumName"]);
+                objAgendaDomain.Add(objAgenda);
+            }
+            return objAgendaDomain;
+        }
+        #endregion
+
+        #region "Get"
+
+        ///// <summary>
+        ///// Get All Agenda Details
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        //public IList<AgendaDomain> Get()
+        //{
+        //    IList<AgendaDomain> AgendaDomain = null;
+        //    using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllAgendaDetails"))
+        //    {
+        //        AgendaDomain = ToAgendaDomains(dataReader);
+        //    }
+
+        //    return AgendaDomain;
+        //}
+
+        /// <summary>
+        /// Get all agendas
+        /// </summary>
+        /// <returns></returns>
+        public IList<AgendaDomain> Get()
+        {
+            IList<AgendaDomain> AgendaDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllAgendaDetails"))
+            {
+                AgendaDomain = ToAgendaDomains(dataReader);
+            }
+
+            return AgendaDomain;
+        }
+
+        /// <summary>
+        /// Get Agenda By Id
+        /// </summary>
+        /// <param name="AgendaId">Guid sepcifing AgendaId</param>
+        /// <returns></returns>
+        public AgendaDomain Get(Guid AgendaId)
+        {
+            AgendaDomain objAgenda = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAgendaDetailsById", AgendaId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                objAgenda = ToAgendaDomain(dataReader);
+                objAgenda.AgendaChecker = Null.SetNullGuid(dataReader["AgendaChecker"]);
+
+            }
+            return objAgenda;
+        }
+
+        /// <summary>
+        /// Get agenda items by meeting id
+        /// </summary>
+        /// <param name="MeetingId">Guid sepcifing MeetingId</param>
+        /// <returns></returns>
+        public IList<AgendaDomain> GetAgendabyMeetingId(Guid MeetingId)
+        {
+            IList<AgendaDomain> objAgenda = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAgendaByMeetingId", MeetingId))
+            {
+                //if (!dataReader.Read())
+                //{
+                //    return null;
+                //}
+                objAgenda = ToAgendaWithForum(dataReader);
+                
+            }
+            return objAgenda;
+        }
+
+        /// <summary>
+        /// Get approved agenda items by meeting id
+        /// </summary>
+        /// <param name="MeetingId">Guid sepcifing MeetingId</param>
+        /// <returns></returns>
+        public IList<AgendaDomain> GetApprovedAgendabyMeetingId(Guid MeetingId)
+        {
+            IList<AgendaDomain> objAgenda = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetApprovedAgendaByMeetingId", MeetingId))
+            {
+                //if (!dataReader.Read())
+                //{
+                //    return null;
+                //}
+                objAgenda = ToAgendaWithForum(dataReader);
+
+            }
+            return objAgenda;
+        }
+
+        /// <summary>
+        /// Get Agenda titles
+        /// </summary>
+        /// <param name="strSearch">string sepcifing strSearch</param>
+        /// <returns></returns>
+        public IList<AgendaDomain> GetAgendaTitles(string strSearch)
+        {
+            IList<AgendaDomain> AgendaDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAgendaTitle", strSearch))
+            {
+                AgendaDomain = ToAgendaTitles(dataReader);
+            }
+
+            return AgendaDomain;
+        }
+
+        /// <summary>
+        ///  Get All Agenda titles
+        /// </summary>
+        /// <returns></returns>
+        public IList<AgendaDomain> GetAllAgendaTitles()
+        {
+            IList<AgendaDomain> AgendaDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllAgendaTitles"))
+            {
+                AgendaDomain = ToAgendaTitles(dataReader);
+            }
+
+            return AgendaDomain;
+        }
+
+        /// <summary>
+        /// Get Sub agenda by agenda id
+        /// </summary>
+        /// <param name="AgendaId"></param>
+        /// <returns></returns>
+        public IList<AgendaDomain> GetSubAgendaByAgendaId(Guid AgendaId)
+        {
+            IList<AgendaDomain> AgendaDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetSubAgendaByAgendaId", AgendaId))
+            {
+                AgendaDomain = ToAgendaDomains(dataReader);
+            }
+
+            return AgendaDomain;
+        }
+
+        #endregion
+
+        #region "Modify"
+        /// <summary>
+        /// Delete agenda details
+        /// </summary>
+        /// <param name="AgendaId">Guid sepcifing AgendaId</param>
+        /// <returns></returns>
+        public bool Delete(Guid AgendaId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteAgendaDetailsById", AgendaId)) > 0;
+        }
+
+        /// <summary>
+        /// Update Agenda Ordes
+       /// </summary>
+        /// <param name="strAgendaOrder">string sepcifing strAgendaOrder</param>
+        /// <param name="strAgendaIds">string sepcifing strAgendaIds</param>
+        /// <param name="UserId">Guid sepcifing UserId</param>
+       /// <returns></returns>
+        public bool UpdateAgendaOrders(string strAgendaOrder , string strAgendaIds, Guid UserId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateAgendaOrder", UserId, strAgendaIds, strAgendaOrder))
+                > 0;
+        }
+
+        /// <summary>
+        /// Insert Agenda Details
+        /// </summary>
+        /// <param name="agendaDomain">Class object sepcifing agendaDomain</param>
+        /// <returns></returns>
+        public AgendaDomain Insert(AgendaDomain agendaDomain)
+        {
+            agendaDomain.AgendaId = (Guid)SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertAgendaDetails", agendaDomain.AgendaName, agendaDomain.AgendaNote, agendaDomain.ParentAgendaId, agendaDomain.UploadedAgendaNote, false,agendaDomain.PublishedBy, agendaDomain.CreatedBy, agendaDomain.UpdatedBy,agendaDomain.MeetingId, agendaDomain.AgendaChecker);
+            return agendaDomain;
+        }
+
+        /// <summary>
+        /// Update agenda details
+        /// </summary>
+        /// <param name="agendaDomain">Class object sepcifing agendaDomain</param>
+        /// <returns></returns>
+        public bool Update(AgendaDomain agendaDomain)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateAgendaDetails", agendaDomain.AgendaId, agendaDomain.AgendaName, agendaDomain.AgendaNote, agendaDomain.ParentAgendaId, agendaDomain.UploadedAgendaNote, agendaDomain.IsPublished, agendaDomain.PublishedBy, agendaDomain.UpdatedBy, agendaDomain.AgendaChecker)) > 0;
+        }
+
+        /// <summary>
+        /// Get All unapproved agenda document
+        /// </summary>
+        /// <param name="MeetingId">Guid sepcifing MeetingId</param>
+        /// <returns></returns>
+        public IList<AgendaDomain> GetUnApprovedDocumet(Guid MeetingId)
+        {
+            IList<AgendaDomain> objAgenda = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllUnApprovedAgendaDocument", MeetingId))
+            {               
+                objAgenda = ToAgendaDomains(dataReader);
+            }
+            return objAgenda;
+        }
+
+        /// <summary>
+        /// Change agenda status
+        /// </summary>
+        /// <param name="AgendaId">Guid sepcifing AgendaId</param>
+        /// <param name="Status">Guid sepcifing Status</param>
+        /// <param name="UserId">Guid sepcifing UserId</param>
+        /// <returns></returns>
+        public bool UpdateAgendaStatus(Guid AgendaId, string Status, Guid UserId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_UpdateAgendaStatus", AgendaId, Status,UserId)) > 0;
+
+        }
+        #endregion
+    }
+}

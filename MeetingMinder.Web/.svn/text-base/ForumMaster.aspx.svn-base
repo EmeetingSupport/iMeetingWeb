@@ -1,0 +1,224 @@
+﻿<%@ Page Title="Forum Master" Language="C#" MasterPageFile="~/AdminMasterPage.Master" AutoEventWireup="true" CodeBehind="ForumMaster.aspx.cs" Inherits="MeetingMinder.Web.ForumMaster" %>
+<%@ Register TagName="Error" Src="~/UserControls/Error.ascx" TagPrefix="userControl" %>
+<%@ Register TagName="Info" Src="~/UserControls/Info.ascx" TagPrefix="userControl" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+ <script language="javascript" type="text/javascript">
+
+     function fn_select_all(chkSelectAll) {
+         var IsChecked = chkSelectAll.checked;
+         var items = document.getElementsByTagName('input');
+         for (i = 0; i < items.length; i++) {
+             if (items[i] != chkSelectAll && items[i].type == "checkbox") {
+                 if (items[i].checked != IsChecked) {
+                     items[i].click();
+                 }
+             }
+         }
+     }
+
+     function testCheckbox() {
+         Parent = document.getElementById('cpMain_grdOrder');
+         var headchk = document.getElementById('cpMain_grdOrder_chkHeader');
+         var items = Parent.getElementsByTagName('input');
+         var flg = false;
+         for (i = 0; i < items.length; i++) {
+
+             if (items[i] != headchk && items[i].type == "checkbox") {
+
+                 if (items[i].checked) {
+                     flg = true;
+                 }
+             }
+         }
+         if (flg) {
+             var ans = confirm("Are you sure you want to delete selected items?");
+             if (ans == true) {
+                 return true;
+             }
+             else {
+                 //alert("no");
+                 return false;
+             }
+         }
+         else {
+             alert("Select item(s) to delete");
+             return false;
+         }
+     }
+    </script>
+    <article class="content-box minimizer">
+			<header>			
+				<h2>Forum Details</h2>			
+			</header>
+			<section>              
+				<div >
+                <fieldset>
+							<legend><font color="#AE432E"><b>Forum list</b></font></legend>
+                            <dl>
+                                <div style="margin-bottom:15px">
+                                      <userControl:Info ID="Info" runat="server" Visible="false" />
+                                      <userControl:Error ID="Error" runat="server" Visible="false" />   
+                                </div>
+                                 
+                               <div style="margin-bottom:15px">
+                                    <img width="16" height="16" src="img/icons/icon_list_style_cross.png" alt="" style="vertical-align: middle"/> 
+                                    <asp:LinkButton runat="server" ID="lbRemoveSelected" Text="Remove All Selected Record" 
+                                    OnClientClick="return confirm('Are you sure you want to delete selected items?');" onclick="lbRemoveSelected_Click"  ></asp:LinkButton>
+                               </div>
+                               <div style="margin-bottom:15px"><asp:Label ID="lblTotalRecord" runat="server" Font-Bold="True"></asp:Label></div>  
+                               <%--<div style="margin-bottom:15px"> <asp:Label  ID="lblUser" runat="server" Text="Search User" Font-Bold="true" ></asp:Label> </div>  --%>
+                                                      
+                              <div style="margin-bottom:15px">
+                                         <asp:GridView ID="grdForum" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="ForumId" OnRowDeleting="grdForum_RowDeleting"
+                                 
+                                    OnPageIndexChanging="grdForum_PageIndexChanging" 
+                                    onsorting="grdForum_Sorting" onrowcommand="grdForum_RowCommand" 
+                                    onrowediting="grdForum_RowEditing">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+
+                                    <asp:TemplateField>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                        <HeaderStyle  HorizontalAlign="Center" />
+                                        <HeaderTemplate>
+                                            <asp:CheckBox ID="chkHeader" onclick="javascript: fn_select_all(this);" runat="server" />
+                                         </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkSubAdmin" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                  
+                                    <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Forum Name" SortExpression="ForumName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblForumName" runat="server" Text='<%# Eval("ForumName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                          <asp:TemplateField HeaderText="Meeting" Visible="false">
+                <ItemStyle HorizontalAlign="Center" Width="10%" />
+                <ItemTemplate>
+                <asp:LinkButton ID="lbnState" CommandArgument='<%# Bind("ForumId") %>' CausesValidation="false" CommandName="View" Text="Add/View" runat="server" ToolTip="Add OR View Meetings"></asp:LinkButton>
+                    
+                </ItemTemplate>
+            </asp:TemplateField>
+<%--
+
+                                     <asp:TemplateField HeaderText="Contact Number" SortExpression="Mobile">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblContactNumber" runat="server" Text='<%#Eval("Mobile") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    
+                                     <asp:TemplateField HeaderText=" Email" SortExpression="EmailId1">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblClientEmail" runat="server" Text='<%#Eval("EmailID1") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+
+                                    <%--<asp:BoundField DataField="Description"  HeaderText="Description"  />--%>
+
+                                   <asp:TemplateField HeaderText="Action" ControlStyle-CssClass="table-actions">
+                                         <ItemTemplate>
+                                          <%--  <asp:ImageButton ID="imgbtnView" CommandArgument='<%# Bind("ForumId") %>' ImageUrl="~/img/icons/actions/page_white_find.png" 
+                                                    CausesValidation="false" CommandName="View" Text="Edit" runat="server" ToolTip="Edit Item" />                             --%>        
+                                            <asp:ImageButton ID="lbtnEdit" CommandArgument='<%# Eval("ForumId") %>' ImageUrl="img/icons/actions/page_white_edit.png" 
+                                                    CausesValidation="false" CommandName="Edit" Text="Edit" runat="server" ToolTip="Edit Item" />
+                                            <asp:ImageButton ID="lbtnDelete" CommandArgument='<%# Eval("ForumId")+","+Eval("MembersInfo")%>' ImageUrl="img/icons/actions/page_white_delete.png" 
+                                                 CausesValidation="false" CommandName="Delete" Text="Delete" runat="server" ToolTip="Delete Item" OnClientClick='return confirm("Are you sure you want to delete this entry?");' />
+                                         </ItemTemplate>
+                                         <ItemStyle HorizontalAlign="Center" />
+                                   </asp:TemplateField>
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+
+                            </dl>
+                            </fieldset>
+           
+                     <div ID="divdetails" runat="server" style="margin-bottom:15px">
+                    
+                       <dt>
+                                    <label>
+                                   Forum Name <span>*</span> :
+                                    </label>
+                                </dt>
+                                <dd>
+                                    <asp:TextBox ID="txtForumName" runat="server" MaxLength="149" Width="214px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvForumName" runat="server" 
+                                        class="invalid-side-note" ControlToValidate="txtForumName" Display="Dynamic" 
+                                        ErrorMessage="Forum Name" SetFocusOnError="True" ValidationGroup="a">Invalid</asp:RequiredFieldValidator>
+                                </dd>
+                                   <dt>
+                                    <label>
+                                   Forum Short Name <span>*</span> :
+                                    </label>
+                                </dt>
+                                <dd>
+                                    <asp:TextBox ID="txtShortName" runat="server" MaxLength="149" Width="214px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvShortName" runat="server" 
+                                        class="invalid-side-note" ControlToValidate="txtShortName" Display="Dynamic" 
+                                        ErrorMessage="Forum Name" SetFocusOnError="True" ValidationGroup="a">Invalid</asp:RequiredFieldValidator>
+                                </dd>
+
+                                    <dt style="display:none">
+                                    <label>
+                                    Enable <span>*</span> :
+                                    </label>
+                                </dt>
+                                <dd style="display:none">
+                                 <asp:CheckBox ID="chkEnable"  runat="server" Checked="false" />
+                                  
+                                </dd>
+
+                                    <dt>
+                                    <label>
+                                    Members Info :
+                                    </label>
+                                </dt>
+                                <dd>
+                                 <asp:FileUpload ID="fuMemberInfo"  runat="server" />     
+                                   <asp:LinkButton ID="lnkView" runat="server" Visible="false" Text="View" onclick="lnkView_Click"></asp:LinkButton>                            
+                                </dd>
+
+                                      <dt>
+                                    <label>
+                                    Forum Checker <span>*</span> :
+                                    </label>
+                                </dt>
+                                <dd>
+                              <asp:DropDownList ID="ddlUser" runat="server" ></asp:DropDownList>
+                                      <asp:RequiredFieldValidator ID="rfvddUser" runat="server" 
+                                        class="invalid-side-note" ControlToValidate="ddlUser" Display="Dynamic" InitialValue="0"
+                                        ErrorMessage="Select Checker" SetFocusOnError="True" ValidationGroup="a">Invalid</asp:RequiredFieldValidator>
+                              
+                                </dd>
+
+                                     <dl>
+                                     <asp:HiddenField ID="hdnForumId" runat="server" />
+                                    </dl>
+                                    <div id="divbutton" runat="server" style="margin-bottom:15px;margin-top:15px">
+                                    <asp:Button ID="btnInsert" runat="server" Text="Save" ValidationGroup="a" onclick="btnInsert_Click1"  />
+                                       <asp:Button ID="btnCancel" CausesValidation="false" runat="server" Text="Cancel" onclick="btnCancel_Click1"  />
+                                    </div>
+                                    </div>
+                                </div>
+                                </section>
+                                </article>
+
+</asp:Content>

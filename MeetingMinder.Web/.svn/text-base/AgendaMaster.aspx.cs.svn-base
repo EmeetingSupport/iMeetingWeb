@@ -1,0 +1,357 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+using System.Text;
+
+namespace MeetingMinder.Web
+{
+    public partial class AgendaMaster : System.Web.UI.Page
+    {
+        /// <summary>
+        /// Page laod Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!Page.IsPostBack)
+            {
+                //bind agenda list
+                BindAgendaItems();
+            }
+        }
+
+        /// <summary>
+        /// Bind agenda items
+        /// </summary>
+        private void BindAgendaItems()
+        {
+            try
+            {
+                //check Meeting id
+                if (Request.QueryString["id"] != null)
+                {
+                    string strMeetingId = Convert.ToString(Request.QueryString["id"]);
+
+                    MeetingDomain objMeeting = MeetingDataProvider.Instance.GetMeetingWithEntity(Guid.Parse(strMeetingId));
+
+                    string EntityName = objMeeting.EntityName;
+                    string EntityId = objMeeting.EntityId.ToString();
+                    string ForumId = objMeeting.ForumId.ToString();
+                    string ForumName = objMeeting.ForumName;
+                    string Meeting = objMeeting.MeetingDate + " " + objMeeting.MeetingVenue + " " + objMeeting.MeetingTime;
+
+                    Literal ltl_bredcrumbs = (Literal)Master.FindControl("ltl_bredcrumbs");
+                    ltl_bredcrumbs.Text = "<a href='" + VirtualPathUtility.ToAbsolute("~/default.aspx") + "' >Home<a>&nbsp;/&nbsp;<a href =EntityMaster.aspx>" + EntityName + "</a>&nbsp;/&nbsp;<a href=forummaster.aspx?id=" + EntityId + ">" + ForumName + "</a>&nbsp;/&nbsp;<a href=MeetingMaster.aspx?id=" + ForumId + ">" + Meeting + "</a>";
+
+                    Guid meetingId;
+                    if (Guid.TryParse(strMeetingId, out meetingId))
+                    {
+                        ViewState["MeetingId"] = meetingId;
+
+                        StringBuilder strMenu = new StringBuilder("");
+                        IList<AgendaDomain> objAgentList = AgendaDataProvider.Instance.GetAgendabyMeetingId(meetingId);
+
+                        if (objAgentList.Count > 0)
+                        {
+                            //get only parent agenda
+                            var objParentAgenda = from agend in objAgentList
+                                                  where (agend.ParentAgendaId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                                                  select agend;
+
+                            //bind drop down with agendas
+                            ddlAgenda.DataSource = objParentAgenda;
+                            ddlAgenda.DataBind();
+                            ddlAgenda.DataTextField = "AgendaName";
+                            ddlAgenda.DataValueField = "AgendaId";
+                            ddlAgenda.DataBind();
+
+                            //get only sub agenda
+                            var subAgendaList = from agend in objAgentList
+                                                where (agend.ParentAgendaId != Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                                                select agend;
+
+                            //get agenda name/note and agenda id
+                            var agendaName = (from agend in objParentAgenda
+
+                                              select (new
+                                              {
+                                                  AgendaName = agend.AgendaName,
+                                                  AgendaId = agend.AgendaId
+
+                                              })).Distinct().ToList();
+
+                            if (agendaName.Count() > 0)
+                            {
+                                strMenu.Append("<div id='accordion'><ol id='sort'>");
+                                for (int i = 0; i <= agendaName.Count() - 1; i++)
+                                {
+                                    Guid agendaId = agendaName[i].AgendaId;
+                                    strMenu.Append("<li id=" + agendaId + " class='group' ><h3>" + agendaName[i].AgendaName + "</h3>");
+
+                                    //get sub agenda for parent agenda 
+                                    var subAgendaName = (from subAgenda in subAgendaList
+                                                         where (subAgenda.ParentAgendaId == agendaId)
+                                                         select (new
+                                                         {
+                                                             AgendaName = subAgenda.AgendaName,
+                                                             AgendaId = subAgenda.AgendaId
+                                                         })).ToList();
+
+                                    //attach sub agenda to parent agenda list element
+                                    if (subAgendaName.Count() > 0)
+                                    {
+                                        strMenu.Append("<div><ol type=a class=ddrag>");
+                                        for (int j = 0; j <= subAgendaName.Count() - 1; j++)
+                                        {
+                                            strMenu.Append("<li id=" + subAgendaName[j].AgendaId + ">" + subAgendaName[j].AgendaName);// + "</li>");
+                                            Guid subAgendaId = subAgendaName[j].AgendaId;
+                                            //Get sub sub agenda
+                                            var subSubAgendaName = (from subAgenda in subAgendaList
+                                                                    where (subAgenda.ParentAgendaId == subAgendaId)
+                                                                    select (new
+                                                                    {
+                                                                        AgendaName = subAgenda.AgendaName,
+                                                                        AgendaId = subAgenda.AgendaId
+                                                                    })).ToList();
+                                            if (subSubAgendaName.Count() > 0)
+                                            {
+                                                //attach sub sub agenda to parent agenda list element
+                                                strMenu.Append("<ol class=inddrag type=i>");
+                                                for (int y = 0; y <= subSubAgendaName.Count() - 1; y++)
+                                                {
+                                                    strMenu.Append("<li id=" + subSubAgendaName[y].AgendaId + ">" + subSubAgendaName[y].AgendaName);
+                                                }
+                                                strMenu.Append("</ol>");
+                                            }
+                                            strMenu.Append("</li>");
+                                        }
+                                        strMenu.Append("</ol></div></li>");
+                                    }
+
+                                }
+                                strMenu.Append("</ol></div>");
+                            }
+                            lblList.Text = strMenu.ToString();
+                            //  lblList.Text = strMenuList;
+                        }
+
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Invalid Agenda search";
+                        Error.Visible = true;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("MeetingMaster.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Insert Agenda details
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AgendaDomain objAgenda = new AgendaDomain();
+                objAgenda.AgendaName = txtAgenda.Text;
+                objAgenda.AgendaNote = txtAgenda.Text;
+
+                objAgenda.PublishedBy = Guid.Parse(Session["UserId"].ToString());
+                objAgenda.UpdatedBy = Guid.Parse(Session["UserId"].ToString());
+                objAgenda.UploadedAgendaNote = txtAgenda.Text;
+                objAgenda.MeetingId = Guid.Parse(Convert.ToString(ViewState["MeetingId"]));
+                //Update
+                if (hdnAgendaId != null && hdnAgendaId.Value != "")
+                {
+
+                }
+                //Insert
+                else
+                {
+                    UserAcess objUser = new UserAcess();
+                    //check add permission
+                    //if (objUser.IsAdd(Guid.Parse(ViewState["entityId"].ToString())))
+                    //{
+                    objAgenda.CreatedBy = Guid.Parse(Session["UserId"].ToString());
+                    AgendaDataProvider.Instance.Insert(objAgenda);
+                    ((Label)Info.FindControl("lblName")).Text = "Agenda inserted successfully";
+
+                    //    }
+                    //    else
+                    //    {
+                    //        ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                    //        Error.Visible = true;
+                    //    }
+                }
+                Info.Visible = true;
+                BindAgendaItems();
+            }
+            catch (Exception ex)
+            {
+
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Insert sub agenda Agenda details
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSubAgendaSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AgendaDomain objAgenda = new AgendaDomain();
+
+                objAgenda.AgendaName = txtSubAgenda.Text;
+                objAgenda.AgendaNote = txtSubAgenda.Text;
+
+                objAgenda.PublishedBy = Guid.Parse(Session["UserId"].ToString());
+                objAgenda.UpdatedBy = Guid.Parse(Session["UserId"].ToString());
+                objAgenda.UploadedAgendaNote = txtSubAgenda.Text;
+
+
+                objAgenda.ParentAgendaId = Guid.Parse(ddlAgenda.SelectedValue);
+
+                objAgenda.MeetingId = Guid.Parse(Convert.ToString(ViewState["MeetingId"]));
+                //Update
+                if (hdnAgendaId != null && hdnAgendaId.Value != "")
+                {
+
+                }
+                //Insert
+                else
+                {
+                    UserAcess objUser = new UserAcess();
+                    //check edit permission
+                    //if (objUser.IsEdit(Guid.Parse(ViewState["entityId"].ToString())))
+                    //{
+                    objAgenda.CreatedBy = Guid.Parse(Session["UserId"].ToString());
+                    AgendaDataProvider.Instance.Insert(objAgenda);
+                    ((Label)Info.FindControl("lblName")).Text = "Sub Agenda inserted successfully";
+
+                    //}
+                    //else
+                    //{
+                    //    ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                    //    Error.Visible = true;
+                    //}
+                }
+                Info.Visible = true;
+                BindAgendaItems();
+            }
+            catch (Exception ex)
+            {
+
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// save order of agenda items
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //get order of agenda items
+
+                string UserId = Convert.ToString(Session["UserId"]);
+                StringBuilder strAgendaIds = new StringBuilder(",");
+                StringBuilder strAgendaOrder = new StringBuilder(",");
+                string idOrders = hdnListItems.Value;
+                if (idOrders.Length > 0)
+                {
+                    // string sql = "";
+                    idOrders = idOrders.Remove(idOrders.Length - 1);
+                    string[] arryOrderIds = idOrders.Split(',');
+                    for (int i = 1; i <= arryOrderIds.Count(); i++)
+                    {
+                        strAgendaOrder.Append(i + ",");
+                        strAgendaIds.Append(arryOrderIds[i - 1] + ",");
+                        //sql += " UPDATE Agenda set AgendaOrder= " + i + " WHERE AgendaId = '" + arryOrderIds[i - 1] + "'  UPDATE Agenda set AgendaOrder= " + i + " WHERE ParentAgendaId = '" + arryOrderIds[i - 1] + "' ";
+                    }
+
+                    bool bUpdate = AgendaDataProvider.Instance.UpdateAgendaOrders(strAgendaOrder.ToString(), strAgendaIds.ToString(), Guid.Parse(UserId));
+                    if (!bUpdate)
+                    {
+                        BindAgendaItems();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Upload Agenda details
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnUpAgendaSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Back button click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            //string url = Convert.ToString(ViewState["previousUrl"]);
+            //if (url != null && url != "")
+            //{
+            //    Response.Redirect(url);
+            //}
+            //else
+            //{
+            //    Response.Redirect("default.aspx");
+            //}
+
+            Response.Redirect("CreateAgenda.aspx");
+        }
+    }
+}

@@ -1,0 +1,194 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+using System.Web;
+
+namespace MM.Data
+{
+    public class AccessRightDataProvider : DataProvider
+    {
+        #region "Singleton"
+        private static volatile AccessRightDataProvider _instance;
+        private static object _synRoot = new Object();
+
+        private AccessRightDataProvider()
+        {
+        }
+
+        public static AccessRightDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new AccessRightDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+        #region "Fill"
+        /// <summary>
+        /// Fill Access rights
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        public AccessRightDomain ToAccessRightDomain(IDataReader dr)
+        {
+            return new AccessRightDomain
+            {
+                AccessRightId = Null.SetNullGuid(dr["AccessRightId"]),
+                IsDelete = Null.SetNullBoolean(dr["IsDelete"]),
+                IsAdd = Null.SetNullBoolean(dr["IsAdd"]),
+                IsRead = Null.SetNullBoolean(dr["IsRead"]),
+                IsUpdate = Null.SetNullBoolean(dr["IsUpdate"]),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+                CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+                UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+                UserId = Null.SetNullGuid(dr["UserId"]),
+                EntityId =  Null.SetNullGuid(dr["EntityId"]),
+                UserName = Encryptor.DecryptString(Null.SetNullString(dr["UserName"])),
+                EntityName = Encryptor.DecryptString(Null.SetNullString(dr["EntityName"])),
+
+                RollId =  Null.SetNullGuid(dr["RollId"]),
+            };
+        }
+
+        /// <summary>
+        /// Get all access right
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        public IList<AccessRightDomain> ToAccessRightDomains(IDataReader dr)
+        {
+            IList<AccessRightDomain> objAccessRights = new List<AccessRightDomain>();
+            while (dr.Read())
+            {
+                objAccessRights.Add(ToAccessRightDomain(dr));
+            }
+            return objAccessRights;
+        }
+        #endregion
+
+        #region "Get"
+
+        /// <summary>
+        /// Get all agendas
+        /// </summary>
+        /// <returns></returns>
+        public IList<AccessRightDomain> Get()
+        {
+            IList<AccessRightDomain> AccessRightDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllAccessRight"))
+            {
+                AccessRightDomain = ToAccessRightDomains(dataReader);
+            }
+
+            return AccessRightDomain;
+        }
+        
+        /// <summary>
+        /// Get Access right by id
+        /// </summary>
+        /// <param name="UserId">Guid sepcifying UserId</param>
+        /// <returns></returns>
+        public IList<AccessRightDomain> GetAccessRightByUserId(Guid UserId)
+        {
+            IList<AccessRightDomain> objAccessRight = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAccessRightByUserId", UserId))
+            {
+                objAccessRight =ToAccessRightDomains(dataReader);
+            }
+            return objAccessRight;
+        }
+        #endregion
+
+        #region "Modify"
+        /// <summary>
+        /// Insert Access Right
+        /// </summary>
+        /// <param name="AccessRights">String specifying AccessRights</param>
+        /// <returns></returns>
+        public bool Insert(string AccessRights)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertAccessRight", AccessRights)) > 0;
+        }
+
+         /// <summary>
+         /// Insert Access Right
+         /// </summary>
+         /// <param name="UserIds">string specifying UserIds </param>
+        /// <param name="AccessRights">string specifying AccessRights</param>
+        /// <param name="CreatedBy">Guid specifying CreatedBy</param>
+        /// <param name="UpdatedBy">Guid specifying UpdatedBy</param>
+        /// <param name="RollId">Guid specifying RollId</param>
+         /// <returns></returns>
+        public bool InserAccessRight(string UserIds, string AccessRights, Guid CreatedBy, Guid UpdatedBy, Guid RollId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertAccessRights", UserIds, AccessRights, RollId, CreatedBy, UpdatedBy)) > 0;
+        }
+
+
+        /// <summary>
+        ///  Update Access Right
+        /// </summary>
+        /// <param name="UserIds">string specifying UserIds</param>
+        /// <param name="AccessRights">string specifying UserIds</param>
+        /// <param name="CreatedBy">Guid specifying CreatedBy</param>
+        /// <param name="UpdatedBy">Guid specifying UpdatedBy</param>
+        /// <param name="RollId">Guid specifying RollId</param>
+        /// <param name="InsertUserIds">string specifying InsertUserIds</param>
+        /// <param name="InsertAccessRights">string specifying InsertAccessRights</param>
+        /// <param name="DeleteUserIds">string specifying DeleteUserIds</param>
+       /// <returns></returns>
+        public bool UpdateAccessRight(string UserIds, string AccessRights, Guid CreatedBy, Guid UpdatedBy, Guid RollId, string InsertUserIds, string InsertAccessRights, string DeleteUserIds)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_UpdateAccessRights", UserIds, AccessRights, RollId, CreatedBy, UpdatedBy, InsertUserIds,InsertAccessRights,DeleteUserIds)) > 0;
+        }
+        /// <summary>
+        /// Delete Access right by id
+        /// </summary>
+        /// <param name="AccessRightId">Guid specifying AccessRightId</param>
+        /// <returns></returns>
+        public bool DeleteAccessRight(Guid AccessRightId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_DeleteAcessRightById", AccessRightId)) > 0;
+        }
+
+        /// <summary>
+        /// Delete Access right by User id
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public bool DeleteAccessRightByuserId(Guid UserId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_DeleteAccessRightByUserId", UserId)) > 0;
+        }
+
+        /// <summary>
+        /// Delete selected Access right by User ids
+        /// </summary>
+        /// <param name="UserId">string specifing userId </param>
+        /// <returns></returns>
+        public bool DeleteSelectedAccessRightByUserId(string UserId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, "stp_DeleteSelectedAccessRight", UserId)) > 0;
+        }
+        
+        #endregion
+    }
+}

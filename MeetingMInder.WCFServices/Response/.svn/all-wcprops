@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/112/MeetingMInder.WCFServices/Response
+END
+ForumDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/scm/svn/MeetingMinder/!svn/ver/135/MeetingMInder.WCFServices/Response/ForumDetails.cs
+END
+MeetingDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/scm/svn/MeetingMinder/!svn/ver/135/MeetingMInder.WCFServices/Response/MeetingDetails.cs
+END
+SecurityQuestionsResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/scm/svn/MeetingMinder/!svn/ver/135/MeetingMInder.WCFServices/Response/SecurityQuestionsResponse.cs
+END
+EntityDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/scm/svn/MeetingMinder/!svn/ver/139/MeetingMInder.WCFServices/Response/EntityDetails.cs
+END
+ForgotPasswordResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/scm/svn/MeetingMinder/!svn/ver/195/MeetingMInder.WCFServices/Response/ForgotPasswordResponse.cs
+END
+ResetPasswordResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/scm/svn/MeetingMinder/!svn/ver/112/MeetingMInder.WCFServices/Response/ResetPasswordResponse.cs
+END
+AgendaDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/scm/svn/MeetingMinder/!svn/ver/135/MeetingMInder.WCFServices/Response/AgendaDetails.cs
+END
+AttendanceResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/scm/svn/MeetingMinder/!svn/ver/139/MeetingMInder.WCFServices/Response/AttendanceResponse.cs
+END
+LoginResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/scm/svn/MeetingMinder/!svn/ver/191/MeetingMInder.WCFServices/Response/LoginResponse.cs
+END
+GetAuthenticateDataResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/scm/svn/MeetingMinder/!svn/ver/135/MeetingMInder.WCFServices/Response/GetAuthenticateDataResponse.cs
+END
+NoticeDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/scm/svn/MeetingMinder/!svn/ver/199/MeetingMInder.WCFServices/Response/NoticeDetails.cs
+END
+ForgetPasswordResponse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/scm/svn/MeetingMinder/!svn/ver/112/MeetingMInder.WCFServices/Response/ForgetPasswordResponse.cs
+END
+MinutesDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/scm/svn/MeetingMinder/!svn/ver/135/MeetingMInder.WCFServices/Response/MinutesDetails.cs
+END

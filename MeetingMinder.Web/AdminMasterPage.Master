@@ -1,0 +1,397 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMasterPage.master.cs" Inherits="MeetingMinder.Web.AdminMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html class="no-js" lang="en">
+<head id="Head1" runat="server">
+    <title>iMeeting</title>
+    <!-- Icons -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="IE=9">
+    <meta http-equiv="x-ua-compatible" content="IE=8">
+
+    <!-- Imports General CSS and jQuery CSS -->
+    <link href="SimplpanAdminPanelfiles/screen.css" rel="stylesheet" media="screen" type="text/css">
+
+    <link href="SimplpanAdminPanelfiles/reset.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/style.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/typography.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/forms.css" rel="stylesheet" media="screen" type="text/css">
+
+    <link href="SimplpanAdminPanelfiles/visualize.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/SyntaxHighlighter.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/jqueryFileTree.css" rel="stylesheet" media="screen" type="text/css">
+
+    <!-- CSS for Fluid and Fixed Widths - Double to prevent flickering on change -->
+    <link href="SimplpanAdminPanelfiles/fixed.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/fixed.css" rel="stylesheet" media="screen" type="text/css" class="width">
+    <link href="SimplpanAdminPanelfiles/fluid.css" rel="stylesheet" media="screen" type="text/css" class="width">
+
+    <%--<link href="SimplpanAdminPanelfiles/jquery-ui-1.8.13.custom.css" rel="stylesheet" media="screen" type="text/css">--%>
+    <link href="SimplpanAdminPanelfiles/jquery-ui-1.12.1.min.css" media="screen" rel="stylesheet" />
+    <link href="SimplpanAdminPanelfiles/tip-theme.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/facebox.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/uniform.default.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/style.css" rel="stylesheet" media="screen" type="text/css">
+    <!-- IE Stylesheet ie7 - Added in 1.2 -->
+    <!--[if lt IE 8]> <html lang="en" class="ie7"> <![endif]-->
+
+    <!-- IE Stylesheet ie8 - Added in 1.1 -->
+    <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+
+    <!-- CSS for Theme Styles - Double to prevent flickering on change -->
+    <link href="SimplpanAdminPanelfiles/blue.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="SimplpanAdminPanelfiles/blue.css" rel="stylesheet" media="screen" type="text/css" class="theme">
+
+    <!-- IE Canvas Fix for Visualize Charts - Added in 1.1 -->
+    <!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]-->
+
+    <!-- jQuery thats loaded before document ready to prevent flickering - Rest are found at the bottom -->
+    <%--<script type="text/javascript" src="SimplpanAdminPanelfiles/jquery-1.4.1.min.js"></script>--%>
+    <script type="text/javascript" src="Scripts/jquery-3.6.0.min.js"></script>   
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.cookie.js"></script>
+    <%--<script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.styleswitcher.js"></script>--%>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.visualize.js"></script>
+
+    <script type="text/javascript">
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+
+        function LogOut() {
+            //Use for LogOut Functionlity
+            location.href = "Login.aspx?PageName=Default";
+        }
+
+
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+
+        if (self == top) {
+            var theBody = document.getElementsByTagName('body')[0]
+            if (theBody != null) {
+                theBody.style.display = "block";
+            }
+        } else { top.location = self.location }
+
+        function specialcharecter() {
+
+            var returnVal = true;
+            var v = 0;
+            //$("textarea").each(function(){
+            $('input[type=text], textarea').each(function () {
+                var iChars = '<<()&;‘"/\*;:={}`%+^!-';
+
+                var data = document.getElementById(this.id).value;
+
+            });
+
+            return true;
+        }
+
+        function htmlReplace() {
+            $('input[type=text], textarea').each(function () {
+                if (this.id != 'txtNotice') {
+                    var decoded = $('<div/>').html(document.getElementById(this.id).value).text();
+                    //alert(decoded);
+                    document.getElementById(this.id).value = decoded;
+                    //unescape(document.getElementById(this.id).value);
+                }
+            });
+            htmlReplaceDropDown1();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(htmlReplaceDropDown);
+
+        }
+
+        function htmlReplaceDropDown(sender, args) {
+            $('select option').each(function () {
+                var decoded = $('<div/>').html($(this).text()).text();
+
+                this.text = decoded;
+            });
+        }
+
+        function htmlReplaceDropDown1() {
+            $('select option').each(function () {
+                var decoded = $('<div/>').html($(this).text()).text();
+
+                this.text = decoded;
+            });
+        }
+
+        //]]>
+    </script>
+    <style type="text/css">
+        .gradeA.odd > td {
+            width: 0;
+            word-break: normal;
+            text-align: justify;
+        }
+
+        td {
+            word-break: normal;
+            text-align: justify;
+        }
+    </style>
+
+    <script language="javascript" type="text/javascript">
+        var isClose = false;
+
+        //this code will handle the F5 or Ctrl+F5 key
+        //need to handle more cases like ctrl+R whose codes are not listed here
+        document.onkeydown = checkKeycode
+        function checkKeycode(e) {
+            var keycode;
+            if (window.event)
+                keycode = window.event.keyCode;
+            else if (e)
+                keycode = e.which;
+            if (keycode == 116) {
+                isClose = true;
+            }
+        }
+        function somefunction() {
+            isClose = true;
+        }
+
+        //<![CDATA[
+
+        function bodyUnload() {
+            if (!isClose) {
+                var request = GetRequest();
+                request.open("GET", "Login.aspx?PageName=Default", true);
+                request.send();
+            }
+        }
+        function GetRequest() {
+            var request = null;
+            if (window.XMLHttpRequest) {
+                //incase of IE7,FF, Opera and Safari browser
+                request = new XMLHttpRequest();
+            }
+            else {
+                //for old browser like IE 6.x and IE 5.x
+                request = new ActiveXObject('MSXML2.XMLHTTP.3.0');
+            }
+            return request;
+        }
+        //]]>
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="htmlReplace()" onbeforeunload="bodyUnload();" onmousedown="somefunction()">
+
+    <form id="form1" autocomplete="OFF" method="post" enctype="multipart/form-data" runat="server">
+        <%--<%= System.Web.Helpers.AntiForgery.GetHtml() %>--%>
+        <asp:ScriptManager ID="ScrmMeetingMinder" EnablePageMethods="true" runat="server">
+        </asp:ScriptManager>
+        <div id="wrap" class="container_24">
+            <asp:HiddenField ID="AntiCsrftoken" runat="server" />
+
+
+            <!-- Header Grid Container: Start -->
+            <div class="grid_24">
+
+                <!-- User Panel: Start -->
+                <div id="userpanel">
+                    <div class="container">
+                        <div class="userpanel-main right">
+                            <!-- User: Start -->
+                            <ul id="user" class="dropdown">
+                                <li class="topnav">
+                                    <!-- User Name -->
+                                    <a style="cursor: text;" class="top icon user"><span class="login-welcome-sec">Welcome</span>
+                                        <asp:Label runat="server" ID="lblLoginName"></asp:Label></a>
+                                    <asp:LinkButton ID="lnkSwitch" runat="server" Title="Switch Department" OnClick="lnkSwitch_Click" class="top icon setting-box">Switch Dept.</asp:LinkButton>
+
+                                </li>
+                            </ul>
+
+                            <!-- Width Switcher: Start -->
+                            <ul id="ulChangePassword" runat="server" class="dropdown">
+                                <li class="topnav">
+                                    <a href="AnswerQuestion.aspx" class="top icon coverflow">Change Password</a>
+
+                                </li>
+                            </ul>
+
+                            <ul id="style" class="dropdown">
+                                <li class="topnav">
+                                    <a href="javascript:void(0)" onclick="LogOut();" style="cursor: pointer;" class="top icon brush active">Logout</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- User Panel: End -->
+
+                <!-- Header: Start -->
+                <div id="header">
+                    <div class="container">
+                        <!-- Logo: Start -->
+                        <a href="Default.aspx" id="logo">SBI Admin Panel</a>
+                        <!-- Logo: End -->
+
+                        <!-- Navigation: Start -->
+                        <div class="top-nav-main">
+                            <ul id="navigation" class="dropdown">
+                                <li runat="server" id="searchlink" class="topnav"><a class="dashboard" href="#">Master</a>
+                                    <ul class="subnav">
+                                        <li runat="server" id="trEntityMaster"><a class="icon typography" href="DepartmentMaster.aspx">Department Master</a></li>
+                                        <li runat="server" id="trUserMaster">
+                                            <a class="icon typography" href="UserMaster.aspx">User Master</a>
+                                        </li>
+
+
+                                        <li runat="server" id="trAccessRights"><a class="icon typography" href="AccessRightAdmin.aspx">Access Rights</a></li>
+                                        <li runat="server" visible="false" id="trApprovalMaster"><a class="icon typography" href="ApprovalMaster.aspx">Approval Master</a></li>
+                                        <li runat="server" id="trRollMaster"><a class="icon typography" href="RoleMaster.aspx">Role Master </a></li>
+                                        <li runat="server" id="trAllUserMaster" visible="false"><a class="icon typography" href="AllUserMaster.aspx">All User Master </a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Navigation Dropdown Menu Item: Start -->
+                                <li runat="server" id="lnkTransactions" class="topnav">
+                                    <a class="pictures" href="#">Transaction</a>
+
+                                    <!-- Navigation Dropdown Menu Item Content: Start -->
+                                    <ul class="subnav">
+                                        <li id="trMeeting" runat="server"><a class="icon typography" href="CreateMeeting.aspx">Meeting</a></li>
+
+                                        <li id="trNotice" style="display: none" runat="server"><a class="icon typography" href="NoticeMaster.aspx">Notice</a></li>
+                                        <li id="trAgenda" runat="server"><a class="icon typography" href="CreateAgenda.aspx">Agenda</a></li>
+                                        <li id="trUploadMin" runat="server"><a class="icon typography" href="UploadMinutes.aspx">Upload Minutes</a></li>
+                                        <li id="trMasterAgenda" runat="server"><a class="icon typography" href="MasterAgenda.aspx">Master Agenda</a></li>
+                                        <li id="trAgendaMarker" style="display: none" runat="server"><a class="icon" href="AgendaMarker.aspx">Agenda Marker</a></li>
+                                        <li id="TrBod" runat="server"><a class="icon typography" href="KeyInformation.aspx">Board of Directors</a></li>
+                                        <li id="trPhoto" runat="server"><a class="icon typography" href="PhotoGallery.aspx">Photo Gallery</a></li>
+
+                                        <li id="trAdMaster" style="display: none;" runat="server"><a class="icon typography" href="AdMaster.aspx">Ad Master</a></li>
+                                        <li id="trGlobalSetting" runat="server"><a class="icon typography" href="GlobalSetting.aspx">Global Setting</a></li>
+                                        <li id="trMeetingRetention" runat="server"><a class="icon typography" href="MeetingRetention.aspx">Meeting Retention</a></li>
+                                        <li id="trIpadNoti" runat="server"><a class="icon typography" href="IpadNotification.aspx">Ipad Notification</a></li>
+                                        <li id="trEmailNoti" runat="server"><a class="icon typography" href="EmailNotifications.aspx">Email Notification</a></li>
+
+                                        <li id="trAgendaAccess" runat="server"><a class="icon typography" href="AgendaAccess.aspx">Agenda Access</a></li>
+
+                                        <li id="trAboutUs" runat="server"><a class="icon typography" href="AboutUs.aspx">About Us</a></li>
+                                        <li id="trDeviceManger" runat="server"><a class="icon typography" href="UserDevices.aspx">Device Manager</a></li>
+                                        <li id="trSectionMaster" runat="server"><a class="icon typography" href="SectionMaster.aspx">Section Master</a></li>
+                                        <li id="trHeaderMaster" runat="server"><a class="icon typography" href="HeaderMaster.aspx">Header Master</a></li>
+                                        <li id="trEmailHistory" runat="server"><a class="icon typography" href="EmailHistory.aspx">Email History</a></li>
+                                        <li id="trPublishHistroy" runat="server"><a class="icon typography" href="PublishHistroy.aspx">Publish Histroy</a></li>
+
+                                        <li id="trSerialNo" runat="server"><a class="icon typography" href="SerialNumberMaster.aspx">Serial Number Master</a></li>
+
+
+                                        <li id="trTabSetting" runat="server"><a class="icon typography" href="GlobalTab.aspx">Tabs Setting</a> </li>
+
+
+                                        <li id="trProceedingMaster" runat="server"><a class="icon typography" href="ProceedingMaster.aspx">Proceeding</a></li>
+                                        <li style="display: none" id="trMeetingSchedule" runat="server"><a class="icon typography" href="YearlyMeeting.aspx">Meeting Schedule</a></li>
+                                    </ul>
+
+                                </li>
+
+                                <li runat="server" id="lnkApprovals" class="topnav">
+                                    <a class="pages" href="ApprovalMaster.aspx">Approval</a>
+
+
+
+                                </li>
+
+                                <li runat="server" id="lnkView" class="topnav"><a class="pictures" href="#">View</a>
+                                    <ul class="subnav" style="display: none;">
+                                        <li id="trUpcomingMeeting" runat="server" visible="false"><a class="icon" href="UpcomingMeeting.aspx">Upcoming Meeting</a></li>
+                                        <li id="trMeetingView" runat="server"><a class="icon" href="MeetingSchedule.aspx">Meeting</a></li>
+                                        <li id="trViewNotice" runat="server"><a class="icon" href="ViewNotice.aspx">Notice</a></li>
+                                        <li id="trviewAgenda" runat="server"><a class="icon" href="ViewAgenda.aspx">Agenda</a></li>
+
+
+                                        <li id="trViewMinutes" runat="server"><a class="icon" href="ViewMinutes.aspx">Minutes</a></li>
+
+                                        <li id="trViewProceeding" runat="server"><a class="icon typography" href="ViewProceeding.aspx">Proceeding</a></li>
+
+                                        <li id="trAttendance" runat="server"><a class="icon" href="ViewAttendance.aspx">Attendance</a></li>
+                                    </ul>
+                                </li>
+
+                                <li runat="server" id="lnkReports" class="topnav"><a class="pictures" href="Reports.aspx">Reports</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <asp:Literal ID="ltl_bredcrumbs" Visible="false" runat="server"></asp:Literal>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="grid_24">
+
+                <div id="footer">
+
+                    <p class="left">
+                    </p>
+
+
+                </div>
+                <!-- Footer: End -->
+
+            </div>
+            <!-- Footer Grid: End -->
+
+        </div>
+    </form>
+    <!-- End: Page Wrap -->
+
+    <!-- 100% Box Grid Container: End -->
+
+    <asp:Label ID="lblEntityName" Visible="false" runat="server"></asp:Label>
+    <!-- jQuery libs - Rest are found in the head section (at top) -->
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.visualize-tooltip.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery-animate-css-rotate-scale.js"></script>
+    <%--<script type="text/javascript" src="SimplpanAdminPanelfiles/jquery-ui-1.8.13.custom.min.js"></script>--%>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery-ui-1.12.1.min.js"></script>
+
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.poshytip.min.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.quicksand.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.facebox.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/jqueryFileTree.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/shLegacy.js"></script>
+    <!-- jQuery Customization -->
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/custom.js"></script>
+
+    <%--<script type="text/javascript" src="SimplpanAdminPanelfiles/shCore.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/shBrushXml.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/shBrushJScript.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/shBrushCss.js"></script>
+    <script type="text/javascript" src="SimplpanAdminPanelfiles/shBrushPhp.js"></script>--%>
+
+    <!-- Added in 1.2 -->
+
+    <!-- Session management -->
+
+</body>
+</html>

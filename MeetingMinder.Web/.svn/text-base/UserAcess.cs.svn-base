@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.SessionState;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using MM.Core;
+using System.Text;
+
+namespace MeetingMinder.Web
+{
+    public class UserAcess
+    {
+        public bool IsEdit(Guid EntityId)
+        {
+            IList<AccessRightDomain> objAcess = (IList<AccessRightDomain>)(HttpContext.Current.Session["AccessRight"]);
+            Guid UserId = Guid.Parse(HttpContext.Current.Session["UserId"].ToString());
+            //Guid EntityId = Guid.Parse(HttpContext.Current.Session["EntityId"].ToString());
+           
+            var objIsallowed = from Access in objAcess where (Access.EntityId == EntityId && Access.UserId == UserId) select Access;
+            if (objIsallowed.Count() > 0)
+            {
+                var isEdit = (from rights in objIsallowed
+                              select (new
+                              {
+                                  allowed = rights.IsUpdate
+                              })).ToList();
+                return (bool)isEdit[0].allowed;
+            }
+            else
+            {
+                return false;
+            }
+            
+
+        }
+
+
+        public bool IsAdd(Guid EntityId )
+        {
+            IList<AccessRightDomain> objAcess = (IList<AccessRightDomain>)(HttpContext.Current.Session["AccessRight"]);
+            Guid UserId = Guid.Parse(HttpContext.Current.Session["UserId"].ToString());
+            //Guid EntityId = Guid.Parse(HttpContext.Current.Session["EntityId"].ToString());
+
+            var objIsallowed = from Access in objAcess
+                               where (Access.EntityId == EntityId && Access.UserId == UserId)
+                               select Access;
+            if (objIsallowed.Count() > 0)
+            {
+                var isAdd = (from rights in objIsallowed
+                              select (new
+                              {
+                                  allowed = rights.IsAdd
+                              })).ToList();
+                return (bool)isAdd[0].allowed;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
+
+        public bool isDelete(Guid EntityId)
+        {
+            IList<AccessRightDomain> objAcess = (IList<AccessRightDomain>)(HttpContext.Current.Session["AccessRight"]);
+            Guid UserId = Guid.Parse(HttpContext.Current.Session["UserId"].ToString());
+            //Guid EntityId = Guid.Parse(HttpContext.Current.Session["EntityId"].ToString());
+
+            var objIsallowed = from Access in objAcess
+                               where (Access.EntityId == EntityId && Access.UserId == UserId)
+                               select Access;
+            if (objIsallowed.Count() > 0)
+            {
+                var isDelete = (from rights in objIsallowed
+                              select (new
+                              {
+                                  allowed = rights.IsDelete
+                              })).ToList();
+                return (bool)isDelete[0].allowed;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+    }
+}

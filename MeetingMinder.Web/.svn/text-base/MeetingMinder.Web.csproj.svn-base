@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CADA7F1-7AFA-4359-82BB-9838CF608912}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MeetingMinder.Web</RootNamespace>
+    <AssemblyName>MeetingMinder.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="635079327941840466.jpg" />
+    <Content Include="635079377387088573.jpg" />
+    <Content Include="635079377577919488.jpg" />
+    <Content Include="635079377727858064.jpg" />
+    <Content Include="About.aspx" />
+    <Content Include="AccessRightAdmin.aspx" />
+    <Content Include="AccessRightsMaster.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="AgendaMaster.aspx" />
+    <Content Include="AnswerQuestion.aspx" />
+    <Content Include="ApprovalMaster.aspx" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="CheckerMaster.aspx" />
+    <Content Include="CreateMeeting.aspx" />
+    <Content Include="css\colors.css" />
+    <Content Include="css\Drop.css" />
+    <Content Include="css\jquery-ui-1.8.16.custom.css" />
+    <Content Include="css\jquery.datatables.css" />
+    <Content Include="css\jquery.datepicker.css" />
+    <Content Include="css\jquery.fileinput.css" />
+    <Content Include="css\jquery.fullcalendar.css" />
+    <Content Include="css\jquery.muon.css" />
+    <Content Include="css\jquery.nyromodal.css" />
+    <Content Include="css\jquery.snippet.css" />
+    <Content Include="css\jquery.tipsy.css" />
+    <Content Include="css\jquery.visualize.css" />
+    <Content Include="css\jquery.wysiwyg.css" />
+    <Content Include="css\jquery.wysiwyg.in.css" />
+    <Content Include="css\pagingstyle.css" />
+    <Content Include="css\screen.css" />
+    <Content Include="EntityMaster.aspx" />
+    <Content Include="ForgotPassword.aspx" />
+    <Content Include="ForumMaster.aspx" />
+    <Content Include="img\bgs\bg_container_top_center.png" />
+    <Content Include="img\bgs\bg_container_top_left.png" />
+    <Content Include="img\bgs\bg_container_top_right.png" />
+    <Content Include="img\bgs\bg_footer.png" />
+    <Content Include="img\bgs\bg_input.png" />
+    <Content Include="img\bgs\bg_input_disabled.png" />
+    <Content Include="img\bgs\bg_main.png" />
+    <Content Include="img\bgs\bg_main_nav.png" />
+    <Content Include="img\bgs\bg_notification.png" />
+    <Content Include="img\bgs\bg_progress_bar.png" />
+    <Content Include="img\bgs\bg_sidetabs.png" />
+    <Content Include="img\bgs\bg_sidetabs_ul.png" />
+    <Content Include="img\bgs\bg_tipbox.png" />
+    <Content Include="img\bgs\bg_wizard.png" />
+    <Content Include="img\icons\actions\page_white_delete.png" />
+    <Content Include="img\icons\actions\page_white_edit.png" />
+    <Content Include="img\icons\actions\page_white_find.png" />
+    <Content Include="img\icons\buttons\abacus.png" />
+    <Content Include="img\icons\buttons\acces_denied_sign.png" />
+    <Content Include="img\icons\buttons\address_book.png" />
+    <Content Include="img\icons\buttons\admin_user.png" />
+    <Content Include="img\icons\buttons\admin_user_2.png" />
+    <Content Include="img\icons\buttons\airplane.png" />
+    <Content Include="img\icons\buttons\alarm_bell.png" />
+    <Content Include="img\icons\buttons\alarm_bell_2.png" />
+    <Content Include="img\icons\buttons\alarm_clock.png" />
+    <Content Include="img\icons\buttons\alert.png" />
+    <Content Include="img\icons\buttons\alert_2.png" />
+    <Content Include="img\icons\buttons\android.png" />
+    <Content Include="img\icons\buttons\apartment_building.png" />
+    <Content Include="img\icons\buttons\archive.png" />
+    <Content Include="img\icons\buttons\bag.png" />
+    <Content Include="img\icons\buttons\balloons.png" />
+    <Content Include="img\icons\buttons\bandaid.png" />
+    <Content Include="img\icons\buttons\battery.png" />
+    <Content Include="img\icons\buttons\battery_almost_empty.png" />
+    <Content Include="img\icons\buttons\battery_almost_full.png" />
+    <Content Include="img\icons\buttons\battery_empty.png" />
+    <Content Include="img\icons\buttons\battery_full.png" />
+    <Content Include="img\icons\buttons\bended_arrow_down.png" />
+    <Content Include="img\icons\buttons\bended_arrow_left.png" />
+    <Content Include="img\icons\buttons\bended_arrow_right.png" />
+    <Content Include="img\icons\buttons\bended_arrow_up.png" />
+    <Content Include="img\icons\buttons\big_brush.png" />
+    <Content Include="img\icons\buttons\blackberry.png" />
+    <Content Include="img\icons\buttons\blocks_images.png" />
+    <Content Include="img\icons\buttons\blu-ray.png" />
+    <Content Include="img\icons\buttons\bluetooth.png" />
+    <Content Include="img\icons\buttons\bluetooth_2.png" />
+    <Content Include="img\icons\buttons\book.png" />
+    <Content Include="img\icons\buttons\books.png" />
+    <Content Include="img\icons\buttons\book_Large.png" />
+    <Content Include="img\icons\buttons\box_Incoming.png" />
+    <Content Include="img\icons\buttons\box_outgoing.png" />
+    <Content Include="img\icons\buttons\Bulls_eye.png" />
+    <Content Include="img\icons\buttons\calculator.png" />
+    <Content Include="img\icons\buttons\camera.png" />
+    <Content Include="img\icons\buttons\camera_2.png" />
+    <Content Include="img\icons\buttons\car.png" />
+    <Content Include="img\icons\buttons\cash_register.png" />
+    <Content Include="img\icons\buttons\cassette.png" />
+    <Content Include="img\icons\buttons\cat.png" />
+    <Content Include="img\icons\buttons\cd.png" />
+    <Content Include="img\icons\buttons\chair.png" />
+    <Content Include="img\icons\buttons\chart.png" />
+    <Content Include="img\icons\buttons\chart_2.png" />
+    <Content Include="img\icons\buttons\chart_3.png" />
+    <Content Include="img\icons\buttons\chart_4.png" />
+    <Content Include="img\icons\buttons\chart_5.png" />
+    <Content Include="img\icons\buttons\chart_6.png" />
+    <Content Include="img\icons\buttons\chart_7.png" />
+    <Content Include="img\icons\buttons\chart_8.png" />
+    <Content Include="img\icons\buttons\chemical.png" />
+    <Content Include="img\icons\buttons\chrome.png" />
+    <Content Include="img\icons\buttons\clipboard.png" />
+    <Content Include="img\icons\buttons\clock.png" />
+    <Content Include="img\icons\buttons\cloud.png" />
+    <Content Include="img\icons\buttons\cloud_download.png" />
+    <Content Include="img\icons\buttons\cloud_upload.png" />
+    <Content Include="img\icons\buttons\cog.png" />
+    <Content Include="img\icons\buttons\cog_2.png" />
+    <Content Include="img\icons\buttons\cog_3.png" />
+    <Content Include="img\icons\buttons\cog_4.png" />
+    <Content Include="img\icons\buttons\companies.png" />
+    <Content Include="img\icons\buttons\computer_imac.png" />
+    <Content Include="img\icons\buttons\coverflow.png" />
+    <Content Include="img\icons\buttons\create_write.png" />
+    <Content Include="img\icons\buttons\cup.png" />
+    <Content Include="img\icons\buttons\cut_scissors.png" />
+    <Content Include="img\icons\buttons\day_Calendar.png" />
+    <Content Include="img\icons\buttons\delicious.png" />
+    <Content Include="img\icons\buttons\digg.png" />
+    <Content Include="img\icons\buttons\digg_2.png" />
+    <Content Include="img\icons\buttons\document.png" />
+    <Content Include="img\icons\buttons\documents.png" />
+    <Content Include="img\icons\buttons\download.png" />
+    <Content Include="img\icons\buttons\download_to_computer.png" />
+    <Content Include="img\icons\buttons\dress.png" />
+    <Content Include="img\icons\buttons\dribbble.png" />
+    <Content Include="img\icons\buttons\dribbble_2.png" />
+    <Content Include="img\icons\buttons\dropbox.png" />
+    <Content Include="img\icons\buttons\drupal.png" />
+    <Content Include="img\icons\buttons\dVD.png" />
+    <Content Include="img\icons\buttons\electricity_input.png" />
+    <Content Include="img\icons\buttons\electricity_plug.png" />
+    <Content Include="img\icons\buttons\excel_document.png" />
+    <Content Include="img\icons\buttons\excel_documents.png" />
+    <Content Include="img\icons\buttons\exit.png" />
+    <Content Include="img\icons\buttons\expose.png" />
+    <Content Include="img\icons\buttons\expression_engine.png" />
+    <Content Include="img\icons\buttons\eyedropper.png" />
+    <Content Include="img\icons\buttons\facebook.png" />
+    <Content Include="img\icons\buttons\facebook_like.png" />
+    <Content Include="img\icons\buttons\fax.png" />
+    <Content Include="img\icons\buttons\female_contour.png" />
+    <Content Include="img\icons\buttons\female_symbol.png" />
+    <Content Include="img\icons\buttons\file_cabinet.png" />
+    <Content Include="img\icons\buttons\film_camera.png" />
+    <Content Include="img\icons\buttons\film_strip.png" />
+    <Content Include="img\icons\buttons\film_strip_2.png" />
+    <Content Include="img\icons\buttons\finish_flag.png" />
+    <Content Include="img\icons\buttons\firefox.png" />
+    <Content Include="img\icons\buttons\flag.png" />
+    <Content Include="img\icons\buttons\flag_2.png" />
+    <Content Include="img\icons\buttons\folder.png" />
+    <Content Include="img\icons\buttons\footprints.png" />
+    <Content Include="img\icons\buttons\fountain_pen.png" />
+    <Content Include="img\icons\buttons\frames.png" />
+    <Content Include="img\icons\buttons\globe.png" />
+    <Content Include="img\icons\buttons\globe_2.png" />
+    <Content Include="img\icons\buttons\google_buzz.png" />
+    <Content Include="img\icons\buttons\google_maps.png" />
+    <Content Include="img\icons\buttons\go_back_from_full_screen.png" />
+    <Content Include="img\icons\buttons\go_back_from_screen.png" />
+    <Content Include="img\icons\buttons\go_full_screen.png" />
+    <Content Include="img\icons\buttons\graph.png" />
+    <Content Include="img\icons\buttons\hd.png" />
+    <Content Include="img\icons\buttons\hd_2.png" />
+    <Content Include="img\icons\buttons\hd_3.png" />
+    <Content Include="img\icons\buttons\headphones.png" />
+    <Content Include="img\icons\buttons\help.png" />
+    <Content Include="img\icons\buttons\home.png" />
+    <Content Include="img\icons\buttons\home_2.png" />
+    <Content Include="img\icons\buttons\ice_cream.png" />
+    <Content Include="img\icons\buttons\ice_cream_2.png" />
+    <Content Include="img\icons\buttons\ichat.png" />
+    <Content Include="img\icons\buttons\image.png" />
+    <Content Include="img\icons\buttons\image2_2.png" />
+    <Content Include="img\icons\buttons\images.png" />
+    <Content Include="img\icons\buttons\image_2.png" />
+    <Content Include="img\icons\buttons\inbox.png" />
+    <Content Include="img\icons\buttons\info_about.png" />
+    <Content Include="img\icons\buttons\iPad.png" />
+    <Content Include="img\icons\buttons\iPhone_3g.png" />
+    <Content Include="img\icons\buttons\iPhone_4.png" />
+    <Content Include="img\icons\buttons\iPod_classic.png" />
+    <Content Include="img\icons\buttons\iPod_nano.png" />
+    <Content Include="img\icons\buttons\joomla.png" />
+    <Content Include="img\icons\buttons\key.png" />
+    <Content Include="img\icons\buttons\key_2.png" />
+    <Content Include="img\icons\buttons\ladies_purse.png" />
+    <Content Include="img\icons\buttons\lamp.png" />
+    <Content Include="img\icons\buttons\laptop.png" />
+    <Content Include="img\icons\buttons\lastfm_2.png" />
+    <Content Include="img\icons\buttons\lemonade_stand.png" />
+    <Content Include="img\icons\buttons\light_bulb.png" />
+    <Content Include="img\icons\buttons\link.png" />
+    <Content Include="img\icons\buttons\link_2.png" />
+    <Content Include="img\icons\buttons\linux.png" />
+    <Content Include="img\icons\buttons\list.png" />
+    <Content Include="img\icons\buttons\list_w__image.png" />
+    <Content Include="img\icons\buttons\list_w__images.png" />
+    <Content Include="img\icons\buttons\loading_Bar.png" />
+    <Content Include="img\icons\buttons\locked.png" />
+    <Content Include="img\icons\buttons\locked_2.png" />
+    <Content Include="img\icons\buttons\macos.png" />
+    <Content Include="img\icons\buttons\magic_mouse.png" />
+    <Content Include="img\icons\buttons\magnifying_glass.png" />
+    <Content Include="img\icons\buttons\mail.png" />
+    <Content Include="img\icons\buttons\male_contour.png" />
+    <Content Include="img\icons\buttons\male_symbol.png" />
+    <Content Include="img\icons\buttons\map.png" />
+    <Content Include="img\icons\buttons\marker.png" />
+    <Content Include="img\icons\buttons\medical_case.png" />
+    <Content Include="img\icons\buttons\megaphone.png" />
+    <Content Include="img\icons\buttons\microphone.png" />
+    <Content Include="img\icons\buttons\mighty_mouse.png" />
+    <Content Include="img\icons\buttons\mobile_phone.png" />
+    <Content Include="img\icons\buttons\mobypicture.png" />
+    <Content Include="img\icons\buttons\money.png" />
+    <Content Include="img\icons\buttons\money_2.png" />
+    <Content Include="img\icons\buttons\monitor.png" />
+    <Content Include="img\icons\buttons\month_calendar.png" />
+    <Content Include="img\icons\buttons\mouse_wires.png" />
+    <Content Include="img\icons\buttons\myspace_2.png" />
+    <Content Include="img\icons\buttons\note_book.png" />
+    <Content Include="img\icons\buttons\pacman.png" />
+    <Content Include="img\icons\buttons\pacman_ghost.png" />
+    <Content Include="img\icons\buttons\paint_brush.png" />
+    <Content Include="img\icons\buttons\pants.png" />
+    <Content Include="img\icons\buttons\paperclip.png" />
+    <Content Include="img\icons\buttons\paypal.png" />
+    <Content Include="img\icons\buttons\paypal_2.png" />
+    <Content Include="img\icons\buttons\paypal_3.png" />
+    <Content Include="img\icons\buttons\pdf_document.png" />
+    <Content Include="img\icons\buttons\pdf_documents.png" />
+    <Content Include="img\icons\buttons\pencil.png" />
+    <Content Include="img\icons\buttons\phone.png" />
+    <Content Include="img\icons\buttons\phone_3.png" />
+    <Content Include="img\icons\buttons\phone_hook.png" />
+    <Content Include="img\icons\buttons\piggy_bank.png" />
+    <Content Include="img\icons\buttons\plane_suitcase.png" />
+    <Content Include="img\icons\buttons\plixi.png" />
+    <Content Include="img\icons\buttons\post_card.png" />
+    <Content Include="img\icons\buttons\power.png" />
+    <Content Include="img\icons\buttons\powerpoint_document.png" />
+    <Content Include="img\icons\buttons\powerpoint_documents.png" />
+    <Content Include="img\icons\buttons\presentation.png" />
+    <Content Include="img\icons\buttons\preview.png" />
+    <Content Include="img\icons\buttons\price_tag.png" />
+    <Content Include="img\icons\buttons\price_tags.png" />
+    <Content Include="img\icons\buttons\printer.png" />
+    <Content Include="img\icons\buttons\radio.png" />
+    <Content Include="img\icons\buttons\record.png" />
+    <Content Include="img\icons\buttons\recycle_symbol.png" />
+    <Content Include="img\icons\buttons\refresh.png" />
+    <Content Include="img\icons\buttons\refresh_2.png" />
+    <Content Include="img\icons\buttons\refresh_3.png" />
+    <Content Include="img\icons\buttons\refresh_4.png" />
+    <Content Include="img\icons\buttons\repeat.png" />
+    <Content Include="img\icons\buttons\robot.png" />
+    <Content Include="img\icons\buttons\rss.png" />
+    <Content Include="img\icons\buttons\ruler.png" />
+    <Content Include="img\icons\buttons\ruler_2.png" />
+    <Content Include="img\icons\buttons\running_man.png" />
+    <Content Include="img\icons\buttons\safari.png" />
+    <Content Include="img\icons\buttons\scan_label_2.png" />
+    <Content Include="img\icons\buttons\sd.png" />
+    <Content Include="img\icons\buttons\sD_2.png" />
+    <Content Include="img\icons\buttons\sd_3.png" />
+    <Content Include="img\icons\buttons\search.gif" />
+    <Content Include="img\icons\buttons\search.png" />
+    <Content Include="img\icons\buttons\settings.png" />
+    <Content Include="img\icons\buttons\settings_2.png" />
+    <Content Include="img\icons\buttons\shopping_bag.png" />
+    <Content Include="img\icons\buttons\shopping_basket_1.png" />
+    <Content Include="img\icons\buttons\shopping_basket_2.png" />
+    <Content Include="img\icons\buttons\shopping_cart.png" />
+    <Content Include="img\icons\buttons\shopping_cart_2.png" />
+    <Content Include="img\icons\buttons\shopping_cart_3.png" />
+    <Content Include="img\icons\buttons\shopping_cart_4.png" />
+    <Content Include="img\icons\buttons\shuffle.png" />
+    <Content Include="img\icons\buttons\sign_post.png" />
+    <Content Include="img\icons\buttons\skype.png" />
+    <Content Include="img\icons\buttons\sleeveless_shirt.png" />
+    <Content Include="img\icons\buttons\small_brush.png" />
+    <Content Include="img\icons\buttons\socks.png" />
+    <Content Include="img\icons\buttons\sound.png" />
+    <Content Include="img\icons\buttons\speech_bubble.png" />
+    <Content Include="img\icons\buttons\speech_bubbles.png" />
+    <Content Include="img\icons\buttons\speech_bubbles_2.png" />
+    <Content Include="img\icons\buttons\speech_bubble_2.png" />
+    <Content Include="img\icons\buttons\sport_shirt.png" />
+    <Content Include="img\icons\buttons\stop_watch.png" />
+    <Content Include="img\icons\buttons\strategy.png" />
+    <Content Include="img\icons\buttons\strategy_2.png" />
+    <Content Include="img\icons\buttons\stubleupon.png" />
+    <Content Include="img\icons\buttons\suitcase.png" />
+    <Content Include="img\icons\buttons\sweater.png" />
+    <Content Include="img\icons\buttons\t-shirt.png" />
+    <Content Include="img\icons\buttons\table.png" />
+    <Content Include="img\icons\buttons\tag.png" />
+    <Content Include="img\icons\buttons\tags_2.png" />
+    <Content Include="img\icons\buttons\television.png" />
+    <Content Include="img\icons\buttons\timer.png" />
+    <Content Include="img\icons\buttons\trashcan.png" />
+    <Content Include="img\icons\buttons\trashcan_2.png" />
+    <Content Include="img\icons\buttons\travel_suitcase.png" />
+    <Content Include="img\icons\buttons\tree.png" />
+    <Content Include="img\icons\buttons\trolly.png" />
+    <Content Include="img\icons\buttons\truck.png" />
+    <Content Include="img\icons\buttons\tumbler.png" />
+    <Content Include="img\icons\buttons\twitter.png" />
+    <Content Include="img\icons\buttons\twitter_2.png" />
+    <Content Include="img\icons\buttons\umbrella.png" />
+    <Content Include="img\icons\buttons\under_construction.png" />
+    <Content Include="img\icons\buttons\unlocked.png" />
+    <Content Include="img\icons\buttons\upload.png" />
+    <Content Include="img\icons\buttons\user.png" />
+    <Content Include="img\icons\buttons\users.png" />
+    <Content Include="img\icons\buttons\users_2.png" />
+    <Content Include="img\icons\buttons\user_2.png" />
+    <Content Include="img\icons\buttons\user_comment.png" />
+    <Content Include="img\icons\buttons\v-card.png" />
+    <Content Include="img\icons\buttons\v-Card_2.png" />
+    <Content Include="img\icons\buttons\vault.png" />
+    <Content Include="img\icons\buttons\vimeo.png" />
+    <Content Include="img\icons\buttons\vimeo_2.png" />
+    <Content Include="img\icons\buttons\walking_man.png" />
+    <Content Include="img\icons\buttons\wifi_signal.png" />
+    <Content Include="img\icons\buttons\wifi_signal_2.png" />
+    <Content Include="img\icons\buttons\windows.png" />
+    <Content Include="img\icons\buttons\winner_podium.png" />
+    <Content Include="img\icons\buttons\wordpress.png" />
+    <Content Include="img\icons\buttons\wordpress_2.png" />
+    <Content Include="img\icons\buttons\word_document.png" />
+    <Content Include="img\icons\buttons\word_documents.png" />
+    <Content Include="img\icons\buttons\youtube.png" />
+    <Content Include="img\icons\buttons\youtube_2.png" />
+    <Content Include="img\icons\buttons\zip_file.png" />
+    <Content Include="img\icons\buttons\zip_files.png" />
+    <Content Include="img\icons\emoticon\emoticon_basketball.png" />
+    <Content Include="img\icons\emoticon\emoticon_bug.png" />
+    <Content Include="img\icons\emoticon\emoticon_down.png" />
+    <Content Include="img\icons\emoticon\emoticon_evilgrin.png" />
+    <Content Include="img\icons\emoticon\emoticon_football.png" />
+    <Content Include="img\icons\emoticon\emoticon_golf.png" />
+    <Content Include="img\icons\emoticon\emoticon_grin.png" />
+    <Content Include="img\icons\emoticon\emoticon_happy.png" />
+    <Content Include="img\icons\emoticon\emoticon_heart.png" />
+    <Content Include="img\icons\emoticon\emoticon_smile.png" />
+    <Content Include="img\icons\emoticon\emoticon_soccer.png" />
+    <Content Include="img\icons\emoticon\emoticon_surprised.png" />
+    <Content Include="img\icons\emoticon\emoticon_tennis.png" />
+    <Content Include="img\icons\emoticon\emoticon_tongue.png" />
+    <Content Include="img\icons\emoticon\emoticon_unhappy.png" />
+    <Content Include="img\icons\emoticon\emoticon_up.png" />
+    <Content Include="img\icons\emoticon\emoticon_waii.png" />
+    <Content Include="img\icons\emoticon\emoticon_wink.png" />
+    <Content Include="img\icons\extensions\page_white.png" />
+    <Content Include="img\icons\extensions\page_white_acrobat.png" />
+    <Content Include="img\icons\extensions\page_white_c.png" />
+    <Content Include="img\icons\extensions\page_white_code.png" />
+    <Content Include="img\icons\extensions\page_white_cplusplus.png" />
+    <Content Include="img\icons\extensions\page_white_csharp.png" />
+    <Content Include="img\icons\extensions\page_white_database.png" />
+    <Content Include="img\icons\extensions\page_white_excel.png" />
+    <Content Include="img\icons\extensions\page_white_flash.png" />
+    <Content Include="img\icons\extensions\page_white_office.png" />
+    <Content Include="img\icons\extensions\page_white_php.png" />
+    <Content Include="img\icons\extensions\page_white_picture.png" />
+    <Content Include="img\icons\extensions\page_white_powerpoint.png" />
+    <Content Include="img\icons\extensions\page_white_ruby.png" />
+    <Content Include="img\icons\extensions\page_white_text.png" />
+    <Content Include="img\icons\extensions\page_white_tux.png" />
+    <Content Include="img\icons\extensions\page_white_visualstudio.png" />
+    <Content Include="img\icons\extensions\page_white_word.png" />
+    <Content Include="img\icons\extensions\page_white_zip.png" />
+    <Content Include="img\icons\icon_avatar.jpg" />
+    <Content Include="img\icons\icon_avatar_small.jpg" />
+    <Content Include="img\icons\icon_breadcrumb_divider.png" />
+    <Content Include="img\icons\icon_list_style_cross.png" />
+    <Content Include="img\icons\icon_main_nav_arrows.png" />
+    <Content Include="img\icons\icon_minimizer.png" />
+    <Content Include="img\icons\icon_options.png" />
+    <Content Include="img\icons\icon_outside.png" />
+    <Content Include="img\icons\icon_sidetabs.png" />
+    <Content Include="img\icons\icon_tabs.png" />
+    <Content Include="img\icons\icon_tip_box.png" />
+    <Content Include="img\icons\icon_top_scroll.png" />
+    <Content Include="img\icons\icon_user_logout.png" />
+    <Content Include="img\icons\icon_user_message.png" />
+    <Content Include="img\icons\icon_user_settings.png" />
+    <Content Include="img\icons\lists\icon_list_style_arrow.png" />
+    <Content Include="img\icons\lists\icon_list_style_attach.png" />
+    <Content Include="img\icons\lists\icon_list_style_basic.png" />
+    <Content Include="img\icons\lists\icon_list_style_checkmark.png" />
+    <Content Include="img\icons\lists\icon_list_style_circle.png" />
+    <Content Include="img\icons\lists\icon_list_style_cross.png" />
+    <Content Include="img\icons\loading\icon_loading_notification_black.gif" />
+    <Content Include="img\icons\loading\icon_loading_notification_blue.gif" />
+    <Content Include="img\icons\loading\icon_loading_notification_green.gif" />
+    <Content Include="img\icons\loading\icon_loading_notification_red.gif" />
+    <Content Include="img\icons\loading\icon_loading_notification_white.gif" />
+    <Content Include="img\icons\notifications\icon_notification_attention.png" />
+    <Content Include="img\icons\notifications\icon_notification_close.png" />
+    <Content Include="img\icons\notifications\icon_notification_error.png" />
+    <Content Include="img\icons\notifications\icon_notification_information.png" />
+    <Content Include="img\icons\notifications\icon_notification_note.png" />
+    <Content Include="img\icons\notifications\icon_notification_success.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_articles.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_contacts.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_looong.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_OrderList.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_sales.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_settings.png" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_specialOffer.jpg" />
+    <Content Include="img\icons\shortcuts\icon_shortcut_tickets.png" />
+    <Content Include="img\icons\social\blogger.png" />
+    <Content Include="img\icons\social\delicious.png" />
+    <Content Include="img\icons\social\deviantart.png" />
+    <Content Include="img\icons\social\digg.png" />
+    <Content Include="img\icons\social\facebook.png" />
+    <Content Include="img\icons\social\flickr.png" />
+    <Content Include="img\icons\social\forrst.png" />
+    <Content Include="img\icons\social\linkedin.png" />
+    <Content Include="img\icons\social\myspace.png" />
+    <Content Include="img\icons\social\rss.png" />
+    <Content Include="img\icons\social\technorati.png" />
+    <Content Include="img\icons\social\tumblr.png" />
+    <Content Include="img\icons\social\twitter.png" />
+    <Content Include="img\icons\social\vimeo.png" />
+    <Content Include="img\icons\social\wordpress.png" />
+    <Content Include="img\icons\social\yahoo.png" />
+    <Content Include="img\icons\social\youtube.png" />
+    <Content Include="img\icons\Vista-logout.png" />
+    <Content Include="img\jquery\ajaxLoader.gif" />
+    <Content Include="img\jquery\back_disabled.png" />
+    <Content Include="img\jquery\back_enabled.png" />
+    <Content Include="img\jquery\closelabel.png" />
+    <Content Include="img\jquery\datepicker.png" />
+    <Content Include="img\jquery\forward_disabled.png" />
+    <Content Include="img\jquery\forward_enabled.png" />
+    <Content Include="img\jquery\jquery.wysiwyg.gif" />
+    <Content Include="img\jquery\next.gif" />
+    <Content Include="img\jquery\prev.gif" />
+    <Content Include="img\jquery\sort_asc.png" />
+    <Content Include="img\jquery\sort_asc_disabled.png" />
+    <Content Include="img\jquery\sort_both.png" />
+    <Content Include="img\jquery\sort_desc.png" />
+    <Content Include="img\jquery\sort_desc_disabled.png" />
+    <Content Include="img\jquery\tooltip.gif" />
+    <Content Include="img\jquery\visualize_tooltip.png" />
+    <Content Include="js\anytime.js" />
+    <Content Include="js\anytimetz.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery\dropdowncontent.js" />
+    <Content Include="js\jquery\excanvas.js" />
+    <Content Include="js\jquery\jquery-1.6.4.js" />
+    <Content Include="js\jquery\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="js\jquery\jquery.datatables.js" />
+    <Content Include="js\jquery\jquery.datepicker.js" />
+    <Content Include="js\jquery\jquery.fileinput.js" />
+    <Content Include="js\jquery\jquery.fullcalendar.min.js" />
+    <Content Include="js\jquery\jquery.muonmenu.js" />
+    <Content Include="js\jquery\jquery.nyromodal.min.js" />
+    <Content Include="js\jquery\jquery.snippet.js" />
+    <Content Include="js\jquery\jquery.tipsy.js" />
+    <Content Include="js\jquery\jquery.ui.totop.js" />
+    <Content Include="js\jquery\jquery.visualize.js" />
+    <Content Include="js\jquery\jquery.visualize.tooltip.js" />
+    <Content Include="js\jquery\jquery.wysiwyg.js" />
+    <Content Include="js\libs\jquery-1.5.1.min.js" />
+    <Content Include="js\libs\modernizr-1.7.min.js" />
+    <Content Include="js\libs\selectivizr.js" />
+    <Content Include="js\login.js" />
+    <Content Include="js\script.js" />
+    <Content Include="js\ZeroClipboard.swf" />
+    <Content Include="Login.aspx" />
+    <Content Include="MeetingMaster.aspx" />
+    <Content Include="RollMaster.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UploadMinutes.aspx" />
+    <Content Include="UserControls\Error.ascx" />
+    <Content Include="UserControls\Info.ascx" />
+    <Content Include="UserMaster.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AccessRightAdmin.aspx.cs">
+      <DependentUpon>AccessRightAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccessRightAdmin.aspx.designer.cs">
+      <DependentUpon>AccessRightAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AccessRightsMaster.aspx.cs">
+      <DependentUpon>AccessRightsMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccessRightsMaster.aspx.designer.cs">
+      <DependentUpon>AccessRightsMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMasterPage.Master.cs">
+      <DependentUpon>AdminMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMasterPage.Master.designer.cs">
+      <DependentUpon>AdminMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AgendaMaster.aspx.cs">
+      <DependentUpon>AgendaMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgendaMaster.aspx.designer.cs">
+      <DependentUpon>AgendaMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerQuestion.aspx.cs">
+      <DependentUpon>AnswerQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnswerQuestion.aspx.designer.cs">
+      <DependentUpon>AnswerQuestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalMaster.aspx.cs">
+      <DependentUpon>ApprovalMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApprovalMaster.aspx.designer.cs">
+      <DependentUpon>ApprovalMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckerMaster.aspx.cs">
+      <DependentUpon>CheckerMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckerMaster.aspx.designer.cs">
+      <DependentUpon>CheckerMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateMeeting.aspx.cs">
+      <DependentUpon>CreateMeeting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateMeeting.aspx.designer.cs">
+      <DependentUpon>CreateMeeting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityMaster.aspx.cs">
+      <DependentUpon>EntityMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntityMaster.aspx.designer.cs">
+      <DependentUpon>EntityMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForumMaster.aspx.cs">
+      <DependentUpon>ForumMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForumMaster.aspx.designer.cs">
+      <DependentUpon>ForumMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MeetingMaster.aspx.cs">
+      <DependentUpon>MeetingMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MeetingMaster.aspx.designer.cs">
+      <DependentUpon>MeetingMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RollMaster.aspx.cs">
+      <DependentUpon>RollMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RollMaster.aspx.designer.cs">
+      <DependentUpon>RollMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UploadMinutes.aspx.cs">
+      <DependentUpon>UploadMinutes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadMinutes.aspx.designer.cs">
+      <DependentUpon>UploadMinutes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserAcess.cs" />
+    <Compile Include="UserControls\Error.ascx.cs">
+      <DependentUpon>Error.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Error.ascx.designer.cs">
+      <DependentUpon>Error.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Info.ascx.cs">
+      <DependentUpon>Info.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Info.ascx.designer.cs">
+      <DependentUpon>Info.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserMaster.aspx.cs">
+      <DependentUpon>UserMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserMaster.aspx.designer.cs">
+      <DependentUpon>UserMaster.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="css\.svn\prop-base\" />
+    <Folder Include="css\.svn\props\" />
+    <Folder Include="css\.svn\tmp\prop-base\" />
+    <Folder Include="css\.svn\tmp\props\" />
+    <Folder Include="css\.svn\tmp\text-base\" />
+    <Folder Include="css\img\.svn\prop-base\" />
+    <Folder Include="css\img\.svn\props\" />
+    <Folder Include="css\img\.svn\text-base\" />
+    <Folder Include="css\img\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\.svn\tmp\props\" />
+    <Folder Include="css\img\.svn\tmp\text-base\" />
+    <Folder Include="css\img\bgs\.svn\prop-base\" />
+    <Folder Include="css\img\bgs\.svn\props\" />
+    <Folder Include="css\img\bgs\.svn\text-base\" />
+    <Folder Include="css\img\bgs\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\bgs\.svn\tmp\props\" />
+    <Folder Include="css\img\bgs\.svn\tmp\text-base\" />
+    <Folder Include="css\img\bgs\fallback\.svn\prop-base\" />
+    <Folder Include="css\img\bgs\fallback\.svn\props\" />
+    <Folder Include="css\img\bgs\fallback\.svn\text-base\" />
+    <Folder Include="css\img\bgs\fallback\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\bgs\fallback\.svn\tmp\props\" />
+    <Folder Include="css\img\bgs\fallback\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\.svn\prop-base\" />
+    <Folder Include="css\img\icons\.svn\props\" />
+    <Folder Include="css\img\icons\.svn\text-base\" />
+    <Folder Include="css\img\icons\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\actions\.svn\prop-base\" />
+    <Folder Include="css\img\icons\actions\.svn\props\" />
+    <Folder Include="css\img\icons\actions\.svn\text-base\" />
+    <Folder Include="css\img\icons\actions\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\actions\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\actions\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\buttons\.svn\prop-base\" />
+    <Folder Include="css\img\icons\buttons\.svn\props\" />
+    <Folder Include="css\img\icons\buttons\.svn\text-base\" />
+    <Folder Include="css\img\icons\buttons\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\buttons\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\buttons\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\emoticon\.svn\prop-base\" />
+    <Folder Include="css\img\icons\emoticon\.svn\props\" />
+    <Folder Include="css\img\icons\emoticon\.svn\text-base\" />
+    <Folder Include="css\img\icons\emoticon\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\emoticon\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\emoticon\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\extensions\.svn\prop-base\" />
+    <Folder Include="css\img\icons\extensions\.svn\props\" />
+    <Folder Include="css\img\icons\extensions\.svn\text-base\" />
+    <Folder Include="css\img\icons\extensions\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\extensions\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\extensions\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\lists\.svn\prop-base\" />
+    <Folder Include="css\img\icons\lists\.svn\props\" />
+    <Folder Include="css\img\icons\lists\.svn\text-base\" />
+    <Folder Include="css\img\icons\lists\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\lists\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\lists\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\loading\.svn\prop-base\" />
+    <Folder Include="css\img\icons\loading\.svn\props\" />
+    <Folder Include="css\img\icons\loading\.svn\text-base\" />
+    <Folder Include="css\img\icons\loading\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\loading\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\loading\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\notifications\.svn\prop-base\" />
+    <Folder Include="css\img\icons\notifications\.svn\props\" />
+    <Folder Include="css\img\icons\notifications\.svn\text-base\" />
+    <Folder Include="css\img\icons\notifications\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\notifications\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\notifications\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\shortcuts\.svn\prop-base\" />
+    <Folder Include="css\img\icons\shortcuts\.svn\props\" />
+    <Folder Include="css\img\icons\shortcuts\.svn\text-base\" />
+    <Folder Include="css\img\icons\shortcuts\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\shortcuts\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\shortcuts\.svn\tmp\text-base\" />
+    <Folder Include="css\img\icons\social\.svn\prop-base\" />
+    <Folder Include="css\img\icons\social\.svn\props\" />
+    <Folder Include="css\img\icons\social\.svn\text-base\" />
+    <Folder Include="css\img\icons\social\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\icons\social\.svn\tmp\props\" />
+    <Folder Include="css\img\icons\social\.svn\tmp\text-base\" />
+    <Folder Include="css\img\jquery\.svn\prop-base\" />
+    <Folder Include="css\img\jquery\.svn\props\" />
+    <Folder Include="css\img\jquery\.svn\text-base\" />
+    <Folder Include="css\img\jquery\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\jquery\.svn\tmp\props\" />
+    <Folder Include="css\img\jquery\.svn\tmp\text-base\" />
+    <Folder Include="css\img\SpecialOfferBanner\.svn\prop-base\" />
+    <Folder Include="css\img\SpecialOfferBanner\.svn\props\" />
+    <Folder Include="css\img\SpecialOfferBanner\.svn\text-base\" />
+    <Folder Include="css\img\SpecialOfferBanner\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\SpecialOfferBanner\.svn\tmp\props\" />
+    <Folder Include="css\img\SpecialOfferBanner\.svn\tmp\text-base\" />
+    <Folder Include="css\img\Upload\.svn\prop-base\" />
+    <Folder Include="css\img\Upload\.svn\props\" />
+    <Folder Include="css\img\Upload\.svn\text-base\" />
+    <Folder Include="css\img\Upload\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\Upload\.svn\tmp\props\" />
+    <Folder Include="css\img\Upload\.svn\tmp\text-base\" />
+    <Folder Include="css\img\_sample-data\.svn\prop-base\" />
+    <Folder Include="css\img\_sample-data\.svn\props\" />
+    <Folder Include="css\img\_sample-data\.svn\text-base\" />
+    <Folder Include="css\img\_sample-data\.svn\tmp\prop-base\" />
+    <Folder Include="css\img\_sample-data\.svn\tmp\props\" />
+    <Folder Include="css\img\_sample-data\.svn\tmp\text-base\" />
+    <Folder Include="img\jquery\.svn\props\" />
+    <Folder Include="img\jquery\.svn\tmp\prop-base\" />
+    <Folder Include="img\jquery\.svn\tmp\props\" />
+    <Folder Include="img\jquery\.svn\tmp\text-base\" />
+    <Folder Include="js\.svn\props\" />
+    <Folder Include="js\.svn\tmp\prop-base\" />
+    <Folder Include="js\.svn\tmp\props\" />
+    <Folder Include="js\.svn\tmp\text-base\" />
+    <Folder Include="js\App_LocalResources\.svn\prop-base\" />
+    <Folder Include="js\App_LocalResources\.svn\props\" />
+    <Folder Include="js\App_LocalResources\.svn\text-base\" />
+    <Folder Include="js\App_LocalResources\.svn\tmp\prop-base\" />
+    <Folder Include="js\App_LocalResources\.svn\tmp\props\" />
+    <Folder Include="js\App_LocalResources\.svn\tmp\text-base\" />
+    <Folder Include="js\jquery\.svn\prop-base\" />
+    <Folder Include="js\jquery\.svn\props\" />
+    <Folder Include="js\jquery\.svn\tmp\prop-base\" />
+    <Folder Include="js\jquery\.svn\tmp\props\" />
+    <Folder Include="js\jquery\.svn\tmp\text-base\" />
+    <Folder Include="js\libs\.svn\prop-base\" />
+    <Folder Include="js\libs\.svn\props\" />
+    <Folder Include="js\libs\.svn\tmp\prop-base\" />
+    <Folder Include="js\libs\.svn\tmp\props\" />
+    <Folder Include="js\libs\.svn\tmp\text-base\" />
+    <Folder Include="UserControls\js\jquery\" />
+    <Folder Include="UserControls\js\libs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MM.Core\MM.Core.csproj">
+      <Project>{BDD1BEEB-072F-42E2-998C-E4480511AC53}</Project>
+      <Name>MM.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Data\MM.Data.csproj">
+      <Project>{3A72521B-0664-415C-B4C8-CD77C3BE5AD9}</Project>
+      <Name>MM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Domain\MM.Domain.csproj">
+      <Project>{73DD6684-8147-4A50-A6F7-BFE3945A0A83}</Project>
+      <Name>MM.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminMasterPage.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="css\.svn\all-wcprops" />
+    <None Include="css\.svn\entries" />
+    <None Include="css\.svn\text-base\colors.css.svn-base" />
+    <None Include="css\.svn\text-base\Drop.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery-ui-1.8.16.custom.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.datatables.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.datepicker.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.fileinput.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.fullcalendar.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.muon.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.nyromodal.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.snippet.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.tipsy.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.visualize.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.wysiwyg.css.svn-base" />
+    <None Include="css\.svn\text-base\jquery.wysiwyg.in.css.svn-base" />
+    <None Include="css\.svn\text-base\pagingstyle.css.svn-base" />
+    <None Include="css\.svn\text-base\screen.css.svn-base" />
+    <None Include="css\img\.svn\all-wcprops" />
+    <None Include="css\img\.svn\entries" />
+    <None Include="css\img\bgs\.svn\all-wcprops" />
+    <None Include="css\img\bgs\.svn\entries" />
+    <None Include="css\img\bgs\fallback\.svn\all-wcprops" />
+    <None Include="css\img\bgs\fallback\.svn\entries" />
+    <None Include="css\img\icons\.svn\all-wcprops" />
+    <None Include="css\img\icons\.svn\entries" />
+    <None Include="css\img\icons\actions\.svn\all-wcprops" />
+    <None Include="css\img\icons\actions\.svn\entries" />
+    <None Include="css\img\icons\buttons\.svn\all-wcprops" />
+    <None Include="css\img\icons\buttons\.svn\entries" />
+    <None Include="css\img\icons\emoticon\.svn\all-wcprops" />
+    <None Include="css\img\icons\emoticon\.svn\entries" />
+    <None Include="css\img\icons\extensions\.svn\all-wcprops" />
+    <None Include="css\img\icons\extensions\.svn\entries" />
+    <None Include="css\img\icons\lists\.svn\all-wcprops" />
+    <None Include="css\img\icons\lists\.svn\entries" />
+    <None Include="css\img\icons\loading\.svn\all-wcprops" />
+    <None Include="css\img\icons\loading\.svn\entries" />
+    <None Include="css\img\icons\notifications\.svn\all-wcprops" />
+    <None Include="css\img\icons\notifications\.svn\entries" />
+    <None Include="css\img\icons\shortcuts\.svn\all-wcprops" />
+    <None Include="css\img\icons\shortcuts\.svn\entries" />
+    <None Include="css\img\icons\social\.svn\all-wcprops" />
+    <None Include="css\img\icons\social\.svn\entries" />
+    <None Include="css\img\jquery\.svn\all-wcprops" />
+    <None Include="css\img\jquery\.svn\entries" />
+    <None Include="css\img\SpecialOfferBanner\.svn\all-wcprops" />
+    <None Include="css\img\SpecialOfferBanner\.svn\entries" />
+    <None Include="css\img\Upload\.svn\all-wcprops" />
+    <None Include="css\img\Upload\.svn\entries" />
+    <None Include="css\img\_sample-data\.svn\all-wcprops" />
+    <None Include="css\img\_sample-data\.svn\entries" />
+    <None Include="img\jquery\.svn\all-wcprops" />
+    <None Include="img\jquery\.svn\entries" />
+    <None Include="img\jquery\.svn\prop-base\ajaxLoader.gif.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\back_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\back_enabled.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\closelabel.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\datepicker.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\forward_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\forward_enabled.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\jquery.wysiwyg.gif.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\next.gif.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\prev.gif.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\sort_asc.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\sort_asc_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\sort_both.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\sort_desc.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\sort_desc_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\tooltip.gif.svn-base" />
+    <None Include="img\jquery\.svn\prop-base\visualize_tooltip.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\ajaxLoader.gif.svn-base" />
+    <None Include="img\jquery\.svn\text-base\back_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\back_enabled.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\closelabel.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\datepicker.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\forward_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\forward_enabled.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\jquery.wysiwyg.gif.svn-base" />
+    <None Include="img\jquery\.svn\text-base\next.gif.svn-base" />
+    <None Include="img\jquery\.svn\text-base\prev.gif.svn-base" />
+    <None Include="img\jquery\.svn\text-base\sort_asc.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\sort_asc_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\sort_both.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\sort_desc.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\sort_desc_disabled.png.svn-base" />
+    <None Include="img\jquery\.svn\text-base\tooltip.gif.svn-base" />
+    <None Include="img\jquery\.svn\text-base\visualize_tooltip.png.svn-base" />
+    <None Include="js\.svn\all-wcprops" />
+    <None Include="js\.svn\entries" />
+    <None Include="js\.svn\prop-base\ZeroClipboard.swf.svn-base" />
+    <None Include="js\.svn\text-base\anytime.js.svn-base" />
+    <None Include="js\.svn\text-base\anytimetz.js.svn-base" />
+    <None Include="js\.svn\text-base\jquery.js.svn-base" />
+    <None Include="js\.svn\text-base\login.js.svn-base" />
+    <None Include="js\.svn\text-base\script.js.svn-base" />
+    <None Include="js\.svn\text-base\ZeroClipboard.swf.svn-base" />
+    <None Include="js\App_LocalResources\.svn\all-wcprops" />
+    <None Include="js\App_LocalResources\.svn\entries" />
+    <None Include="js\jquery\.svn\all-wcprops" />
+    <None Include="js\jquery\.svn\entries" />
+    <None Include="js\jquery\.svn\text-base\dropdowncontent.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\excanvas.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery-1.6.4.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery-ui-1.8.11.custom.min.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.datatables.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.datepicker.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.fileinput.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.fullcalendar.min.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.muonmenu.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.nyromodal.min.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.snippet.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.tipsy.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.ui.totop.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.visualize.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.visualize.tooltip.js.svn-base" />
+    <None Include="js\jquery\.svn\text-base\jquery.wysiwyg.js.svn-base" />
+    <None Include="js\libs\.svn\all-wcprops" />
+    <None Include="js\libs\.svn\entries" />
+    <None Include="js\libs\.svn\text-base\jquery-1.5.1.min.js.svn-base" />
+    <None Include="js\libs\.svn\text-base\modernizr-1.7.min.js.svn-base" />
+    <None Include="js\libs\.svn\text-base\selectivizr.js.svn-base" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49875</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,117 @@
+
+/*****--------css for login screen--------*****/
+
+body { margin:0;padding:0; font-size:19px;color:#fff; font-family: 'open_sanslight';}
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('../fonts/opensans-light-webfont.eot');
+    src: url('../fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-light-webfont.woff') format('woff'),
+         url('../fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+p             { font-size:19px;color:#fff; font-family: 'open_sanslight';}
+a             { border:0;color:#fff;font-weight:bold;font-family: 'open_sanslight';text-decoration:none;}
+.wrapper      { width:1000px;margin:0 auto;height:auto}
+img{border:none;}
+img:hover{border:none !important;}
+img:focus{border:none !important;}
+.changepwwrap{border:1px solid #d2d2d2;padding:0 20px 30px 25px;}
+
+.login_screen       { width:360px;padding:75px 0 0 0;margin:0 auto; }
+.login_screen .logo { padding:13px 0px 13px 40px;background:#ff5c34;}
+/*.login_screen input:focus{ border:1px solid #8f8f8f !important; outline:0 !important;-webkit-border-radius: 7px;
+-moz-border-radius: 7px;border-radius: 7px;behavior: url(css/pie/PIE.htc) !important;}*/
+
+.forgotpwwrap{color:#696969;border: 1px solid #d2d2d2;float:left;
+    padding: 0 31px 30px 25px;height:auto;width:303px;}
+.forgotpwwrap #lblQuestion{font-size:15px;}
+.forgotpwwrap h2{color:#696969;padding:10px 0 0 0;margin:0;font-size:19px;}
+.forgotpwwrap label{font-size:13px;}
+.forgotpwwrap input{ background:#f1f1f1 ; border:1px solid #c6c6c6;padding:2% 42px 2% 18px;color:#868686;margin:4px 0 17px 0;font-size:16px;-webkit-border-radius: 7px;
+-moz-border-radius: 7px;border-radius: 7px;text-transform:capitalize;behavior: url(css/pie/PIE.htc);
+  }
+ .forgotpwwrap input[type="text"]:focus{border:1px solid #8f8f8f !important; outline:0 !important;behavior: url(css/pie/PIE.htc) !important;}
+ .loginwrap input[type="text"]:focus{border:1px solid #8f8f8f !important; outline:0 !important;behavior: url(css/pie/PIE.htc) !important;}  
+ .forgotpwwrap dl{padding:0;margin:0;}
+.forgotpwwrap dd{Width:100%;display:block;}  
+.forgotpwwrap #rfvNew{font-size:12px;}
+.loginwrap{border:1px solid #d2d2d2;padding:0 20px 30px 25px;color:#696969;}
+.loginwrap h2{color:#696969;padding:10px 0 0 0;margin:0;font-size:19px;}
+.loginwrap input{ background:#f1f1f1 ; border:1px solid #c6c6c6;width:229px;padding:2% 42px 2% 18px !important;color:#868686;margin:4px 0 17px 0;font-size:16px;-webkit-border-radius: 7px;
+-moz-border-radius: 7px;border-radius: 7px;text-transform:capitalize;behavior: url(css/pie/PIE.htc);
+  }
+
+.login_screen span{color:#696969;}
+.login_screen h2{color:#696969;padding:8px 0 ;margin:0;font-size:19px;}
+#rfvLogin{color:red;font-size:12px;padding:0 0 2px 0;display:inline-block;}
+#rfvPassword{color:red;font-size:12px;padding:0 0 2px 0;display:inline-block;}
+/*.login_screen input[type='text'],[type='password']{background:url(../images/txtBox.png) no-repeat center top;width:260px;height:33px;border:0;padding:15px 25px;color:#fff;margin:0 0 13px; }*/
+.login_screen .user { background:#f1f1f1 url(../images/user_img.png) no-repeat 260px center; border:1px solid #c6c6c6;width:229px;padding:2% 42px 2% 18px;color:#868686;margin:4px 0 17px 0;font-size:16px;-webkit-border-radius: 7px;
+-moz-border-radius: 7px;border-radius: 7px;text-transform:capitalize;behavior: url(css/pie/PIE.htc)
+  }
+.login_screen .user:focus{background:#f1f1f1 url(../images/user_img.png) repeat 260px center; border:1px solid #c6c6c6;width:229px;padding:2% 42px 2% 18px;color:#868686;margin:4px 0 17px 0;font-size:16px;-webkit-border-radius: 7px;
+-moz-border-radius: 7px;border-radius: 7px;text-transform:capitalize;behavior: url(css/pie/PIE.htc)}  
+.login_screen .pass { background:#f1f1f1 url(../images/pass_img.png) no-repeat 260px center; border:1px solid #c6c6c6;width:229px;padding:2% 42px 2% 18px;color:#868686;margin:4px 0 17px 0;font-size:16px;-webkit-border-radius: 7px;
+-moz-border-radius: 7px;text-transform:capitalize;
+border-radius: 7px;behavior: url(css/pie/PIE.htc);}
+.login_screen .btnLogin { background-color:#dd292e !important;border-radius:7px;border:0;padding:7px 20px !important;text-transform:uppercase;font-size:16px;cursor:pointer;behavior: url(css/pie/PIE.htc);color:#fff;float:right;margin-right:22px;width:auto;}
+.login_screen .btnLogin:hover { background-color:#dd292e !important;border-radius:7px;border:0;padding:7px 20px !important;text-transform:uppercase;font-size:16px;cursor:pointer;behavior: url(css/pie/PIE.htc);color:#fff;float:right;margin-right:22px;width:auto;}
+.login_screen .btnLogin:focus { background-color:#dd292e !important;border-radius:7px;border:0;padding:7px 20px !important;text-transform:uppercase;font-size:16px;cursor:pointer;behavior: url(css/pie/PIE.htc);color:#fff;float:right;margin-right:22px;width:auto;}
+
+.login_screen a         { text-align:left;font-size:13px;color:#ff5c34}
+.login_screen a:hover   { color:#ec1e27;}
+.fullwidth .btnSave { text-align:center;background-color:#DD292E;color:#fff;padding:8px 22px;border:0;border-radius:5px;cursor:pointer;margin:21px 6px 5px 0;text-transform:uppercase;float:left;width:100px;text-align:center;font-size:13px;}
+dd { margin:0;float:left }
+#divName input#btnNext  { background-color: #DD292E;
+    border: 0 none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 13px;
+    margin: 10px 6px 10px 0;
+    padding: 7px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80px;}
+
+#divName input#btnCancel  { background-color: #DD292E;
+    border: 0 none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 13px;
+    margin: 10px 6px 10px 0;
+    padding: 7px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80px;}
+.notification { border:1px solid #fff;border-radius:4px;padding:6px 10px;background-color:#f54d4d;display:block;width:269px; color:#fff !important;font-size:13px;}
+#divName{color:#696969;}
+    .notification ul { padding:0;margin:0;    }
+.notification ul li {  list-style-type:none;font-size:13px;   }
+.login_screen dl input.txtBox {  
+    background:#f1f1f1 !important;/*width:258px !important;*/behavior:url(css/pie/PIE.htc) !important;
+	border:1px solid #dcdcdc !important; 
+    border-radius: 7px;
+    
+    font-size: 19px;
+    
+    margin: 10px 0 0px;
+    padding:2% 1px 2% 13px;
+    width: 190px;}
+#divQuestion dd  {   float: left;
+    font-size: 18px;
+    margin: 0;
+    width: 100%;
+}
+ #lblQuest{color:#484646;font-size:15px;}
+ .questans{margin:0;padding:0;color:#484646;font-size:15px;}
+ .questans  label{font-weight:bold;display:inline-block;width:81px;}
+
+  #tdUp td{padding:0px !important;border:red 1px solid;}

@@ -1,0 +1,112 @@
+﻿<%@ Page Title="Change Password" Language="C#"  AutoEventWireup="true" CodeBehind="AnswerQuestion.aspx.cs" Inherits="MeetingMinder.Web.AnswerQuestion" %>
+<%@ Register TagName="Error" Src="UserControls/Error.ascx" TagPrefix="userControl" %>
+<%@ Register TagName="Info" Src="UserControls/Info.ascx" TagPrefix="userControl" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" class="no-js">
+<head >
+<title>Change Password</title>
+  <meta charset="UTF-8" content="" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="copyright" content="" />
+	<meta name="author" content="" />
+	<meta name="language" content="English" />
+	<meta name="robots" content="index, follow" />
+	<meta property="fb:page_id" content="XXX" /> <!-- XXX = Facebook Fan Page ID -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!-- Icons -->
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="css/screen.css" />
+	<link rel="stylesheet" href="css/colors.css" />
+	<link rel="stylesheet" href="css/jquery.tipsy.css" />
+	
+	<!-- Google WebFonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;v2' rel='stylesheet' type='text/css' />
+	
+	<!-- Modernizr adds classes to the <html> element which allow you to target specific browser functionality in your stylesheet -->
+	<script src="js/libs/modernizr-1.7.min.js"></script>
+       
+  
+</head>
+<body class="login">
+<form runat="server">
+<asp:Panel ID="aspPanel" runat="server" >
+<div>
+
+<article class="content-box minimizer" style="margin:20px 20px;">
+			<header>			
+				<h2>Change Password</h2>			
+			</header>
+			<section>              
+				<div >
+                  <form class="table-form">
+						<fieldset>
+							<legend><font color="#AE432E"><b>Security Question</b></font></legend>
+                             <dl>
+                                <div style="margin-bottom:15px"><userControl:Info ID="Info" runat="server" Visible="false" />
+                                      <userControl:Error ID="Error" runat="server" Visible="false" />   
+                                </div>
+                                <div style="margin-bottom:15px">
+                                    <asp:ValidationSummary ID="ValidationSummary" runat="server" 
+                                           CssClass="notification error" 
+                                           HeaderText="You must enter a valid value in the following fields:" 
+                                           ValidationGroup="a" />
+                                </div>
+                                <div>
+                                <div style="width:900px;">
+                                 <table width="75%">
+                                     <tr>
+                                     <td style="width:95px;">
+                                 Question
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:Label ID="lblQuest" Visible="false" runat="server"></asp:Label>
+                                     <asp:DropDownList ID="ddlSecurityQuestion" Width="73%" runat="server"></asp:DropDownList>
+                                  <asp:RequiredFieldValidator runat="server" ID="rfvQuestion" ControlToValidate="ddlSecurityQuestion" Display="Dynamic" ValidationGroup="a" ErrorMessage="Security Question" InitialValue="0" Text="Invalid" ForeColor="Red"></asp:RequiredFieldValidator>
+                                     </td>
+                                     </tr>
+                                     <tr>
+                                     <td style="width:95px;">
+                                    Answer
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:TextBox ID="txtSecurityAnswer" runat="server" Width="70%"></asp:TextBox>
+                                     <asp:RequiredFieldValidator runat="server" ID="rfvNew" ControlToValidate="txtSecurityAnswer" Display="Dynamic" ValidationGroup="a" ErrorMessage="Answer" Text="Invalid" ForeColor="Red"></asp:RequiredFieldValidator>
+                                     </td>
+                                     </tr>
+                             
+                                     <tr align="right">
+                                        <td colspan="5" align="right"> 
+                                        <asp:Button ID="btnSubmit" CausesValidation="true" ValidationGroup="a" runat="server" Text="Submit" onclick="btnSubmit_Click"></asp:Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" onclick="btnCancel_Click"></asp:Button>
+                                 </td>
+                                 </tr>
+                                 </table>
+                               </div>
+                               <br />
+						</fieldset>
+                             										
+					</form>									
+				</div>					
+				
+			</section>			
+		</article>
+    <div class="clearfix">
+    </div>
+
+    </asp:Panel>
+    </form>
+    </body>
+    </html>

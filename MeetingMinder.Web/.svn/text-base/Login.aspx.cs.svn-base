@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using MM.Core;
+using System.Text;
+using System.Collections.Specialized;
+using System.Configuration;
+
+namespace MeetingMinder.Web
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {           
+           string UserName = Encryptor.EncryptString("user");
+
+            string Password = Encryptor.EncryptString("password");
+            if (Request.QueryString["PageName"] == "Default")
+            {
+                Session.Abandon();
+                Session.Clear();
+              
+                Response.Redirect("Login.aspx");
+            }
+
+            //check user user session
+            if (Session["UserId"] != null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+        }
+        /// <summary>
+        /// Login button click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UserDomain list = UserDataProvider.Instance.UserLogin(txtLogin.Text, txtPassword.Text);
+
+                if (list != null)
+                {
+                    if (list.IsEnabledOnWebApp)
+                    {
+                        Session["UserId"] = list.UserId.ToString();
+                        Session["UserName"] = list.UserName.ToString();
+                        Session["IsMaker"] = list.IsMaker;
+                        txtLogin.Text = "";
+                        txtPassword.Text = "";
+                        //check for password change
+
+                        IList<AccessRightDomain> objAccess = AccessRightDataProvider.Instance.GetAccessRightByUserId(Guid.Parse(list.UserId.ToString()));
+                        //var parent = from obj in objAccess where obj.
+
+                        RollDomain objRoll = RollDataProvider.Instance.GetRollByUserId(Guid.Parse(list.UserId.ToString()));
+
+                        Session["Roll"] = objRoll;
+                        Session["AccessRight"] = objAccess;
+                        if (!list.IsAuthorized)
+                        {
+                            Session["IsAuthorized"] = false;
+                            Response.Redirect("ChangePassword.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("Default.aspx");
+                        }
+                    }
+                    else
+                    {
+                        lblmsg.Visible = true;
+                        lblmsg.Text = "Please Check your login id and password.";
+                    }
+                }
+                else
+                {
+                    lblmsg.Visible = true;
+                    lblmsg.Text = "Please Check your login id and password.";
+                }
+            }
+            catch(Exception ex)
+            {
+                lblmsg.Visible = true;
+                lblmsg.Text = "Please Check your login id and password.";
+            }
+        }
+    }
+}

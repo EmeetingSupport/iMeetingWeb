@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Data;
+using MM.Domain;
+using System.Data;
+
+namespace MM.Services
+{
+  public  class UserEntityServices
+    {
+        /// <summary>
+        /// Get Entity by user id
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public IList<UserEntityDomain> GetEntitybyUserId(string UserId)
+        {
+            return UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId));
+        }
+
+        /// <summary>
+        /// Get data for wcf services
+        /// </summary>
+        /// <param name="userId">Guid specifying UserId</param>
+        /// <param name="startTime">DateTime specifying startTime</param>
+        /// <param name="endTime">DateTime specifying endTime</param>
+        /// <param name="udid">string specifying udid</param>
+        /// <returns></returns>
+        public DataSet GetDataForWcf(Guid userId, DateTime startTime, DateTime endTime, string password)
+        {
+            return UserEntityDataProvider.Instance.GetDetailsForWcf(userId, startTime, endTime, password);
+        }
+
+
+        /// <summary>
+        /// Get data by entity for wcf  services
+        /// </summary>
+        /// <param name="userId">Guid specifying UserId</param>
+        /// <param name="startTime">DateTime specifying startTime</param>
+        /// <param name="endTime">DateTime specifying endTime</param>
+        /// <param name="udid">string specifying udid</param>
+        /// <returns></returns>
+        public DataSet GetDataForWcfWithEntity(Guid userId, DateTime startTime, DateTime endTime, Guid entityid, string udid)
+        {
+            return UserEntityDataProvider.Instance.GetDetailsForWcfByEntiy(userId, startTime, endTime, udid, entityid);
+        }
+
+        /// <summary>
+        /// Get data for wcf services
+        /// </summary>
+        /// <param name="userId">Guid specifying UserId</param>
+        /// <param name="password">string specifying password</param>     
+        /// <returns></returns>
+        public DataSet GetDataForWcfData(Guid userId, string password)
+        {
+            return UserEntityDataProvider.Instance.GetDetailsForWcfData(userId, password);
+        }
+
+        /// <summary>
+        /// Get data by entity for wcf services
+        /// </summary>
+        /// <param name="userId">Guid specifying UserId</param>
+        /// <param name="entityid">Guid specifying entityid</param>
+        /// <param name="endTime">string specifying udid</param>
+        /// <returns></returns>
+        public DataSet GetDataForWcfDataByEntity(Guid userId, Guid entityid, string udid)
+        {
+            return UserEntityDataProvider.Instance.GetDetailsForWcfDataByEntity(userId, udid, entityid);
+        }
+    }
+}

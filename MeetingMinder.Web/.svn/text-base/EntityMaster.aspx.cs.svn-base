@@ -1,0 +1,632 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+using System.Text;
+using System.IO;
+
+namespace MeetingMinder.Web
+{
+    public partial class EntityMaster : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //bind entity list
+                BindEntity();
+
+                //Bind User drop down
+                BindUsers();
+            }
+        }
+
+        /// <summary>
+        /// Bind User List to drop down
+        /// </summary>
+        private void BindUsers()
+        {
+            try
+            {
+                ddlUser.DataSource = UserDataProvider.Instance.GetAllChecker();
+                ddlUser.DataBind();
+                ddlUser.DataValueField = "UserId";
+                ddlUser.DataTextField = "UserName";
+                ddlUser.DataBind();
+
+                //Remove logged in users id from drop down
+                // string UserId = Convert.ToString(Session["UserId"]);
+                //  ListItem UserIdToRemove = ddlUser.Items.FindByValue(UserId);
+                //  ddlUser.Items.Remove(UserIdToRemove);
+
+                ddlUser.Items.Insert(0, new ListItem("Select User", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind Entity List
+        /// </summary>
+        private void BindEntity()
+        {
+            try
+            {
+                Literal ltl_bredcrumbs = (Literal)Master.FindControl("ltl_bredcrumbs");
+                ltl_bredcrumbs.Text = "";
+                ltl_bredcrumbs.Text = "<a href='" + VirtualPathUtility.ToAbsolute("~/default.aspx") + "' >Home<a>&nbsp;";
+                string UserId = Convert.ToString(Session["UserId"].ToString());
+                grdEntity.DataSource = UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId)); //EntityDataProvider.Instance.Get();
+                grdEntity.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Insert or edit values 
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnInsert_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEntityName.Text.Length > 0 && txtShortName.Text.Length > 0 && ddlUser.SelectedValue != "0")
+                {
+                    EntityDomain objEntity = new EntityDomain();
+                    objEntity.EntityName = txtEntityName.Text;
+
+                    Guid CheckerId;
+                    if (Guid.TryParse(ddlUser.SelectedValue, out CheckerId))
+                    {
+                        objEntity.EntityChecker = CheckerId;
+                    }
+
+                    objEntity.EntityShortName = txtShortName.Text;
+                    objEntity.IsEnable = chkEnable.Checked;
+
+                    //insert default image name
+                    string logoName = "sample_logo.gif";
+                    string logoNameMeeting = "";
+
+                    objEntity.UpdatedBy = Guid.Parse(Session["UserId"].ToString());
+
+                    objEntity.CreatedBy = Guid.Parse(Session["UserId"].ToString());
+
+                    if (objEntity.CreatedBy == objEntity.EntityChecker)
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Checker and Maker cannot be same ";
+                        Error.Visible = true;
+                        return;
+                    }
+                    bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                    if (isMaker)
+                    {
+
+                        //update Entity
+                        if (hdnEntityId.Value != null && hdnEntityId.Value != "")
+                        {
+                            //Guid CreatedBy = Guid.Parse(ViewState["CreatedBy"].ToString());
+
+                            //if (CreatedBy == objEntity.EntityChecker)
+                            //{
+                            //    ((Label)Error.FindControl("lblError")).Text = "Checker and Maker cannot be same ";
+                            //    Error.Visible = true;
+                            //    return;
+                            //}
+
+                            if (fuEntityLogo.HasFile)
+                            {
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"]);
+                                string contentType = fuEntityLogo.PostedFile.ContentType;
+                                if (contentType.ToLower().Contains("image/"))
+                                {
+                                    string ext = Path.GetExtension(fuEntityLogo.FileName);
+
+                                    logoName = DateTime.Now.Ticks + ext;
+                                    fuEntityLogo.PostedFile.SaveAs(Server.MapPath(savePath + logoName));
+
+                                    if (ViewState["file"] != null)
+                                    {
+                                        string fileName = Convert.ToString(ViewState["file"]);
+                                        if (fileName != "sample_logo.gif")
+                                            File.Delete(Server.MapPath(savePath + fileName));
+                                        ViewState["file"] = null;
+                                    }
+                                }
+                                else
+                                {
+                                    ((Label)Error.FindControl("lblError")).Text = "Invalid image Uploaded file";
+                                    Error.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                if (ViewState["file"] != null)
+                                {
+                                    logoName = Convert.ToString(ViewState["file"]);
+                                }
+                            }
+
+                            if (fuMeeting.HasFile)
+                            {
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"]);
+                                string contentType = fuEntityLogo.PostedFile.ContentType;
+                                string ext = Path.GetExtension(fuMeeting.FileName);
+
+                                if (ext.ToLower().Equals(".pdf"))
+                                {
+
+
+                                    logoNameMeeting = DateTime.Now.Ticks + ext;
+                                    fuMeeting.PostedFile.SaveAs(Server.MapPath(savePath + logoNameMeeting));
+
+                                    if (ViewState["fileMeeting"] != null)
+                                    {
+                                        string fileName = Convert.ToString(ViewState["fileMeeting"]);
+
+                                        File.Delete(Server.MapPath(savePath + fileName));
+                                        ViewState["fileMeeting"] = null;
+                                    }
+                                }
+                                else
+                                {
+                                    ((Label)Error.FindControl("lblError")).Text = "file must be pdf";
+                                    Error.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                if (ViewState["fileMeeting"] != null)
+                                {
+                                    logoNameMeeting = Convert.ToString(ViewState["fileMeeting"]);
+                                }
+                            }
+                            objEntity.EntityLogo = logoName;
+                            objEntity.EntityMeeting = logoNameMeeting;
+
+                            objEntity.EntityId = Guid.Parse(hdnEntityId.Value);
+                            EntityDataProvider.Instance.Update(objEntity);
+
+                            ((Label)Info.FindControl("lblName")).Text = " Entity Updated successfully";
+                        }
+                        //Insert Entity
+                        else
+                        {
+                            if (fuEntityLogo.HasFile)
+                            {
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"]);
+                                string contentType = fuEntityLogo.PostedFile.ContentType;
+                                if (contentType.ToLower().Contains("image/"))
+                                {
+                                    string ext = Path.GetExtension(fuEntityLogo.FileName);
+
+                                    logoName = DateTime.Now.Ticks + ext;
+                                    fuEntityLogo.PostedFile.SaveAs(Server.MapPath(savePath + logoName));
+
+                                    if (ViewState["file"] != null)
+                                    {
+                                        string fileName = Convert.ToString(ViewState["file"]);
+                                        if (fileName != "sample_logo.gif")
+                                            File.Delete(Server.MapPath(savePath + fileName));
+                                        ViewState["file"] = null;
+                                    }
+                                }
+                                else
+                                {
+                                    ((Label)Error.FindControl("lblError")).Text = "Invalid image Uploaded file";
+                                    Error.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                if (ViewState["file"] != null)
+                                {
+                                    logoName = Convert.ToString(ViewState["file"]);
+                                }
+                            }
+
+                            if (fuMeeting.HasFile)
+                            {
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"]);
+                                string contentType = fuEntityLogo.PostedFile.ContentType;
+                                string ext = Path.GetExtension(fuMeeting.FileName);
+
+                                if (ext.ToLower().Equals(".pdf"))
+                                {
+
+
+                                    logoNameMeeting = DateTime.Now.Ticks + ext;
+                                    fuMeeting.PostedFile.SaveAs(Server.MapPath(savePath + logoNameMeeting));
+
+                                    if (ViewState["fileMeeting"] != null)
+                                    {
+                                        string fileName = Convert.ToString(ViewState["fileMeeting"]);
+
+                                        File.Delete(Server.MapPath(savePath + fileName));
+                                        ViewState["fileMeeting"] = null;
+                                    }
+                                }
+                                else
+                                {
+                                    ((Label)Error.FindControl("lblError")).Text = "file must be pdf";
+                                    Error.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                if (ViewState["fileMeeting"] != null)
+                                {
+                                    logoNameMeeting = Convert.ToString(ViewState["fileMeeting"]);
+                                }
+                            }
+                            objEntity.EntityLogo = logoName;
+                            objEntity.EntityMeeting = logoNameMeeting;
+
+                            EntityDataProvider.Instance.Insert(objEntity);
+
+                            ((Label)Info.FindControl("lblName")).Text = " Entity inserted successfully";
+
+                        }
+                        Info.Visible = true;
+                        ClearData();
+                        BindEntity();
+
+                    }
+
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                        Error.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Insertion or Updation cancel
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnCancel_Click1(object sender, EventArgs e)
+        {
+            ClearData();
+        }
+
+        /// <summary>
+        /// Clear form data
+        /// </summary>
+        private void ClearData()
+        {
+            try
+            {
+                txtEntityName.Text = "";
+                hdnEntityId.Value = "";
+                txtShortName.Text = "";
+                chkEnable.Checked = false;
+                ddlUser.SelectedValue = "0";
+                btnInsert.Text = "Save";
+                hdnLogo.Value = "";
+                lnkView.Visible = false;
+                ViewState["file"] = null;
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Delelte Seleted Entity
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lbRemoveSelected_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //StringBuilder strQuery = new StringBuilder("");
+                StringBuilder strEntityIds = new StringBuilder(",");
+                int count = 0;
+                //get all checked entity
+                for (int i = 0; i < grdEntity.Rows.Count; i++)
+                {
+
+
+
+                    CheckBox chkSelect = (CheckBox)grdEntity.Rows[i].FindControl("chkSubAdmin");
+                    if (chkSelect.Checked)
+                    {
+                        count++;
+                        string EntityID = Convert.ToString(grdEntity.DataKeys[i].Value.ToString());
+                        //Delete all selected entity
+                        // strQuery.Append("	DELETE FROM [Entity]   WHERE  EntityId = '" + EntityID + "'  ");
+                        strEntityIds.Append(EntityID + ",");
+
+                    }
+                }
+                if (count > 0)
+                {
+                    bool bStatus = EntityDataProvider.Instance.DeleteSelectedEntity(strEntityIds.ToString());
+                    if (!bStatus)
+                    {
+                        ((Label)Info.FindControl("lblName")).Text = "Entity Deleted Successfully";
+                        Info.Visible = true;
+                        BindEntity();
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                        Error.Visible = true;
+                    }
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Please Select atleast one checkbox";
+                    Error.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Event That Fired on RowCommand
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdEntity_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                // delete entity
+                if (e.CommandName.ToLower().Equals("delete"))
+                {
+                    bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                    if (isMaker)
+                    {
+                        string EntityId = Convert.ToString(e.CommandArgument.ToString());
+                        bool bStatus = EntityDataProvider.Instance.Delete(Guid.Parse(EntityId));
+                        if (bStatus == false)
+                        {
+                            ((Label)Info.FindControl("lblName")).Text = "Entity Deleted Successfully";
+                            Info.Visible = true;
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                            Error.Visible = true;
+                        }
+                        BindEntity();
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                        Error.Visible = true;
+                    }
+                }
+
+
+                // view entity
+                if (e.CommandName.ToLower().Equals("view"))
+                {
+                    string EntityId = Convert.ToString(e.CommandArgument.ToString());
+                    Session["EntityId"] = EntityId;
+                    Response.Redirect("ForumMaster.aspx?id=" + EntityId);
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Row deleting event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdEntity_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Code to Row  editing event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdEntity_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            try
+            {
+                string EntityId = grdEntity.DataKeys[e.NewEditIndex].Value.ToString();
+
+                EntityDomain objEntity = EntityDataProvider.Instance.Get(Guid.Parse(EntityId));
+                txtEntityName.Text = objEntity.EntityName;
+                txtShortName.Text = objEntity.EntityShortName;
+                chkEnable.Checked = objEntity.IsEnable;
+                //  ddlUser.SelectedValue = Convert.ToString(objEntity.EntityChecker);
+                if (ddlUser.Items.FindByValue(
+Convert.ToString(objEntity.EntityChecker)) != null)
+                {
+                    ddlUser.SelectedValue = objEntity.EntityChecker.ToString();
+                }
+                else
+                {
+                    ddlUser.SelectedValue = "0";
+                }
+                hdnEntityId.Value = Convert.ToString(objEntity.EntityId);
+                hdnLogo.Value = objEntity.EntityLogo;
+                ViewState["CreatedBy"] = objEntity.CreatedBy;
+
+                if (objEntity.EntityLogo != null)
+                {
+                    if (objEntity.EntityLogo.Length > 0)
+                    {
+                        ViewState["file"] = objEntity.EntityLogo;
+                        lnkView.Visible = true;
+                    }
+                }
+
+                if (objEntity.EntityMeeting != null)
+                {
+                    if (objEntity.EntityMeeting.Length > 0)
+                    {
+                        ViewState["fileMeeting"] = objEntity.EntityMeeting;
+                        lnkViewMeeting.Visible = true;
+                    }
+                }
+
+                btnInsert.Text = "Update";
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Function Used For Gridview Sorting
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdEntity_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            try
+            {
+                string UserId = Convert.ToString(Session["UserId"].ToString());
+
+                DataTable dt = (DataTable)UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId)).AsDataTable();
+                DataView dv = new DataView(dt);
+                if (Convert.ToString(ViewState["sortDirection"]) == "asc")
+                {
+                    ViewState["sortDirection"] = "dsc";
+                    dv.Sort = e.SortExpression + " DESC";
+                }
+                else
+                {
+                    ViewState["sortDirection"] = "asc";
+                    dv.Sort = e.SortExpression + " ASC";
+                }
+
+                grdEntity.DataSource = dv;
+                grdEntity.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Code to PageIndex Changing
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdEntity_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdEntity.PageIndex = e.NewPageIndex;
+                BindEntity();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// View uploaded file
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Convert.ToString(ViewState["file"]);
+
+                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"]);
+
+                //Set the appropriate ContentType.
+                Response.ContentType = "application/octet-stream";
+                //Get the physical path to the file.
+                string FilePath = Server.MapPath(savePath + fileName);
+
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.WriteFile(FilePath);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// View meeting pdf
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lnkViewMeeting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Convert.ToString(ViewState["fileMeeting"]);
+
+                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["EntityLogo"]);
+
+                //Set the appropriate ContentType.
+                Response.ContentType = "application/octet-stream";
+                //Get the physical path to the file.
+                string FilePath = Server.MapPath(savePath + fileName);
+
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.WriteFile(FilePath);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+    }
+}

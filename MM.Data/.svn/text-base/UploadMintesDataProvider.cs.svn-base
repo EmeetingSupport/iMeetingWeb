@@ -1,0 +1,233 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+namespace MM.Data
+{
+    public class UploadMintesDataProvider : DataProvider
+    {
+        #region "Singleton"
+        private static volatile UploadMintesDataProvider _instance;
+        private static object _synRoot = new Object();
+
+        private UploadMintesDataProvider()
+        {
+        }
+
+        public static UploadMintesDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new UploadMintesDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+        #region "Fill"
+
+        /// <summary>
+        ///To Fill Upload Minutes details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private UploadMinutesDomain ToUploadMinutesDomain(IDataReader dr)
+        {
+            return new UploadMinutesDomain
+            {
+                UploadMinuteId = Null.SetNullGuid(dr["UploadMinuteId"]),
+                UplaodMinuteChecker = Null.SetNullGuid(dr["UplaodMinuteChecker"]),
+                UploadFile = Null.SetNullString(dr["UploadFile"]),
+                MeetingId = Null.SetNullGuid(dr["MeetingId"]),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+                CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+                UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"])
+            };
+        }
+
+        /// <summary>
+        /// To Fill uplaod Minutes Details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<UploadMinutesDomain> ToUploadMinuteDomains(IDataReader dr)
+        {
+            IList<UploadMinutesDomain> uploadMinutesDomains = new List<UploadMinutesDomain>();
+            while (dr.Read())
+            {
+                uploadMinutesDomains.Add(ToUploadMinutesDomain(dr));
+            }
+            return uploadMinutesDomains;
+        }
+
+        /// <summary>
+        /// To Fill All Upload minutes Details with forum and entity name and user details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<UploadMinutesDomain> ToUploadMinutesDomainWithUser(IDataReader dr)
+        {
+            IList<UploadMinutesDomain> objUploadMinutesDomain = new List<UploadMinutesDomain>();
+            UploadMinutesDomain objMinutes = null;
+            while (dr.Read())
+            {
+                objMinutes = new UploadMinutesDomain();
+             
+                objMinutes.FirstName = Encryptor.DecryptString(Null.SetNullString(dr["FirstName"]));
+                objMinutes.LastName = Encryptor.DecryptString(Null.SetNullString(dr["LastName"]));
+                objMinutes.UploadFile = Null.SetNullString(dr["UploadFile"]);
+                objMinutes.MeetingDate = Encryptor.DecryptString(Null.SetNullString(dr["MeetingDate"]));
+                objMinutes.MeetingTime = Encryptor.DecryptString(Null.SetNullString(dr["MeetingTime"]));
+                objMinutes.MeetingVenue = Encryptor.DecryptString(Null.SetNullString(dr["MeetingVenue"]));
+
+                objMinutes.MeetingId = Null.SetNullGuid(dr["MeetingId"]);
+                objMinutes.ForumId = Null.SetNullGuid(dr["ForumId"]);
+                objMinutes.EntityId = Null.SetNullGuid(dr["EntityId"]); 
+                objMinutes.UploadMinuteId = Null.SetNullGuid(dr["UploadMinuteId"]);
+                objMinutes.IsApproved = Null.SetNullString(dr["IsApproved"]);
+                objUploadMinutesDomain.Add(objMinutes);
+            }
+            return objUploadMinutesDomain;
+
+        }
+        #endregion
+
+        #region "Get"
+        /// <summary>
+        /// Get  Upload minutes details by meeting
+        /// </summary>
+        /// <returns></returns>
+        public UploadMinutesDomain GetUploadMinutesByMeetingId(Guid MeetingId)
+        {
+          UploadMinutesDomain uploadMinutesDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetMinutesBymeetingId", MeetingId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                uploadMinutesDomains = ToUploadMinutesDomain(dataReader);
+            }
+            return uploadMinutesDomains;
+        }
+        
+        
+
+        /// <summary>
+        /// Get all Upload minutes details
+        /// </summary>
+        /// <returns></returns>
+        public IList<UploadMinutesDomain> Get()
+        {
+            IList<UploadMinutesDomain> uploadMinutesDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllUploadMinutes"))
+            {
+                uploadMinutesDomains = ToUploadMinuteDomains(dataReader);
+            }
+            return uploadMinutesDomains;
+        }
+
+        /// <summary>
+        /// Get All unapproved minutes
+        /// </summary>
+        /// <param name="UserId">Guid sepcifing UserId</param>
+        /// <returns></returns>
+        public IList<UploadMinutesDomain> GetUnapprovedMinutes(Guid UserId)
+        {
+            IList<UploadMinutesDomain> uploadMinutesDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetUnApporvedMinutes", UserId))
+            {
+                uploadMinutesDomains = ToUploadMinutesDomainWithUser(dataReader);
+            }
+            return uploadMinutesDomains;
+        }
+
+        /// <summary>
+        /// Get upload minutes by id
+        /// </summary>
+        /// <param name="UploadMinutesId">Guid specifying UploadMinutesId</param>
+        /// <returns></returns>
+        public UploadMinutesDomain Get(Guid UploadMinutesId)
+        {
+            UploadMinutesDomain uploadMinutesDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetUploadMinutesById", UploadMinutesId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                uploadMinutesDomain = ToUploadMinutesDomain(dataReader);
+            }
+            return uploadMinutesDomain;
+        }
+
+        /// <summary>
+        /// Get Upload minutes by user id(only allowed)
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public IList<UploadMinutesDomain> GetUploadMinutesByUser(Guid UserId)
+        {
+            IList<UploadMinutesDomain> uploadMinutesDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetUploadMinutesByUser",UserId))
+            {
+                uploadMinutesDomains = ToUploadMinutesDomainWithUser(dataReader);
+            }
+            return uploadMinutesDomains;
+        }
+        #endregion
+
+        #region "Modify"
+        /// <summary>
+        /// Insert Upload minutes
+        /// </summary>
+        /// <param name="uploadMinutesDomain">Class object specifying uploadMinutesDomain</param>
+        /// <returns></returns>
+        public UploadMinutesDomain Insert(UploadMinutesDomain uploadMinutesDomain)
+        {
+            uploadMinutesDomain.UploadMinuteId = (Guid)SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertUploadMinutes", uploadMinutesDomain.UploadFile,uploadMinutesDomain.MeetingId,uploadMinutesDomain.CreatedBy,uploadMinutesDomain.UpdatedBy,uploadMinutesDomain.UplaodMinuteChecker );
+            return uploadMinutesDomain;
+        }
+
+        /// <summary>
+        /// Update Upload minutes by Id
+        /// </summary>
+        /// <param name="uploadMinutesDomain">Class object specifying uploadMinutesDomain</param>
+        /// <returns></returns>
+        public bool Update(UploadMinutesDomain uploadMinutesDomain)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateUploadMinutesById", uploadMinutesDomain.UploadFile, uploadMinutesDomain.MeetingId, uploadMinutesDomain.UpdatedBy, uploadMinutesDomain.UplaodMinuteChecker,uploadMinutesDomain.UploadMinuteId)) > 0;
+        }
+                    
+       
+        /// <summary>
+        /// Delete Upload Minutes
+        /// </summary>
+        /// <param name="UploadMinutesId">Guid specifying UploadMinutesId</param>
+        /// <returns></returns>
+        public bool Delete(Guid UploadMinutesId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteUploadMinutes", UploadMinutesId)) > 0;
+            
+        }
+
+      
+        #endregion
+    }
+}

@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Runtime.Serialization;
+
+namespace MeetingMInder.WCFServices.Response
+{
+    [DataContract]
+    public class GetAuthenticateDataResponse
+    {
+        [DataMember]
+        public List<EntityDetails> Entity{ get; set; }
+
+        [DataMember]
+        public List<ForumDetails> Forum { get; set;}
+
+        [DataMember]
+        public List<MeetingDetails> Meeting { get; set; }
+
+        [DataMember]
+        public List<AgendaDetails> Agenda { get; set; }
+
+        [DataMember]
+        public List<NoticeDetails> Notice { get; set; }
+
+        [DataMember]
+        public List<MinutesDetails> UploadedMinutes{get; set; }
+
+        [DataMember]
+        public string ResponseTime { get; set;}
+
+    }
+}

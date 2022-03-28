@@ -1,0 +1,4246 @@
+Time of Error: 3/29/2017 10:04 PM
+URL: http://localhost:55612/SBIService.svc/json/login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 3/29/2017 10:07 PM
+URL: http://localhost:55612/SBIService.svc/json/login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 3/29/2017 10:14 PM
+URL: http://localhost:55612/SBIService.svc/json/login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 6/5/2017 4:35 PM
+URL: http://localhost:55612/SBIService.svc/json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 4:47 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 5:01 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 5:07 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 5:55 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 6:14 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 6:16 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 233
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 6:18 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 233
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 6:22 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 233
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/7/2018 6:37 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 233
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 11:54 AM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 11:56 AM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 11:58 AM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 12:00 PM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 12:17 PM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 12:21 PM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 5/11/2018 12:23 PM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 232
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 07/24/18 5:00 PM
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Value cannot be null.
+Parameter name: addresses
+Source: System
+TargetSite: Void Add(System.String)
+StackTrace:    at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at MeetingMInder.WCFServices.SBIService.SendOTPMail(String OTP, String ToEmail) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 2417
+
+
+
+
+Time of Error: 07/24/18 5:05 PM
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Source: System
+TargetSite: Void CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)
+StackTrace:    at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MeetingMInder.WCFServices.SBIService.SendOTPMail(String OTP, String ToEmail) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\SBIService.svc.cs:line 2425
+
+
+
+
+Time of Error: 11/29/18 11:54 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 11/29/18 11:55 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/01/19 11:53 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/04/19 11:51 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/04/19 12:11 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/16/19 4:25 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/16/19 4:35 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: PostmanRuntime/7.4.0
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/16/19 4:35 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: PostmanRuntime/7.4.0
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 02/22/19 11:26 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\IMeeting_7may2018\IMeeting_21June2017\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 11:52 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 1:54 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 1:58 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 1:59 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:00 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:02 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 2:03 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:08 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 2:09 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:10 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 2:10 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:11 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 2:12 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:15 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:18 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:18 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 2:21 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:23 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 2:48 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 2:56 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 3:00 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 3:05 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 3:16 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 3:17 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 3:19 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 3:34 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/16/19 3:46 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 3:49 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 5:05 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/16/19 5:09 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Unable to connect to the remote server
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendInternationalPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2678
+
+
+Message: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.189.39.166:443
+Source: System
+TargetSite: Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+StackTrace:    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+
+
+
+
+Time of Error: 03/16/19 5:10 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Unable to connect to the remote server
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendDomesticPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2620
+
+
+Message: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.34.12:8080
+Source: System
+TargetSite: Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+StackTrace:    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+
+
+
+
+Time of Error: 03/16/19 5:11 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Unable to connect to the remote server
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendInternationalPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2678
+
+
+Message: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.189.39.166:443
+Source: System
+TargetSite: Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+StackTrace:    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+
+
+
+
+Time of Error: 03/16/19 5:32 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Unable to connect to the remote server
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendInternationalPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2678
+
+
+Message: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.189.39.166:443
+Source: System
+TargetSite: Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+StackTrace:    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+
+
+
+
+Time of Error: 03/18/19 11:35 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 12:16 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 12:20 PM
+URL: http://localhost:55612/SBIService.svc/Json/UserLock
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 12:22 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 1:02 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 1:08 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 1:09 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Unable to connect to the remote server
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendInternationalPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2702
+
+
+Message: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.189.39.166:443
+Source: System
+TargetSite: Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+StackTrace:    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+
+
+
+
+Time of Error: 03/18/19 2:39 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:40 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:41 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:42 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:44 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:44 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:48 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:48 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:50 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:50 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:51 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:52 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:53 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 2:54 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 2:55 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 3:43 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 3:43 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 3:44 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 3:45 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 3:46 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 3:52 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 3:53 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 3:54 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 4:10 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 4:28 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/18/19 4:30 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/18/19 4:32 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 230
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/19/19 1:02 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/19/19 1:05 PM
+error: The underlying connection was closed: An unexpected error occurred on a receive.
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 03/19/19 3:52 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/19/19 3:54 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 03/19/19 9:34 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 04/23/19 11:25 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 04/23/19 11:25 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 04/23/19 11:40 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 04/23/19 11:48 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 04/23/19 11:53 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 04/23/19 11:53 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 04/23/19 12:51 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 04/23/19 12:52 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: The underlying connection was closed: An unexpected error occurred on a send.
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendInternationalPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2732
+
+
+Message: Authentication failed because the remote party has closed the transport stream.
+Source: System
+TargetSite: Void StartReadFrame(Byte[], Int32, System.Net.AsyncProtocolRequest)
+StackTrace:    at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.TlsStream.CallProcessAuthentication(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+
+
+
+
+Time of Error: 04/23/19 2:09 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 04/23/19 2:10 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 04/23/19 2:13 PM
+URL: http://localhost:55612/SBIService.svc/Json/ForgotPassword
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: The underlying connection was closed: An unexpected error occurred on a send.
+Source: System
+TargetSite: System.Net.WebResponse GetResponse()
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.SendInternationalPassword(String FirstName, String MobileNo, String Password) in D:\Arvind\SBI\iMeeting_05March19\MeetingMInder.WCFServices\SBIService.svc.cs:line 2732
+
+
+Message: Authentication failed because the remote party has closed the transport stream.
+Source: System
+TargetSite: Void StartReadFrame(Byte[], Int32, System.Net.AsyncProtocolRequest)
+StackTrace:    at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.TlsStream.CallProcessAuthentication(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+
+
+
+
+Time of Error: 05/04/19 11:43 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 05/04/19 11:44 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 05/04/19 12:57 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 05/28/19 6:06 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 05/28/19 6:50 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 05/28/19 6:53 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 05/28/19 7:29 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 05/31/19 5:23 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/01/19 12:32 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/01/19 12:34 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/01/19 12:35 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/03/19 11:33 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 11:35 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/03/19 11:37 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 11:38 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/03/19 11:40 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 11:40 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/03/19 11:50 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 11:53 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/03/19 11:55 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 12:02 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 12:17 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 06/03/19 12:17 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 06/03/19 1:09 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 6/6/2019 11:10 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 6/7/2019 3:02 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 6/11/2019 3:06 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 6/11/2019 3:07 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 6/11/2019 3:09 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 6/15/2019 3:19 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 6/15/2019 3:20 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 11/25/2019 4:16 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 11/25/2019 4:17 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 11/25/2019 7:50 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 11/25/2019 7:51 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 11/25/2019 11:07 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 11/25/2019 11:07 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 11/26/2019 11:47 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 11/27/2019 1:16 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting_24April19\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/7/2019 10:53 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/7/2019 10:55 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/7/2019 4:09 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/9/2019 12:33 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/9/2019 12:34 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/10/2019 11:39 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/10/2019 11:40 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/10/2019 11:46 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/10/2019 11:47 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/10/2019 11:49 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/12/2019 10:52 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/12/2019 10:53 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/19/2019 9:25 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/19/2019 9:26 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/31/2019 4:51 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 12/31/2019 4:52 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 12/31/2019 5:30 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/1/2020 11:25 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/1/2020 11:26 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/1/2020 12:20 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/1/2020 12:28 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/1/2020 12:46 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/1/2020 12:46 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/1/2020 12:59 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/1/2020 3:08 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/1/2020 4:07 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 11:35 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 11:36 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 11:39 AM
+URL: http://localhost:55612/SBIService.svc/Json/Forum
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 11:45 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 11:45 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 12:05 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 12:06 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 12:18 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 12:31 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 12:31 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 12:34 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 12:34 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 12:54 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 12:55 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 2:34 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 2:35 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 2:37 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 2:38 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 2:39 PM
+URL: http://localhost:55612/SBIService.svc/Json/Forum
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Procedure or function '`stp_GetForumByUserAccess1`' cannot be found in database '`imeeting`'.
+Source: MySql.Data
+TargetSite: MySql.Data.MySqlClient.ProcedureCacheEntry GetProcData(MySql.Data.MySqlClient.MySqlConnection, System.String)
+StackTrace:    at MySql.Data.MySqlClient.ProcedureCache.GetProcData(MySqlConnection connection, String spName)
+   at MySql.Data.MySqlClient.ProcedureCache.AddNew(MySqlConnection connection, String spName)
+   at MySql.Data.MySqlClient.ProcedureCache.GetProcedure(MySqlConnection conn, String spName, String cacheKey)
+   at MySql.Data.MySqlClient.StoredProcedure.GetParameters(String procName)
+   at MySql.Data.MySqlClient.StoredProcedure.CheckParameters(String spName)
+   at MySql.Data.MySqlClient.StoredProcedure.Resolve(Boolean preparing)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MM.Data.ForumDataProvider.GetForumsByUserAccess(Guid UserId, Guid EntityId) in D:\Arvind\SBI\iMeeting16Oct19Dev\MM.Data\ForumDataProvider.cs:line 267
+   at MeetingMInder.WCFServices.SBIService.Forum(ForumRequest objRequest) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 2793
+
+
+
+
+Time of Error: 1/8/2020 2:41 PM
+URL: http://localhost:55612/SBIService.svc/Json/Forum
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Procedure or function '`stp_GetForumByUserAccess1`' cannot be found in database '`imeeting`'.
+Source: MySql.Data
+TargetSite: MySql.Data.MySqlClient.ProcedureCacheEntry GetProcData(MySql.Data.MySqlClient.MySqlConnection, System.String)
+StackTrace:    at MySql.Data.MySqlClient.ProcedureCache.GetProcData(MySqlConnection connection, String spName)
+   at MySql.Data.MySqlClient.ProcedureCache.AddNew(MySqlConnection connection, String spName)
+   at MySql.Data.MySqlClient.ProcedureCache.GetProcedure(MySqlConnection conn, String spName, String cacheKey)
+   at MySql.Data.MySqlClient.StoredProcedure.GetParameters(String procName)
+   at MySql.Data.MySqlClient.StoredProcedure.CheckParameters(String spName)
+   at MySql.Data.MySqlClient.StoredProcedure.Resolve(Boolean preparing)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MM.Data.ForumDataProvider.GetForumsByUserAccess(Guid UserId, Guid EntityId) in D:\Arvind\SBI\iMeeting16Oct19Dev\MM.Data\ForumDataProvider.cs:line 267
+   at MeetingMInder.WCFServices.SBIService.Forum(ForumRequest objRequest) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 2793
+
+
+
+
+Time of Error: 1/8/2020 2:51 PM
+URL: http://localhost:55612/SBIService.svc/Json/Forum
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Procedure or function '`stp_GetForumByUserAccess1`' cannot be found in database '`imeeting`'.
+Source: MySql.Data
+TargetSite: MySql.Data.MySqlClient.ProcedureCacheEntry GetProcData(MySql.Data.MySqlClient.MySqlConnection, System.String)
+StackTrace:    at MySql.Data.MySqlClient.ProcedureCache.GetProcData(MySqlConnection connection, String spName)
+   at MySql.Data.MySqlClient.ProcedureCache.AddNew(MySqlConnection connection, String spName)
+   at MySql.Data.MySqlClient.ProcedureCache.GetProcedure(MySqlConnection conn, String spName, String cacheKey)
+   at MySql.Data.MySqlClient.StoredProcedure.GetParameters(String procName)
+   at MySql.Data.MySqlClient.StoredProcedure.CheckParameters(String spName)
+   at MySql.Data.MySqlClient.StoredProcedure.Resolve(Boolean preparing)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MM.Data.ForumDataProvider.GetForumsByUserAccess(Guid UserId, Guid EntityId) in D:\Arvind\SBI\iMeeting16Oct19Dev\MM.Data\ForumDataProvider.cs:line 267
+   at MeetingMInder.WCFServices.SBIService.Forum(ForumRequest objRequest) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 2793
+
+
+
+
+Time of Error: 1/8/2020 3:22 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 3:23 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 3:25 PM
+URL: http://localhost:55612/SBIService.svc/Json/Meeting
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 3:27 PM
+URL: http://localhost:55612/SBIService.svc/Json/Meeting
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 3:29 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/8/2020 3:30 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/8/2020 3:30 PM
+URL: http://localhost:55612/SBIService.svc/Json/Meeting
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Encountered invalid character '	'.
+Source: System.Runtime.Serialization
+TargetSite: Int32 ComputeQuotedTextLengthUntilEndQuote(Byte[], Int32, Int32, Boolean ByRef)
+StackTrace:    at System.Runtime.Serialization.Json.XmlJsonReader.ComputeQuotedTextLengthUntilEndQuote(Byte[] buffer, Int32 offset, Int32 offsetMax, Boolean& escaped)
+   at System.Runtime.Serialization.Json.XmlJsonReader.ReadQuotedText(Boolean moveToText)
+   at System.Runtime.Serialization.Json.XmlJsonReader.ParseAndSetLocalName()
+   at System.Runtime.Serialization.Json.XmlJsonReader.ParseStartElement()
+   at System.Runtime.Serialization.Json.XmlJsonReader.Read()
+   at System.Xml.XmlDictionaryWriter.WriteNode(XmlDictionaryReader reader, Boolean defattr)
+   at System.ServiceModel.Channels.ReceivedMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   at System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   at System.ServiceModel.Channels.Message.WriteMessage(XmlDictionaryWriter writer)
+   at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.MessageToString(Message& message) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 482
+   at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 52
+
+
+
+
+Time of Error: 1/8/2020 3:31 PM
+URL: http://localhost:55612/SBIService.svc/Json/Meeting
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Encountered invalid character '	'.
+Source: System.Runtime.Serialization
+TargetSite: Int32 ComputeQuotedTextLengthUntilEndQuote(Byte[], Int32, Int32, Boolean ByRef)
+StackTrace:    at System.Runtime.Serialization.Json.XmlJsonReader.ComputeQuotedTextLengthUntilEndQuote(Byte[] buffer, Int32 offset, Int32 offsetMax, Boolean& escaped)
+   at System.Runtime.Serialization.Json.XmlJsonReader.ReadQuotedText(Boolean moveToText)
+   at System.Runtime.Serialization.Json.XmlJsonReader.ParseAndSetLocalName()
+   at System.Runtime.Serialization.Json.XmlJsonReader.ParseStartElement()
+   at System.Runtime.Serialization.Json.XmlJsonReader.Read()
+   at System.Xml.XmlDictionaryWriter.WriteNode(XmlDictionaryReader reader, Boolean defattr)
+   at System.ServiceModel.Channels.ReceivedMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   at System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   at System.ServiceModel.Channels.Message.WriteMessage(XmlDictionaryWriter writer)
+   at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.MessageToString(Message& message) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 482
+   at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 52
+
+
+
+
+Time of Error: 1/8/2020 3:37 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/9/2020 11:25 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/9/2020 11:28 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/9/2020 12:17 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/9/2020 12:18 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/9/2020 12:18 PM
+URL: http://localhost:55612/SBIService.svc/Json/Meeting
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+Message: Unknown column 'Agenda.Enable' in 'where clause'
+Source: MySql.Data
+TargetSite: MySql.Data.MySqlClient.MySqlPacket ReadPacket()
+StackTrace:    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MM.Data.MeetingDataProvider.GetMeetingByForumIdToPublishAgenda(Guid ForumId) in D:\Arvind\SBI\iMeeting16Oct19Dev\MM.Data\MeetingDataProvider.cs:line 897
+   at MeetingMInder.WCFServices.SBIService.Meeting(MeetingRequest objRequest) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 2840
+
+
+
+
+Time of Error: 1/9/2020 1:19 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/9/2020 1:19 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/9/2020 1:32 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/9/2020 1:32 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/9/2020 3:42 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/9/2020 3:43 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/10/2020 10:39 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/10/2020 10:39 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/14/2020 6:10 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/14/2020 6:11 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/15/2020 9:37 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/15/2020 11:52 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/16/2020 10:04 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/16/2020 10:06 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/16/2020 4:09 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/16/2020 5:51 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/16/2020 5:52 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/16/2020 6:15 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/16/2020 6:16 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/17/2020 8:53 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/17/2020 8:54 AM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 12:30 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 12:31 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 12:48 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 12:49 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 1:02 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 1:02 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 1:04 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 1:05 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 2:44 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 2:44 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 2:51 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 2:52 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 4:24 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/21/2020 4:26 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/21/2020 4:27 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 1/24/2020 6:09 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\Arvind\SBI\iMeeting16Oct19Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 3/12/2020 10:57 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting07Feb20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 3/12/2020 11:44 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting07Feb20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 3/12/2020 12:08 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting07Feb20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 3/12/2020 12:27 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\Arvind\SBI\iMeeting07Feb20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 11:07 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 11:13 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 11:16 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 12:37 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 12:40 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\SBIService.svc.cs:line 231
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: PostmanRuntime/7.26.3
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 8/13/2020 1:54 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 1:57 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 2:00 PM
+error: Unable to connect to the remote server
+StackTrace:    at System.Net.HttpWebRequest.GetResponse()
+   at MeetingMInder.WCFServices.SBIService.Login(LoginRequest objLogin)
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: PostmanRuntime/7.26.3
+User IP: ::1
+User Host Name: ::1
+
+
+Time of Error: 8/13/2020 2:36 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/13/2020 2:58 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 8/26/2020 4:27 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting02July20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/19/2021 3:57 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/19/2021 4:35 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/27/2021 2:53 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/27/2021 3:44 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/27/2021 3:46 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/27/2021 3:48 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/27/2021 4:59 PM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 1/28/2021 10:51 AM
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting04Sep20Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 40
+
+
+
+
+Time of Error: 2022-02-10 14:48
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting11Feb21Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 42
+
+
+
+
+Time of Error: 2022-03-05 17:15
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting11Feb21Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 42
+
+
+
+
+Time of Error: 2022-03-05 17:16
+URL: http://localhost:55612/SBIService.svc/Json/Login
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: PostmanRuntime/7.29.0
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting11Feb21Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 42
+
+
+
+
+Time of Error: 2022-03-21 16:02
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting11Feb21Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 42
+
+
+
+
+Time of Error: 2022-03-21 16:12
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting11Feb21Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 42
+
+
+
+
+Time of Error: 2022-03-21 18:54
+URL: http://localhost:55612/SBIService.svc/mex
+Form: 
+QueryString: 
+Server Name: localhost
+User Agent: 
+User IP: ::1
+User Host Name: ::1
+Message: Object reference not set to an instance of an object.
+Source: MeetingMInder.WCFServices
+TargetSite: System.Object AfterReceiveRequest(System.ServiceModel.Channels.Message ByRef, System.ServiceModel.IClientChannel, System.ServiceModel.InstanceContext)
+StackTrace:    at MeetingMInder.WCFServices.MessageInterceptor.CustomMessageInspector.AfterReceiveRequest(Message& request, IClientChannel channel, InstanceContext instanceContext) in D:\SBI\Development\iMeeting11Feb21Dev\MeetingMInder.WCFServices\MessageInterceptor\CustomMessageInspector.cs:line 42
+
+
+
+

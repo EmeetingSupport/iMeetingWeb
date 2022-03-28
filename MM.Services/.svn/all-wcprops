@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/scm/svn/MeetingMinder/!svn/ver/121/MM.Services
+END
+RollServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/RollServices.cs
+END
+UserEntityServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/UserEntityServices.cs
+END
+EntityServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/EntityServices.cs
+END
+AccessRightService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/AccessRightService.cs
+END
+SecurityQuestionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/SecurityQuestionService.cs
+END
+UserServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/198/MM.Services/UserServices.cs
+END
+AgendaServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/AgendaServices.cs
+END
+NoticeServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/NoticeServices.cs
+END
+Class1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Services/Class1.cs
+END
+MM.Services.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Services/MM.Services.csproj
+END
+UploadMinuteService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/UploadMinuteService.cs
+END
+AttendanceService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/AttendanceService.cs
+END
+ForumServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/ForumServices.cs
+END
+MeetingServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/MeetingServices.cs
+END
+GlobalSettingServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/188/MM.Services/GlobalSettingServices.cs
+END
+CheckerServices.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/83/MM.Services/CheckerServices.cs
+END

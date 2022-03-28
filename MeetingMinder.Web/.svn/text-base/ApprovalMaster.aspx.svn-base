@@ -1,0 +1,571 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMasterPage.Master" AutoEventWireup="true" CodeBehind="ApprovalMaster.aspx.cs" Inherits="MeetingMinder.Web.ApprovalMaster" %>
+<%@ Register TagName="Error" Src="~/UserControls/Error.ascx" TagPrefix="userControl" %>
+<%@ Register TagName="Info" Src="~/UserControls/Info.ascx" TagPrefix="userControl" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<style type="text/css">
+.ui-widget-header 
+{background-color:Blue;
+    }
+    
+    .ui-widget-content a 
+    {
+            color: Blue !important;
+    }
+</style>
+
+
+    <article class="content-box minimizer">
+			<header>			
+				<h2>Pending Details</h2>			
+			</header>
+			<section>              
+				<div >
+                <fieldset>
+							<legend><font color="#AE432E"><b>Pending list</b></font></legend>
+                            <dl>
+                                <div style="margin-bottom:15px">
+                                      <userControl:Info ID="Info" runat="server" Visible="false" />
+                                      <userControl:Error ID="Error" runat="server" Visible="false" />   
+                                </div>
+                                 
+                               <div style="margin-bottom:15px">
+                                    <%--<img width="16" height="16" src="img/icons/icon_list_style_cross.png" alt="" style="vertical-align: middle"/> --%>
+                                  
+                               </div>
+                               <div style="margin-bottom:15px">
+                               <asp:Label ID="lblTotalRecord" runat="server" Font-Bold="True"></asp:Label>
+                               </div>  
+                             <%--  <div style="margin-bottom:15px"> <asp:Label  ID="lblUser" runat="server" Text="Search User" Font-Bold="true" ></asp:Label> </div>  --%>
+                             <div>
+                               <div>
+                                  <asp:UpdatePanel id="ResultsUpdatePanel" runat="server">   
+                                 <ContentTemplate>
+                                    <div style="text-align:center;">
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="ResultsUpdatePanel" DynamicLayout="true">
+                        <ProgressTemplate>
+
+                           <img src="img/jquery/ajaxLoader.gif">
+
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                                 <table width="75%">
+                                  <tr>
+                                     <td style="width:95px;">
+                                    Select Master
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                  <asp:DropDownList AutoPostBack="true"  ID="ddlMaster" runat="server" 
+                                             onselectedindexchanged="ddlMaster_SelectedIndexChanged">
+                                             <asp:ListItem Text="Select Master" Value="0"></asp:ListItem>
+                                             <asp:ListItem Text="Entity" Value="Entity"></asp:ListItem>
+                                             <asp:ListItem Text="Forum" Value="Forum"></asp:ListItem>
+
+                                             <asp:ListItem Text="Meeting" Value="Meeting"></asp:ListItem>
+                                                 <asp:ListItem Text="User" Value="User"></asp:ListItem>
+                                                 <asp:ListItem Text="Notice" Value="Notice"></asp:ListItem>
+                                                 <asp:ListItem Text="Agenda" Value="Agenda"></asp:ListItem>
+                                               <asp:ListItem Text="Upload Minutes" Value="Minutes"></asp:ListItem> 
+                                             </asp:DropDownList>
+                                       
+                                     </td>
+                                   <%--  <td  style="width:250px;" align="left">
+                                  <asp:Button ID="btnGetApproval" runat="server" Text="Show Approval" />
+                                     </td>--%>
+                                     </tr>
+                                     </table>
+                             </div>                         
+                                  <br />
+                            <div>
+                             <asp:GridView ID="grdApprove" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="EntityId"                                
+                                    onsorting="grdApprove_Sorting" onrowcommand="grdApproveRowCommand" 
+                                    onpageindexchanging="grdApprove_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="Entity"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Entity" SortExpression="EntityName" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblEntity" runat="server" Text='<%# Eval("EntityName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Bind("EntityId") %>' CausesValidation="false" CommandName="view" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="Enable in Ipad" >
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable"  Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <%-- <asp:TemplateField HeaderText="Status" >
+                                        <ItemTemplate>
+                                       <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("IsApproved") %>'></asp:Label>
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("EntityId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+                                           &nbsp; &nbsp;  <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("EntityId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                                
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+
+                              <div>
+                             <asp:GridView ID="grdForum" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="ForumId"                                
+                                    onsorting="grdForum_Sorting" onrowcommand="grdForumRowCommand" 
+                                      onpageindexchanging="grdForum_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="Forum"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Entity" SortExpression="EntityName" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblEntity" runat="server" Text='<%# Bind("EntityName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="Forum" SortExpression="ForumName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblForum" runat="server" Text='<%# Bind("ForumName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Bind("ForumId") %>' CausesValidation="false" CommandName="View" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>
+
+                                       
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                          <asp:TemplateField HeaderText="Enable in Ipad" >
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable" Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("ForumId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+
+                                           &nbsp; &nbsp; <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("ForumId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                                   
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+
+                                <div>
+                             <asp:GridView ID="grdMeeting" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="MeetingId"                                
+                                    onsorting="grdMeeting_Sorting" onrowcommand="grdMeetingCommand" 
+                                        onpageindexchanging="grdMeeting_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="Meeting"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Entity" SortExpression="EntityName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTpe" runat="server" Text='<%# Bind("EntityName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Forum" SortExpression="ForumName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblype" runat="server" Text='<%# Bind("ForumName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="Meeting" SortExpression="MeetingVenue">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTe" runat="server" Text='<%#Eval("MeetingDate", "{0:dd/MM/yyyy}" ) +" "+ Eval("MeetingTime") +" "+ Eval("MeetingVenue") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Eval("MeetingId")+","+Eval("EntityName")+","+Eval("ForumName") %>' CausesValidation="false" CommandName="view" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>
+                                       
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                          <asp:TemplateField HeaderText="Enable in Ipad" >
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable" Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("MeetingId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+                                           &nbsp; &nbsp; <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("MeetingId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                             
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+
+                                  <div>
+                             <asp:GridView ID="grdUser" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="UserId"                                
+                                    onsorting="grdUserSorting" onrowcommand="grdUserCommand" 
+                                        onpageindexchanging="grdUser_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="User"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="Image" >
+                                        <ItemTemplate>
+                                         <img id="UserImg" height="50px" width="100px" src="img/Uploads/ProfilePic/<%# Eval("Photograph") %>" alt="Image Not Available" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Name" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTpe" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Designation" SortExpression="Designation">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblDesignation" runat="server" Text='<%# Bind("Designation") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                  
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("CreaterFirstName") +" "+ Eval("CreaterLastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Bind("UserId") %>' CausesValidation="false" CommandName="view" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>
+                                         
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                          <asp:TemplateField HeaderText="Enable in Ipad" Visible="false">
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable" Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("UserId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+                                           &nbsp; &nbsp; <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("UserId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                             
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+
+                             <div>
+                             <asp:GridView ID="grdNotice" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="NoticeId"                                
+                                    onsorting="grdNotice_Sorting" onrowcommand="grdNoticeRowCommand" 
+                                    onpageindexchanging="grdNotice_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="Notice"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Meeting" SortExpression="MeetingVenue" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblMeeting"  style="text-align:justify" Width="200px"  runat="server" Text='<%#Eval("MeetingDate", "{0:dd/MM/yyyy}" ) +" "+ Eval("MeetingTime") +" "+ Eval("MeetingVenue") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Eval("NoticeId")+","+Eval("MeetingDate")+","+ Eval("MeetingTime") +","+ Eval("MeetingVenue")  %>' CausesValidation="false" CommandName="view" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="Enable in Ipad" >
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable" Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("NoticeId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+                                           &nbsp; &nbsp;  <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("NoticeId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                                
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+
+                              <div>
+                             <asp:GridView ID="grdAgenda" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="MeetingId"                                
+                                    onsorting="grdAgenda_Sorting" onrowcommand="grdAgendaCommand" 
+                                        onpageindexchanging="grdAgenda_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="Meeting"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Entity" SortExpression="EntityName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTpe" runat="server" Text='<%# Bind("EntityName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Forum" SortExpression="ForumName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblype" runat="server" Text='<%# Bind("ForumName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="Meeting" SortExpression="MeetingVenue">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTe" runat="server" Text='<%#Eval("MeetingDate", "{0:dd/MM/yyyy}" ) +" "+ Eval("MeetingTime") +" "+ Eval("MeetingVenue") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                      <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Eval("MeetingId") %>' CausesValidation="false" CommandName="view" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>
+                                       
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                          <asp:TemplateField HeaderText="Enable in Ipad" >
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable" Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("MeetingId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+                                           &nbsp; &nbsp; <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("MeetingId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                             
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+                              <div>
+                             <asp:GridView ID="grdMinutes" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="UploadMinuteId"                                
+                                    onsorting="grdMinutes_Sorting" onrowcommand="grdMinutesRowCommand" 
+                                    onpageindexchanging="grdMinutes_PageIndexChanging">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+                                     <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Type" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblType" runat="server" Text="Upload Minutes"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Meeting" SortExpression="MeetingVenue" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblEntity" runat="server" Text='<%#Eval("MeetingDate", "{0:dd/MM/yyyy}" ) +" "+ Eval("MeetingTime") +" "+ Eval("MeetingVenue") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+
+                                    <asp:TemplateField HeaderText="Created By" SortExpression="FirstName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#Eval("FirstName") +" "+ Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="View" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnView" CommandArgument='<%# Eval("UploadMinuteId") +","+Eval("MeetingDate") +","+ Eval("MeetingTime") +","+ Eval("MeetingVenue") %>' CausesValidation="false" CommandName="view" Text="View Details" runat="server" ToolTip="View Details"></asp:LinkButton>
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+
+                                    <asp:TemplateField HeaderText="Enable in Ipad" >
+                                        <ItemTemplate>
+                                       <asp:CheckBox ID="chkEnable" Checked="true" runat="server" />
+                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Action" >
+                                        <ItemTemplate>
+                                           <asp:LinkButton ID="lbnApprove" CommandArgument='<%# Bind("UploadMinuteId") %>' CausesValidation="false" CommandName="Approve" Text="Approve" runat="server" ToolTip="Approve"></asp:LinkButton>
+                                           &nbsp; &nbsp;  <asp:LinkButton ID="lbnReject" CommandArgument='<%# Bind("UploadMinuteId") %>' CausesValidation="false" CommandName="Decline" Text="Decline" runat="server" ToolTip="Decline"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                                                
+                                 </Columns>
+                                </asp:GridView>
+                            </div>
+                            </ContentTemplate>
+                                    <Triggers>
+                               <asp:AsyncPostBackTrigger ControlID="ddlMaster" />
+                               <asp:PostBackTrigger ControlID="grdMeeting" />
+                               <asp:PostBackTrigger ControlID="grdForum" />
+                               <asp:PostBackTrigger ControlID="grdApprove" />
+                               <asp:PostBackTrigger ControlID="grdUser" />
+                               <asp:PostBackTrigger ControlID="grdNotice" />
+                                 <asp:PostBackTrigger ControlID="grdAgenda" />
+                                 <asp:PostBackTrigger ControlID="grdMinutes"/>
+    </Triggers>
+</asp:UpdatePanel>
+</div>
+</div>
+                            </dl>
+                            </fieldset>
+           
+                     <div ID="divdetails" runat="server" style="margin-bottom:15px">
+                                        
+                     </div>
+                                </div>
+                                <div runat="server" clientidmode="Static" style="display:none;height:200px !important; overflow:scroll;" id="dialog">
+<asp:Label ID="lblDetails" runat="server"></asp:Label>
+</div>
+                                </section>
+                                </article>
+</asp:Content>

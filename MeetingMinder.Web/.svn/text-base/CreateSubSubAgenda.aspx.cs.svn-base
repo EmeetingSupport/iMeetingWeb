@@ -1,0 +1,468 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+using System.Text;
+using System.IO;
+
+namespace MeetingMinder.Web
+{
+    public partial class CreateSubSubAgenda : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //Bind sub agenda
+                BindSubAgenda();
+                if (Request.UrlReferrer != null)
+                {
+                    string previousUrl = Request.UrlReferrer.ToString();
+                    ViewState["previousUrl"] = previousUrl;
+                }
+                else
+                {
+                    Response.Redirect("default.aspx");
+                }
+
+                //Bind all agenda items
+                BindAllAgenda();
+            }
+        }
+
+        /// <summary>
+        /// Bind all agenda items
+        /// </summary>
+        private void BindAllAgenda()
+        {
+            try
+            {
+                IList<AgendaDomain> objAgenda = AgendaDataProvider.Instance.GetAllAgendaTitles();
+                ddlMaster.DataSource = objAgenda;
+                ddlMaster.DataBind();
+                ddlMaster.DataTextField = "AgendaName";
+                ddlMaster.DataBind();
+                ddlMaster.Items.Insert(0, new ListItem("Select ", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind sub agenda to grid view
+        /// </summary>
+        private void BindSubAgenda()
+        {
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    string AgendaId = Convert.ToString(Request.QueryString["id"]);
+                    IList<AgendaDomain> objAgenda = AgendaDataProvider.Instance.GetSubAgendaByAgendaId(Guid.Parse(AgendaId));
+
+                    IList<AgendaDomain> objAgendaDetails = AgendaDataProvider.Instance.GetAgendabyMeetingId(objAgenda[0].MeetingId);
+                    ViewState["entityId"] = objAgendaDetails[0].EntityId;
+
+                    ViewState["MeetingId"] = objAgenda[0].MeetingId;
+
+                    List<AgendaDomain> agenda = (from p in objAgenda
+
+                                                 select p).ToList();
+                    lblAgenda.Text = agenda[0].AgendaName;
+                    objAgenda.Remove(agenda[0]);
+                    grdSubAgenda.DataSource = objAgenda;
+                    grdSubAgenda.DataBind();
+                    ViewState["AgendaId"] = AgendaId;
+
+
+
+                }
+                else
+                {
+                    Response.Redirect("CreateAgenda.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+
+            }
+
+        }
+
+        /// <summary>
+        /// Button submit click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AgendaDomain objAgenda = new AgendaDomain();
+
+                objAgenda.AgendaName = txtSubAgenda.Text;
+                objAgenda.AgendaNote = txtAgendaNote.Text;
+
+                objAgenda.PublishedBy = Guid.Parse(Session["UserId"].ToString());
+                objAgenda.UpdatedBy = Guid.Parse(Session["UserId"].ToString());
+                //  objAgenda.UploadedAgendaNote = txtSubAgenda.Text;
+
+
+                objAgenda.ParentAgendaId = Guid.Parse(ViewState["AgendaId"].ToString());
+
+                objAgenda.MeetingId = Guid.Parse(Convert.ToString(ViewState["MeetingId"]));
+
+                string agendaName;
+
+                bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                if (isMaker)
+                {
+
+                    //Update
+                    if (hdnAgendaId != null && hdnAgendaId.Value != "")
+                    {
+                        if (fuAgenda.HasFile)
+                        {
+                            string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+                            string contentType = fuAgenda.PostedFile.ContentType;
+
+                            string ext = Path.GetExtension(fuAgenda.FileName);
+                            if (ext.ToLower().Equals(".pdf"))
+                            {
+                                agendaName = DateTime.Now.Ticks + ext;
+                                fuAgenda.PostedFile.SaveAs(Server.MapPath(savePath + agendaName));
+
+                                objAgenda.UploadedAgendaNote = agendaName;
+
+
+                                //Delete existing image
+                                if (ViewState["file"] != null)
+                                {
+                                    string fileName = Convert.ToString(ViewState["file"]);
+                                    File.Delete(Server.MapPath(savePath + fileName));
+                                    ViewState["file"] = null;
+                                }
+                            }
+                            else
+                            {
+                                ((Label)Error.FindControl("lblError")).Text = "Upload minutes file must be pdf";
+                                Error.Visible = true;
+                                Info.Visible = false;
+                                return;
+                            }
+                        }
+                        if (ViewState["file"] != null)
+                        {
+                            string fileName = Convert.ToString(ViewState["file"]);
+                            objAgenda.UploadedAgendaNote = fileName;
+                        }
+
+                        objAgenda.AgendaId = Guid.Parse(hdnAgendaId.Value);
+                        bool status = AgendaDataProvider.Instance.Update(objAgenda);
+                        ((Label)Info.FindControl("lblName")).Text = "Agenda updated successfully";
+                        Info.Visible = true;
+                        BindSubAgenda();
+                        ClearData();
+                    }
+                    //Insert
+                    else
+                    {
+                        UserAcess objUser = new UserAcess();
+                        //check add permission
+                        if (objUser.IsEdit(Guid.Parse(ViewState["entityId"].ToString())))
+                        {
+                            if (fuAgenda.HasFile)
+                            {
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+                                string contentType = fuAgenda.PostedFile.ContentType;
+
+                                string ext = Path.GetExtension(fuAgenda.FileName);
+                                if (ext.ToLower().Equals(".pdf"))
+                                {
+                                    agendaName = DateTime.Now.Ticks + ext;
+                                    fuAgenda.PostedFile.SaveAs(Server.MapPath(savePath + agendaName));
+
+                                    objAgenda.UploadedAgendaNote = agendaName;
+
+
+                                    //Delete existing image
+                                    if (ViewState["file"] != null)
+                                    {
+                                        string fileName = Convert.ToString(ViewState["file"]);
+                                        File.Delete(Server.MapPath(savePath + fileName));
+                                        ViewState["file"] = null;
+                                    }
+                                }
+                                else
+                                {
+                                    ((Label)Error.FindControl("lblError")).Text = "Upload minutes file must be pdf";
+                                    Error.Visible = true;
+                                    Info.Visible = false;
+                                    return;
+                                }
+                            }
+                            objAgenda.CreatedBy = Guid.Parse(Session["UserId"].ToString());
+                            AgendaDataProvider.Instance.Insert(objAgenda);
+                            ((Label)Info.FindControl("lblName")).Text = "Sub Agenda inserted successfully";
+
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                            Error.Visible = true;
+                            Info.Visible = false;
+                        }
+                    }
+                    Info.Visible = true;
+                    BindSubAgenda();
+                    ClearData();
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                    Error.Visible = true;
+                    Info.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+                Info.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Button cancel click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearData();
+        }
+
+        /// <summary>
+        /// Clear form data
+        /// </summary>
+        private void ClearData()
+        {
+            try
+            {
+                txtAgendaNote.Text = "";
+                txtSubAgenda.Text = "";
+                hdnAgendaId.Value = "";
+                btnSubmit.Text = "Submit";
+
+                ViewState["file"] = null;
+                lnkView.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Grid view rowcommand event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdSubAgenda_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+
+                UserAcess objUser = new UserAcess();
+                if (e.CommandName.ToLower().Equals("del"))
+                {
+                    bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                    if (isMaker)
+                    {
+                        if (objUser.isDelete(Guid.Parse(ViewState["entityId"].ToString())))
+                        {
+                            string AgendaId = Convert.ToString(e.CommandArgument);
+                            string[] ids = AgendaId.Split(',');
+                            bool status = AgendaDataProvider.Instance.Delete(Guid.Parse(ids[0]));
+
+                            ((Label)Info.FindControl("lblName")).Text = "Agenda deleted successfully";
+
+                            if (ids.Count() == 2)
+                            {
+
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+
+                                //Delete existing image                                               
+                                // File.Delete(Server.MapPath(savePath + ids[1]));
+                            }
+
+                            BindSubAgenda();
+                            Info.Visible = true;
+                            ClearData();
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                            Error.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                        Error.Visible = true;
+                    }
+                }
+
+                if (e.CommandName.ToLower().Equals("editagenda"))
+                {
+                    if (objUser.IsEdit(Guid.Parse(ViewState["entityId"].ToString())))
+                    {
+                        string strAgendaId = Convert.ToString(e.CommandArgument);
+
+                        AgendaDomain objAgenda = AgendaDataProvider.Instance.Get(Guid.Parse(strAgendaId));
+
+                        hdnAgendaId.Value = objAgenda.AgendaId.ToString();
+
+                        txtAgendaNote.Text = objAgenda.AgendaNote;
+                        txtSubAgenda.Text = objAgenda.AgendaName;
+
+                        if (objAgenda.UploadedAgendaNote != null)
+                        {
+                            if (objAgenda.UploadedAgendaNote.Length > 0)
+                            {
+                                ViewState["file"] = objAgenda.UploadedAgendaNote;
+                                lnkView.Visible = true;
+                            }
+                        }
+
+                        btnSubmit.Text = "Update";
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                        Error.Visible = true;
+                    }
+                }
+
+
+                if (e.CommandName.ToLower().Equals("download"))
+                {
+                    string fileName = Convert.ToString(e.CommandArgument);
+                    string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+
+                    //Set the appropriate ContentType.
+                    Response.ContentType = "application/octet-stream";
+                    //Get the physical path to the file.
+                    string FilePath = Server.MapPath(savePath + fileName);
+                    //Write the file directly to the HTTP content output stream.
+
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                    Response.WriteFile(FilePath);
+                    Response.End();
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+
+        }
+
+        /// <summary>
+        /// Gridview pageindex change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdSubAgenda_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdSubAgenda.PageIndex = e.NewPageIndex;
+                BindSubAgenda();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// View uploaded file
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Convert.ToString(ViewState["file"]);
+
+                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+
+                //Set the appropriate ContentType.
+                Response.ContentType = "application/octet-stream";
+                //Get the physical path to the file.
+                string FilePath = Server.MapPath(savePath + fileName);
+
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.WriteFile(FilePath);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Back button click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = Convert.ToString(ViewState["previousUrl"]);
+                if (url != null && url != "")
+                {
+                    Response.Redirect(url);
+                }
+                else
+                {
+                    Response.Redirect("default.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+
+    }
+}

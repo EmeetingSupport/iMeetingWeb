@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/scm/svn/MeetingMinder/!svn/ver/125/MM.Domain
+END
+ApprovalDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/145/MM.Domain/ApprovalDomain.cs
+END
+MeetingDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Domain/MeetingDomain.cs
+END
+ForumDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/scm/svn/MeetingMinder/!svn/ver/133/MM.Domain/ForumDomain.cs
+END
+UploadMinutesDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/145/MM.Domain/UploadMinutesDomain.cs
+END
+DirectorProfileDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/2/MM.Domain/DirectorProfileDomain.cs
+END
+Encryptor.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/scm/svn/MeetingMinder/!svn/ver/45/MM.Domain/Encryptor.cs
+END
+GlobalSettingDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/154/MM.Domain/GlobalSettingDomain.cs
+END
+Class1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Domain/Class1.cs
+END
+AccessRightDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/71/MM.Domain/AccessRightDomain.cs
+END
+SecurityQuestionDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/71/MM.Domain/SecurityQuestionDomain.cs
+END
+CheckerDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/scm/svn/MeetingMinder/!svn/ver/72/MM.Domain/CheckerDomain.cs
+END
+AttendanceDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/146/MM.Domain/AttendanceDomain.cs
+END
+RollDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/scm/svn/MeetingMinder/!svn/ver/99/MM.Domain/RollDomain.cs
+END
+UserEntityDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/scm/svn/MeetingMinder/!svn/ver/95/MM.Domain/UserEntityDomain.cs
+END
+EntityDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/scm/svn/MeetingMinder/!svn/ver/145/MM.Domain/EntityDomain.cs
+END
+UserDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/scm/svn/MeetingMinder/!svn/ver/160/MM.Domain/UserDomain.cs
+END
+AgendaDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/scm/svn/MeetingMinder/!svn/ver/125/MM.Domain/AgendaDomain.cs
+END
+NoticeDomain.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/scm/svn/MeetingMinder/!svn/ver/133/MM.Domain/NoticeDomain.cs
+END
+MM.Domain.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Domain/MM.Domain.csproj
+END

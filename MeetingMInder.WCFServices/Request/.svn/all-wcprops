@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/112/MeetingMInder.WCFServices/Request
+END
+ForgotPasswordRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/scm/svn/MeetingMinder/!svn/ver/200/MeetingMInder.WCFServices/Request/ForgotPasswordRequest.cs
+END
+ResetPasswordRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/scm/svn/MeetingMinder/!svn/ver/164/MeetingMInder.WCFServices/Request/ResetPasswordRequest.cs
+END
+AttendanceRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/scm/svn/MeetingMinder/!svn/ver/164/MeetingMInder.WCFServices/Request/AttendanceRequest.cs
+END
+LoginRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/scm/svn/MeetingMinder/!svn/ver/200/MeetingMInder.WCFServices/Request/LoginRequest.cs
+END
+GetAuthenticateDataRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/scm/svn/MeetingMinder/!svn/ver/164/MeetingMInder.WCFServices/Request/GetAuthenticateDataRequest.cs
+END
+ForgetPasswordRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/scm/svn/MeetingMinder/!svn/ver/164/MeetingMInder.WCFServices/Request/ForgetPasswordRequest.cs
+END

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AEC170B8-7115-4A2D-B488-FA6B85A4F04E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MM.Services</RootNamespace>
+    <AssemblyName>MM.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MM.Data">
+      <HintPath>..\MM.Data\bin\Debug\MM.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MM.Domain">
+      <HintPath>..\MM.Domain\bin\Debug\MM.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\Ubiety.Dns.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\Zstandard.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessRightService.cs" />
+    <Compile Include="AgendaServices.cs" />
+    <Compile Include="AttendanceService.cs" />
+    <Compile Include="CheckerServices.cs" />
+    <Compile Include="DraftMOMService.cs" />
+    <Compile Include="EntityServices.cs" />
+    <Compile Include="ForumServices.cs" />
+    <Compile Include="GlobalSettingServices.cs" />
+    <Compile Include="GlobalTabService.cs" />
+    <Compile Include="KeyInformationServices.cs" />
+    <Compile Include="MeetingServices.cs" />
+    <Compile Include="NoticeServices.cs" />
+    <Compile Include="PhotoGalleryService.cs" />
+    <Compile Include="ProceedingService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RollServices.cs" />
+    <Compile Include="SecurityQuestionService.cs" />
+    <Compile Include="UploadMinuteService.cs" />
+    <Compile Include="UserEntityServices.cs" />
+    <Compile Include="UserServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MM.Core\MM.Core.csproj">
+      <Project>{BDD1BEEB-072F-42E2-998C-E4480511AC53}</Project>
+      <Name>MM.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Data\MM.Data.csproj">
+      <Project>{3A72521B-0664-415C-B4C8-CD77C3BE5AD9}</Project>
+      <Name>MM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Domain\MM.Domain.csproj">
+      <Project>{73DD6684-8147-4A50-A6F7-BFE3945A0A83}</Project>
+      <Name>MM.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

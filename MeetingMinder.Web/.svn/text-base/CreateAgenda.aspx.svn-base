@@ -1,0 +1,295 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMasterPage.Master" AutoEventWireup="true" CodeBehind="CreateAgenda.aspx.cs" Inherits="MeetingMinder.Web.CreateAgenda" %>
+<%@ Register TagName="Error" Src="UserControls/Error.ascx" TagPrefix="userControl" %>
+<%@ Register TagName="Info" Src="UserControls/Info.ascx" TagPrefix="userControl" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">
+
+        function ConfSub() {
+            var values =$('#<%=ddlUser.ClientID %>').val();
+            if(values == "0")
+            return confirm("Are you  want to submit this without checker?");
+        }
+
+        function GetAgenda() {
+            var values =$('#<%=ddlMaster.ClientID %>').val();
+            var txt = $('#<%=ddlMaster.ClientID %> option:selected').text();
+
+            if (values != "") {               
+                $('#<%=txtTitle.ClientID %>').val(txt);
+            }
+        }
+    $(document).ready(function () {
+        SearchAgendaTitle();
+    });
+
+    function SearchAgendaTitle() {
+        $("#txtTitle").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "CreateAgenda.aspx/GetAgendaTitles",
+                    data: "{'strSearch':'" + document.getElementById('txtTitle').value + "'}",
+                    dataType: "json",
+                    success: function (data) {
+                        response(data.d);
+                    },
+                    error: function (result) {
+                        alert("Error");
+                    }
+                });
+            }
+        });
+    }
+</script>
+<article class="content-box minimizer">
+			<header>			
+				<h2>Create Agenda</h2>			
+			</header>
+			<section>              
+				<div >
+                 
+						<fieldset>
+							<legend><font color="#AE432E"><b>Agenda Details</b></font></legend>
+                             <dl>
+                             <div >
+                                  <asp:UpdatePanel id="ResultsUpdatePanel" runat="server">   
+                                 <ContentTemplate>
+
+                                    <div style="text-align:center;">
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="ResultsUpdatePanel" DynamicLayout="true">
+                        <ProgressTemplate>
+
+                           <img src="img/jquery/ajaxLoader.gif">
+
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                               
+                             </div>                 
+
+                                <div style="margin-bottom:15px"><userControl:Info ID="Info" runat="server" Visible="false" />
+                                      <userControl:Error ID="Error" runat="server" Visible="false" />   
+                                </div>
+                                <div style="margin-bottom:15px">
+                                    <asp:ValidationSummary ID="ValidationSummary" runat="server" 
+                                           CssClass="notification error" 
+                                           HeaderText="You must enter a valid value in the following fields:" 
+                                           ValidationGroup="a" />
+                                </div>
+                              <div>
+                            <div><asp:DropDownList ID="ddlAgendaMeeting" AutoPostBack="true" runat="server" Width="200px"
+                                    onselectedindexchanged="ddlAgendaMeeting_SelectedIndexChanged"></asp:DropDownList>  <asp:HyperLink style="float:right" ID="hylnkAgenda" runat="server" NavigateUrl="#" >View Agenda</asp:HyperLink></div> 
+                                    <br />
+                             <asp:GridView ID="grdAgenda" runat="server" AutoGenerateColumns="False" AllowSorting="true"
+                                    CellPadding="0" CellSpacing="1" EmptyDataText="No Records Found" AllowPaging="True"
+                                    GridLines="None" EmptyDataRowStyle-ForeColor="red" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center"
+                                    class="datatable" PageSize="10" DataKeyNames="AgendaId" OnRowDeleting="grdAgenda_RowDeleting"
+                                 
+                                    OnPageIndexChanging="grdAgenda_PageIndexChanging" 
+                                    onsorting="grdAgenda_Sorting" onrowcommand="grdAgendaRowCommand">
+                                  <HeaderStyle HorizontalAlign="Center" BackColor="#AE432E" ForeColor="#F2DEDA" Font-Bold="true" />
+                                  <Columns>
+
+                                 <%--   <asp:TemplateField>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                        <HeaderStyle  HorizontalAlign="Center" />
+                                        <HeaderTemplate>
+                                            <asp:CheckBox ID="chkHeader" onclick="javascript: fn_select_all(this);" runat="server" />
+                                         </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkSubAdmin" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+
+                                  
+                                    <asp:TemplateField HeaderText="Sr. No.">
+                                        <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                        <ItemStyle  HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Agenda Name" SortExpression="AgendaName">
+                                        <ItemTemplate>
+                                            <asp:Label  style="text-align:justify" Width="300px"  ID="lblAgendaName" runat="server" Text='<%# Eval("AgendaName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Uploaded Agenda">
+                                        <ItemTemplate>
+                                     
+                                     <label style='<%# (((string)DataBinder.Eval(Container.DataItem,"UploadedAgendaNote")) == "") ? ("display:none") : ("display:block" )%>' >
+                                     <asp:LinkButton ID="lnkUploadAgenda" CommandArgument='<%# Eval("UploadedAgendaNote") %>' CommandName="download"  Text="View"  runat="server" /> </label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Sub Agenda">
+                                        <ItemTemplate>
+                                        <a href="CreateSubAgenda.aspx?id=<%# Eval("AgendaId") %>" >Add / View</a>
+                                          <%--  <asp:Label ID="lblSubAgenda" runat="server" Text='<%# Eval("SubAgenda") %>'></asp:Label>--%>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                   <asp:TemplateField HeaderText="Action" ControlStyle-CssClass="table-actions">
+                                         <ItemTemplate>
+                                            <asp:ImageButton ID="lbtnEdit" CommandArgument='<%# Eval("AgendaId")+","+Eval("MeetingId")+","+Eval("ForumId")+","+Eval("EntityId") %>' ImageUrl="img/icons/actions/page_white_edit.png" 
+                                                    CausesValidation="false" CommandName="EditAgenda" Text="Edit" runat="server" ToolTip="Edit Item" />
+                                            <asp:ImageButton ID="lbtnDelete" CommandArgument='<%# Eval("AgendaId")+","+Eval("UploadedAgendaNote")+","+Eval("EntityId") %>' ImageUrl="img/icons/actions/page_white_delete.png" 
+                                                 CausesValidation="false" CommandName="Delete" Text="Delete" runat="server" ToolTip="Delete Item" OnClientClick='return confirm("Are you sure you want to delete this entry?");' />
+                                         </ItemTemplate>
+                                         <ItemStyle HorizontalAlign="Center" />
+                                   </asp:TemplateField>
+
+                                 </Columns>
+                                </asp:GridView>
+                              </div>
+                              <br /><br />
+                                <div style="width:900px;">
+                                 <table width="75%">
+                                   <tr>
+                                     <td style="width:95px;">
+                                    Meeting 
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                         <asp:DropDownList ID="ddlMeeting"  AutoPostBack="true"  onselectedindexchanged="ddlMeeting_SelectedIndexChanged"   runat="server" Width="50%"></asp:DropDownList>
+                                     <asp:RequiredFieldValidator runat="server" ID="rfvMeet" ControlToValidate="ddlMeeting" InitialValue="0" Display="Dynamic" ValidationGroup="a" ErrorMessage="Select Meeting" Text="Please Select Meeting" ForeColor="Red"></asp:RequiredFieldValidator>
+                                 
+                                    <%-- <asp:TextBox ID="txtDate" ClientIDMode="Static" runat="server" Width="70%"></asp:TextBox>
+                                     <asp:RequiredFieldValidator runat="server" ID="rfvNew" ControlToValidate="txtDate" Display="Dynamic" ValidationGroup="a" ErrorMessage="Answer" Text="Invalid" ForeColor="Red"></asp:RequiredFieldValidator>
+     --%>                                </td>
+                                     </tr>
+                                    <tr>
+                                     <td style="width:95px;">
+                                    Entity
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:Label ID="lblEntity" runat="server"></asp:Label>
+                                     <asp:DropDownList ID="ddlEntity" Visible="false" runat="server" AutoPostBack="true" Width="50%" 
+                                             onselectedindexchanged="ddlEntity_SelectedIndexChanged"></asp:DropDownList>
+                                     <%--<asp:RequiredFieldValidator runat="server" ID="rfvEntity" ControlToValidate="ddlEntity" InitialValue="0" Display="Dynamic" ValidationGroup="a" ErrorMessage="Select Entity" Text="Please Select Entity" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                     
+                                 
+                                     </td>
+                                     </tr>
+                                     <tr>
+                                     <td style="width:95px;">
+                                    Forum
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:Label ID="lblForum" runat="server"></asp:Label>
+                                     <asp:DropDownList ID="ddlForum" Visible="false" runat="server"  Width="50%" 
+                                          onselectedindexchanged="ddlForum_SelectedIndexChanged" AutoPostBack="true"   ></asp:DropDownList>
+                                     <%--<asp:RequiredFieldValidator runat="server" ID="rfvForum" ControlToValidate="ddlForum" InitialValue="0" Display="Dynamic" ValidationGroup="a" ErrorMessage="Select Forum" Text="Please Select Forum" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                     
+                                 
+                                     </td>
+                                     </tr>
+                                     <tr>
+                                     <td  style="width:95px;">Master Agenda</td>
+                                       <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:DropDownList ID="ddlMaster" Width="50%" onclick="GetAgenda()" runat="server"></asp:DropDownList>
+                                     </td>
+                                     </tr>
+                                     <tr>
+                                     <td style="width:95px;">
+                                    Agenda Title 
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                     <asp:TextBox ID="txtTitle"  ClientIDMode="Static" Width="215px" runat="server" MaxLength="250"></asp:TextBox>
+                                     <asp:RequiredFieldValidator runat="server" ID="rfvMeeting" ControlToValidate="txtTitle"  Display="Dynamic" ValidationGroup="a" ErrorMessage="Agenda Title" Text="Please Select Meeting" ForeColor="Red"></asp:RequiredFieldValidator>
+                                 
+                                    <%-- <asp:TextBox ID="txtDate" ClientIDMode="Static" runat="server" Width="70%"></asp:TextBox>
+                                     <asp:RequiredFieldValidator runat="server" ID="rfvNew" ControlToValidate="txtDate" Display="Dynamic" ValidationGroup="a" ErrorMessage="Answer" Text="Invalid" ForeColor="Red"></asp:RequiredFieldValidator>
+     --%>                                </td>
+                                     </tr>
+
+                                       <tr style="display:none">
+                                     <td style="width:95px;">
+                                   Agenda Note
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                   <asp:TextBox ID="txtAgendaNote" Width="215px" runat="server" MaxLength="250"></asp:TextBox>  </td>
+                                     </tr>
+                             
+                                 <tr>
+                                     <td style="width:95px;">
+                                   Upload
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="left">
+                                  <asp:FileUpload ID="fuAgenda" runat="server"  />
+                                  <asp:LinkButton ID="lnkView" runat="server" Visible="false" Text="View" onclick="lnkView_Click"></asp:LinkButton>
+                                   </td>
+                                     </tr>
+
+                                 <tr>
+                                     <td style="width:95px;">
+                                    Checker
+                                     </td>
+                                     <td width="20px">
+                                     :
+                                     </td>
+                                     <td  style="width:250px;" align="center">
+                                    <asp:DropDownList ID="ddlUser" runat="server"  Width="50%"></asp:DropDownList>
+                                    <%--  <asp:RequiredFieldValidator ID="rfvddUser" runat="server" 
+                                        class="invalid-side-note" ControlToValidate="ddlUser" Display="Dynamic" InitialValue="0"
+                                        ErrorMessage="Select Checker" SetFocusOnError="True" ValidationGroup="a">Invalid</asp:RequiredFieldValidator>--%>
+                                     </td>
+                                     </tr>
+
+                                     <tr align="right">
+                                        <td colspan="5" align="right"> 
+                                        <asp:Button OnClientClick="ConfSub()" ID="btnSubmit" CausesValidation="true" ValidationGroup="a" runat="server" Text="Submit" onclick="btnSubmit_Click"></asp:Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" onclick="btnCancel_Click"></asp:Button>
+                                 </td>
+                                 </tr>
+                                 </table>
+                                 </div>
+                                             </ContentTemplate>
+                                    <Triggers>
+                               <asp:AsyncPostBackTrigger ControlID="ddlEntity" />
+                               <asp:AsyncPostBackTrigger ControlID="ddlForum" />
+
+                                   <asp:PostBackTrigger ControlID="lnkView" />
+                                <asp:PostBackTrigger ControlID="grdAgenda" />
+                               <asp:PostBackTrigger ControlID="btnSubmit" />
+                               <asp:PostBackTrigger ControlID="btnCancel" />
+                             
+                         
+        
+    </Triggers>
+</asp:UpdatePanel>
+                               </div>
+                               <br />
+						</fieldset>
+                             										
+						<asp:HiddenField ID="hdnAgendaId" runat="server" />			
+				</div>					
+				
+			</section>			
+		</article>
+    <div class="clearfix">
+    </div>
+
+</asp:Content>

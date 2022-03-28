@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73DD6684-8147-4A50-A6F7-BFE3945A0A83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MM.Domain</RootNamespace>
+    <AssemblyName>MM.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\Ubiety.Dns.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\Zstandard.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ABoutUSDomain.cs" />
+    <Compile Include="AccessRightDomain.cs" />
+    <Compile Include="AdDomain.cs" />
+    <Compile Include="AgendaAuditDomain.cs" />
+    <Compile Include="AgendaDomain.cs" />
+    <Compile Include="ApprovalDomain.cs" />
+    <Compile Include="AttendanceDomain.cs" />
+    <Compile Include="CheckerDomain.cs" />
+    <Compile Include="DirectorProfileDomain.cs" />
+    <Compile Include="DraftMOMDomain.cs" />
+    <Compile Include="EmailHistroyDomain.cs" />
+    <Compile Include="EntityDomain.cs" />
+    <Compile Include="ForumDomain.cs" />
+    <Compile Include="GlobalSettingDomain.cs" />
+    <Compile Include="GlobalTabDomain.cs" />
+    <Compile Include="HeaderDomain.cs" />
+    <Compile Include="IPADomain.cs" />
+    <Compile Include="KeyInformationDomain.cs" />
+    <Compile Include="MarkedAgendaDomain.cs" />
+    <Compile Include="MeetingDomain.cs" />
+    <Compile Include="MeetingRetentionDomain.cs" />
+    <Compile Include="MinutesDomain.cs" />
+    <Compile Include="NoticeDomain.cs" />
+    <Compile Include="PhotoGalleryDomain.cs" />
+    <Compile Include="ProcedingDomain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RollDomain.cs" />
+    <Compile Include="SectionDomain.cs" />
+    <Compile Include="SecurityQuestionDomain.cs" />
+    <Compile Include="SerialNumberDomain.cs" />
+    <Compile Include="UploadMinutesDomain.cs" />
+    <Compile Include="UserAgendaDomain.cs" />
+    <Compile Include="UserAttendanceDomain.cs" />
+    <Compile Include="UserDomain.cs" />
+    <Compile Include="UserEntityDomain.cs" />
+    <Compile Include="UserForumDomain.cs" />
+    <Compile Include="VisitorDomain.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MM.Core\MM.Core.csproj">
+      <Project>{BDD1BEEB-072F-42E2-998C-E4480511AC53}</Project>
+      <Name>MM.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

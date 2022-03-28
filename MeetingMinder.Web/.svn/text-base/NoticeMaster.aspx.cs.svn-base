@@ -1,0 +1,544 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using System.Data;
+
+namespace MeetingMinder.Web
+{
+    public partial class NoticeMaster : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //bind meeting list
+                BindCheckers();
+
+                //Bind Entity List
+                BindEntity();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+
+                //Bind Mintes to grid
+                BindNotice();
+            }
+        }
+
+        /// <summary>
+        /// Bind notice details
+        /// </summary>
+        private void BindNotice()
+        {
+            try
+            {
+                Guid UserId = Guid.Parse(Session["UserId"].ToString());
+                grdNotice.DataSource = NoticeDataProvider.Instance.GetNoticeWithMeeting(UserId);
+                grdNotice.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind Entity list to drop down 
+        /// </summary>
+        private void BindEntity()
+        {
+            try
+            {
+                string UserId = Convert.ToString(Session["UserId"]);
+                ddlEntity.DataSource = UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId));
+                ddlEntity.DataBind();
+                ddlEntity.DataTextField = "EntityName";
+                ddlEntity.DataValueField = "EntityId";
+                ddlEntity.DataBind();
+                ddlEntity.Items.Insert(0, new ListItem("Select Entity", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+
+            }
+        }
+
+        /// <summary>
+        /// Bind Checkers List to drop down
+        /// </summary>
+        private void BindCheckers()
+        {
+            try
+            {
+                ddlUser.DataSource = UserDataProvider.Instance.GetAllChecker();
+                ddlUser.DataBind();
+                ddlUser.DataValueField = "UserId";
+                ddlUser.DataTextField = "UserName";
+                ddlUser.DataBind();
+
+                //Remove logged in users id from drop down
+                // string UserId = Convert.ToString(Session["UserId"]);
+                //  ListItem UserIdToRemove = ddlUser.Items.FindByValue(UserId);
+                //  ddlUser.Items.Remove(UserIdToRemove);
+
+                ddlUser.Items.Insert(0, new ListItem("Select User", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list  Selected Index Change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlForum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strForumId = ddlForum.SelectedValue;
+                if (strForumId != "0")
+                {
+                    BindMeeting(strForumId);
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// BInd Meeting list to drop down
+        /// </summary>
+        /// <param name="ForumId">string specifying ForumId</param>
+        private void BindMeeting(string ForumId)
+        {
+            try
+            {
+                string Forum = ddlForum.SelectedItem.Text;
+                string Entity = ddlEntity.SelectedItem.Text;
+                txtNotice.Text = "Notice is hereby given that the meeting of the " + Forum + " of " + Entity;
+                ddlMeeting.Items.Clear();
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+                Guid forumId;
+                if (Guid.TryParse(ForumId, out forumId))
+                {
+                    IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetMeetingByFroumID(forumId); //MeetingDataProvider.Instance.GetMeetingByForUploadMinutes(forumId);
+                    DateTime dtToday = DateTime.Now.Date;
+                    foreach (MeetingDomain item in objMeeting)
+                    {
+                        DateTime dtMeeting = Convert.ToDateTime(item.MeetingDate);
+                        if (dtMeeting > dtToday)
+                        {
+                            ddlMeeting.Items.Add(new ListItem(dtMeeting.ToString("dd MMM yyyy") + ' ' + item.MeetingVenue + ' ' + item.MeetingTime, item.MeetingId.ToString()));
+                        }
+                    }
+                    //ddlMeeting.DataSource = objMeeting;
+                    //ddlMeeting.DataBind();
+
+                    ////Past date ........
+                    //ddlMeeting.DataTextField = "MeetingDate";
+                    //ddlMeeting.DataValueField = "MeetingId";
+                    //ddlMeeting.DataBind();
+
+
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Invalid meeting search";
+                    Error.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind Entity list to drop down
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlEntity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strEntityId = ddlEntity.SelectedValue;
+                if (strEntityId != "0")
+                {
+                    BindForum(strEntityId);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind forums to drop down
+        /// </summary>
+        /// <param name="EntityId">sring specifying EntityId</param>
+        private void BindForum(string EntityId)
+        {
+            try
+            {
+
+                ddlForum.Items.Clear();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                Guid entityId;
+                if (Guid.TryParse(EntityId, out entityId))
+                {
+                    IList<ForumDomain> objForum = ForumDataProvider.Instance.GetForumByEntityId(entityId);
+                    ddlForum.DataSource = objForum;
+                    ddlForum.DataBind();
+                    ddlForum.DataTextField = "ForumName";
+                    ddlForum.DataValueField = "ForumId";
+                    ddlForum.DataBind();
+                    ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Invalid forum search";
+                    Error.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// button submit click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NoticeDomain objNotice = new NoticeDomain();
+                objNotice.MeetingId = Guid.Parse(ddlMeeting.SelectedValue);
+                objNotice.UpdatedBy = Guid.Parse(Session["UserId"].ToString());
+                objNotice.CreatedBy = Guid.Parse(Session["UserId"].ToString());
+
+                objNotice.NoticeChecker = Guid.Parse(ddlUser.SelectedValue);
+                objNotice.NoticeMessage = txtNotice.Text;
+
+                if (objNotice.CreatedBy == objNotice.NoticeChecker)
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Checker and Maker cannot be same ";
+                    Error.Visible = true;
+                    return;
+                }
+                bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                if (isMaker)
+                {
+
+                    if (hdnNotice.Value != "")
+                    {
+                        objNotice.NoticeId = Guid.Parse(hdnNotice.Value);
+                        NoticeDataProvider.Instance.Update(objNotice);
+                        ((Label)Info.FindControl("lblName")).Text = "Notice updated successfully";
+                        Info.Visible = true;
+                        ClearData();
+                        BindNotice();
+                    }
+                    else
+                    {
+                        UserAcess objUser = new UserAcess();
+                        //check add permission
+                        if (objUser.IsAdd(Guid.Parse(ddlEntity.SelectedValue)))
+                        {
+
+                            NoticeDataProvider.Instance.Insert(objNotice);
+                            ((Label)Info.FindControl("lblName")).Text = "Notice inserted successfully";
+                            Info.Visible = true;
+                            ClearData();
+                            BindNotice();
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                            Error.Visible = true;
+                        }
+                    }
+
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                    Error.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Clear Form data
+        /// </summary>
+        private void ClearData()
+        {
+            try
+            {
+                ddlUser.SelectedValue = "0";
+                ddlMeeting.Items.Clear();
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+                ddlForum.Items.Clear();
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+                ddlEntity.SelectedValue = "0";
+                txtNotice.Text = "";
+                hdnNotice.Value = "";
+                btnSubmit.Text = "Submit";
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Button cancel event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearData();
+        }
+
+        /// <summary>
+        /// gridview page index change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdNotice_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdNotice.PageIndex = e.NewPageIndex;
+                BindNotice();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Gridview row delete Event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdNotice_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Gridview row editing event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdNotice_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Gridview row sorting event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdNotice_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            try
+            {
+                Guid userId = Guid.Parse(Session["UserId"].ToString());
+                DataTable dt = (DataTable)NoticeDataProvider.Instance.GetNoticeWithMeeting(userId).AsDataTable();
+                DataView dv = new DataView(dt);
+                if (Convert.ToString(ViewState["sortDirection"]) == "asc")
+                {
+                    ViewState["sortDirection"] = "dsc";
+                    dv.Sort = e.SortExpression + " DESC";
+                }
+                else
+                {
+                    ViewState["sortDirection"] = "asc";
+                    dv.Sort = e.SortExpression + " ASC";
+                }
+
+                grdNotice.DataSource = dv;
+                grdNotice.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Gridview row command event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdNotice_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                UserAcess objUser = new UserAcess();
+                if (e.CommandName.ToLower().Equals("delete"))
+                {
+                    bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                    if (isMaker)
+                    {
+                        string noticeId = Convert.ToString(e.CommandArgument);
+                        string[] ids = noticeId.Split(',');
+                        //check edit permission
+                        if (objUser.isDelete(Guid.Parse(ids[1])))
+                        {
+                            GridViewRow row = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+                            Label lblMeeting = (Label)row.Cells[0].FindControl("lblMeet");
+                            if (lblMeeting.Text.Length > 0)
+                            {
+                                DateTime dtNow = DateTime.Now;
+                                DateTime dtMeetingDate = Convert.ToDateTime(lblMeeting.Text);
+                                if (dtMeetingDate < dtNow)
+                                {
+                                    ((Label)Error.FindControl("lblError")).Text = " Sorry you can't delete past meeting notice. ";
+                                    Error.Visible = true;
+                                    return;
+                                }
+                            }
+
+                            bool bStatus = NoticeDataProvider.Instance.Delete(Guid.Parse(ids[0]));
+                            if (bStatus == false)
+                            {
+                                ((Label)Info.FindControl("lblName")).Text = "Entity Deleted Successfully";
+                                Info.Visible = true;
+                                BindNotice();
+                            }
+                            else
+                            {
+                                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                                Error.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                            Error.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                        Error.Visible = true;
+                    }
+                }
+
+                if (e.CommandName.ToLower().Equals("edit"))
+                {
+                    ClearData();
+                    string NoticeIds = Convert.ToString(e.CommandArgument);
+                    string[] ids = NoticeIds.Split(',');
+
+                    //check edit permission
+                    if (objUser.IsEdit(Guid.Parse(ids[1])))
+                    {
+                        NoticeDomain objNotice = NoticeDataProvider.Instance.Get(Guid.Parse(ids[0]));
+                        DateTime dtNow = DateTime.Now;
+                        DateTime dtMeetingDate = Convert.ToDateTime(ids[3]);
+                        if (dtMeetingDate < dtNow)
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry you cant edit past meeting notice. ";
+                            Error.Visible = true;
+                            return;
+                        }
+
+                        txtNotice.Text = objNotice.NoticeMessage;
+
+                        //ddlUser.SelectedValue = objNotice.NoticeChecker.ToString();
+
+
+                        if (ddlUser.Items.FindByValue(
+Convert.ToString(objNotice.NoticeChecker)) != null)
+                        {
+                            ddlUser.SelectedValue = objNotice.NoticeChecker.ToString();
+                        }
+                        else
+                        {
+                            ddlUser.SelectedValue = "0";
+                        }
+
+                        hdnNotice.Value = objNotice.NoticeId.ToString();
+
+                        ddlEntity.SelectedValue = ids[1];
+                        ddlEntity_SelectedIndexChanged(sender, e);
+                        ddlForum.SelectedValue = ids[2];
+                        ddlForum_SelectedIndexChanged(sender, e);
+
+                        ddlMeeting.SelectedValue = objNotice.MeetingId.ToString();
+                        btnSubmit.Text = "Update";
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                        Error.Visible = true;
+                        Info.Visible = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+
+        }
+
+    }
+}

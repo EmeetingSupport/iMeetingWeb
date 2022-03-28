@@ -1,0 +1,846 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using System.Data;
+using System.Web.Services;
+
+namespace MeetingMinder.Web
+{
+    public partial class CreateAgenda : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //bind meeting list
+                BindCheckers();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+
+                //Bind Entity List
+                //BindEntity();
+
+                //Bind agenda meeting dropdown
+                BindAgendaMeeting();
+
+                //Bind Agenda
+                BindAgenda();
+
+                //Bind Meeting
+                BindMeetingS();
+
+                //Bind all agenda items
+                BindAllAgenda();
+            }
+        }
+
+        /// <summary>
+        /// Bind all agenda items
+        /// </summary>
+        private void BindAllAgenda()
+        {
+            try
+            {
+                IList<AgendaDomain> objAgenda = AgendaDataProvider.Instance.GetAllAgendaTitles();
+                ddlMaster.DataSource = objAgenda;
+                ddlMaster.DataBind();
+                ddlMaster.DataTextField = "AgendaName";
+                ddlMaster.DataBind();
+                ddlMaster.Items.Insert(0, new ListItem("Select ", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind approved meetings
+        /// </summary>
+        private void BindMeetingS()
+        {
+            try
+            {
+                ddlMeeting.Items.Clear();
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+
+                string UserId = Session["UserId"].ToString();
+                IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetApprovedMeetingByUser(Guid.Parse(UserId)); //MeetingDataProvider.Instance.GetMeetingByFroumID(forumId);
+
+                DateTime dtToday = DateTime.Now.Date;
+
+                foreach (MeetingDomain item in objMeeting)
+                {
+                    DateTime dtMeeting = Convert.ToDateTime(item.MeetingDate);
+                    if (dtMeeting > dtToday)
+                    {
+                        ddlMeeting.Items.Add(new ListItem(dtMeeting.ToString("dd MMM yyyy") + ' ' + item.MeetingVenue + ' ' + item.MeetingTime, item.MeetingId.ToString()));
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+
+        }
+
+        /// <summary>
+        /// Bind meeting list to drop down
+        /// </summary>
+        private void BindAgendaMeeting()
+        {
+            try
+            {
+                ddlAgendaMeeting.Items.Clear();
+                Guid UserId = Guid.Parse(Session["UserId"].ToString());
+                IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetMeetingByUser(UserId);
+                if (objMeeting.Count > 0)
+                {
+                    DateTime dtToday = DateTime.Now.Date;
+                    foreach (MeetingDomain item in objMeeting)
+                    {
+                        DateTime dtMeeting = Convert.ToDateTime(item.MeetingDate);
+                        if (dtMeeting > dtToday)
+                        {
+                            ddlAgendaMeeting.Items.Add(new ListItem(dtMeeting.ToString("dd MMM yyyy") + ' ' + item.MeetingVenue + ' ' + item.MeetingTime, item.MeetingId.ToString()));
+                        }
+                    }
+                }
+                else
+                {
+                    ddlAgendaMeeting.Items.Insert(0, new ListItem("No Pending agenda", "0"));
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind agenda items
+        /// </summary>
+        private void BindAgenda()
+        {
+            try
+            {
+                Guid UserId = Guid.Parse(Session["UserId"].ToString());
+                string MeetingsId = ddlAgendaMeeting.SelectedValue;
+
+                // IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetMeetingByUser(UserId);
+                // if (objMeeting.Count > 0)
+
+                if (!string.IsNullOrEmpty(MeetingsId))
+                {
+                    Guid MeetingId = Guid.Parse(MeetingsId);
+                    IList<AgendaDomain> objAgenda = AgendaDataProvider.Instance.GetAgendabyMeetingId(MeetingId);
+                    if (objAgenda.Count > 0)
+                    {
+                        var objParentAgenda = from agend in objAgenda
+                                              where (agend.ParentAgendaId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                                              select agend;
+
+                        grdAgenda.DataSource = objParentAgenda.AsDataTable();
+                        grdAgenda.DataBind();
+                    }
+                    else
+                    {
+                        grdAgenda.DataSource = null;
+                        grdAgenda.DataBind();
+                    }
+                    hylnkAgenda.NavigateUrl = "AgendaMaster.aspx?id=" + MeetingId;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+
+            }
+        }
+
+        /// <summary>
+        /// Bind Entity list to drop down 
+        /// </summary>
+        private void BindEntity()
+        {
+            try
+            {
+                string UserId = Convert.ToString(Session["UserId"]);
+                ddlEntity.DataSource = UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId));
+                ddlEntity.DataBind();
+                ddlEntity.DataTextField = "EntityName";
+                ddlEntity.DataValueField = "EntityId";
+                ddlEntity.DataBind();
+                ddlEntity.Items.Insert(0, new ListItem("Select Entity", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+
+            }
+        }
+
+        /// <summary>
+        /// Bind Checkers List to drop down
+        /// </summary>
+        private void BindCheckers()
+        {
+            try
+            {
+                ddlUser.DataSource = UserDataProvider.Instance.GetAllChecker();
+                ddlUser.DataBind();
+                ddlUser.DataValueField = "UserId";
+                ddlUser.DataTextField = "UserName";
+                ddlUser.DataBind();
+
+                //Remove logged in users id from drop down
+                // string UserId = Convert.ToString(Session["UserId"]);
+                //  ListItem UserIdToRemove = ddlUser.Items.FindByValue(UserId);
+                //  ddlUser.Items.Remove(UserIdToRemove);
+
+                ddlUser.Items.Insert(0, new ListItem("Select User", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Get Agenda titles for auto complete
+        /// </summary>
+        /// <param name="strSearch">string specifying strSearch</param>
+        /// <returns></returns>
+        [WebMethod]
+        public static List<string> GetAgendaTitles(string strSearch)
+        {
+            try
+            {
+                IList<AgendaDomain> objAgenda = AgendaDataProvider.Instance.GetAgendaTitles(strSearch);
+                var strAgendaNote = (from p in objAgenda
+
+                                     select p.AgendaName).Take(5);
+                return strAgendaNote.ToList();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Bind Entity list to drop down
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void ddlEntity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strEntityId = ddlEntity.SelectedValue;
+                if (strEntityId != "0")
+                {
+                    BindForum(strEntityId);
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void ddlMeeting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strEntityId = ddlEntity.SelectedValue;
+                if (strEntityId != "0")
+                {
+                    MeetingDomain objMeeting = MeetingDataProvider.Instance.GetMeetingWithEntity(Guid.Parse(ddlMeeting.SelectedValue));
+                    if (objMeeting != null)
+                    {
+                        lblEntity.Text = objMeeting.EntityName;
+                        lblForum.Text = objMeeting.ForumName;
+                        ViewState["entityId"] = objMeeting.EntityId;
+                    }
+                    else
+                    {
+                        ViewState["entityId"] = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Bind forums to drop down
+        /// </summary>
+        /// <param name="EntityId">string specifying EntityId</param>
+        private void BindForum(string EntityId)
+        {
+            try
+            {
+
+                ddlForum.Items.Clear();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                Guid entityId;
+                if (Guid.TryParse(EntityId, out entityId))
+                {
+                    IList<ForumDomain> objForum = ForumDataProvider.Instance.GetForumByEntityId(entityId);
+                    ddlForum.DataSource = objForum;
+                    ddlForum.DataBind();
+                    ddlForum.DataTextField = "ForumName";
+                    ddlForum.DataValueField = "ForumId";
+                    ddlForum.DataBind();
+                    ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Invalid forum search";
+                    Error.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Insert Agenda details
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AgendaDomain objAgenda = new AgendaDomain();
+                objAgenda.AgendaName = txtTitle.Text;
+                objAgenda.AgendaNote = txtAgendaNote.Text;
+
+                objAgenda.PublishedBy = Guid.Parse(Session["UserId"].ToString());
+                objAgenda.UpdatedBy = Guid.Parse(Session["UserId"].ToString());
+
+                objAgenda.MeetingId = Guid.Parse(Convert.ToString(ddlMeeting.SelectedValue));
+                if (ddlUser.SelectedValue != "0")
+                {
+                    objAgenda.AgendaChecker = Guid.Parse(ddlUser.SelectedValue);
+                }
+                string agendaName;
+                if (fuAgenda.HasFile)
+                {
+                    string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+                    string contentType = fuAgenda.PostedFile.ContentType;
+
+                    string ext = Path.GetExtension(fuAgenda.FileName);
+                    if (ext.ToLower().Equals(".pdf"))
+                    {
+                        agendaName = DateTime.Now.Ticks + ext;
+                        fuAgenda.PostedFile.SaveAs(Server.MapPath(savePath + agendaName));
+
+                        objAgenda.UploadedAgendaNote = agendaName;
+
+
+                        //Delete existing image
+                        if (ViewState["file"] != null)
+                        {
+                            string fileName = Convert.ToString(ViewState["file"]);
+                            File.Delete(Server.MapPath(savePath + fileName));
+                            ViewState["file"] = null;
+                        }
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Upload minutes file must be pdf";
+                        Error.Visible = true;
+                        Info.Visible = false;
+                        return;
+                    }
+                }
+
+                objAgenda.CreatedBy = Guid.Parse(Session["UserId"].ToString());
+
+                if (objAgenda.CreatedBy == objAgenda.AgendaChecker)
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Checker and Maker cannot be same ";
+                    Error.Visible = true;
+                    Info.Visible = false;
+                    return;
+                }
+                bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                if (isMaker)
+                {
+                    //Update
+                    if (hdnAgendaId != null && hdnAgendaId.Value != "")
+                    {
+                        if (ViewState["file"] != null)
+                        {
+                            string fileName = Convert.ToString(ViewState["file"]);
+                            objAgenda.UploadedAgendaNote = fileName;
+                        }
+                        objAgenda.AgendaId = Guid.Parse(hdnAgendaId.Value);
+                        bool status = AgendaDataProvider.Instance.Update(objAgenda);
+
+                        ((Label)Info.FindControl("lblName")).Text = "Agenda updated successfully";
+                        BindAgendaMeeting();
+                        BindAgenda();
+                        Info.Visible = true;
+                        ClearData();
+                    }
+                    //Insert
+                    else
+                    {
+                        UserAcess objUser = new UserAcess();
+                        //check add permission
+                        if (objUser.IsAdd(Guid.Parse(ViewState["entityId"].ToString())))
+                        {
+
+
+                            AgendaDataProvider.Instance.Insert(objAgenda);
+                            ((Label)Info.FindControl("lblName")).Text = "Agenda inserted successfully";
+                            BindAgendaMeeting();
+                            BindAgenda();
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                            Error.Visible = true;
+                            Info.Visible = false;
+                        }
+                    }
+                    Info.Visible = true;
+                    ClearData();
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                    Error.Visible = true;
+                    Info.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+                Info.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Button cancel click event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearData();
+        }
+
+        /// <summary>
+        /// Clear form data 
+        /// </summary>
+        private void ClearData()
+        {
+            ddlUser.SelectedValue = "0";
+
+            ddlMeeting.SelectedValue = "0";
+            // ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+
+            ddlForum.Items.Clear();
+            ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+            ddlEntity.SelectedValue = "0";
+            hdnAgendaId.Value = "";
+            txtTitle.Text = "";
+            txtAgendaNote.Text = "";
+            btnSubmit.Text = "Submit";
+            ViewState["file"] = null;
+            lnkView.Visible = false;
+
+        }
+
+        /// <summary>
+        /// drop down list  Selected Index Change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void ddlForum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strForumId = ddlForum.SelectedValue;
+                if (strForumId != "0")
+                {
+                    BindMeeting(strForumId);
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// BInd Meeting list to drop down
+        /// </summary>
+        /// <param name="ForumId">string specifying ForumId</param>
+        private void BindMeeting(string ForumId)
+        {
+            try
+            {
+                ddlMeeting.Items.Clear();
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+                Guid forumId;
+                if (Guid.TryParse(ForumId, out forumId))
+                {
+                    IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetMeetingForAgenda(forumId); //MeetingDataProvider.Instance.GetMeetingByFroumID(forumId);
+
+                    DateTime dtToday = DateTime.Now.Date;
+
+                    foreach (MeetingDomain item in objMeeting)
+                    {
+                        DateTime dtMeeting = Convert.ToDateTime(item.MeetingDate);
+                        if (dtMeeting > dtToday)
+                        {
+                            ddlMeeting.Items.Add(new ListItem(dtMeeting.ToString("dd MMM yyyy") + ' ' + item.MeetingVenue + ' ' + item.MeetingTime, item.MeetingId.ToString()));
+
+                        }
+                    }
+
+
+                    //ddlMeeting.DataSource = objMeeting;
+                    //ddlMeeting.DataBind();
+
+                    ////Past date ........
+                    //ddlMeeting.DataTextField = "MeetingDate";
+                    //ddlMeeting.DataValueField = "MeetingId";
+                    //ddlMeeting.DataBind();
+
+
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Invalid meeting search";
+                    Error.Visible = true;
+                    Info.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+                Info.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Grid view rowcommand event 
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdAgendaRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                UserAcess objUser = new UserAcess();
+                if (e.CommandName.ToLower().Equals("download"))
+                {
+                    string fileName = Convert.ToString(e.CommandArgument);
+                    string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+
+                    //Set the appropriate ContentType.
+                    Response.ContentType = "application/octet-stream";
+                    //Get the physical path to the file.
+                    string FilePath = Server.MapPath(savePath + fileName);
+                    //Write the file directly to the HTTP content output stream.
+
+                    ////FileStream sourceFile = new FileStream(Server.MapPath(@"FileName"), FileMode.Open);
+                    ////float FileSize;
+                    ////FileSize = sourceFile.Length;
+                    ////byte[] getContent = new byte[(int)FileSize];
+                    ////sourceFile.Read(getContent, 0, (int)sourceFile.Length);
+                    ////sourceFile.Close();
+                    ////Response.ClearContent();
+                    ////Response.ClearHeaders();
+                    ////Response.Buffer = true;
+                    ////Response.ContentType = ReturnExtension(file.Extension.ToLower());
+                    ////Response.AddHeader("Content-Length", getContent.Length.ToString());
+                    ////Response.AddHeader("Content-Disposition", "attachment; filename=" + FileName);
+                    ////Response.BinaryWrite(getContent);
+                    ////Response.Flush();
+                    ////Response.End();
+
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                    Response.WriteFile(FilePath);
+                    Response.End();
+                }
+                if (e.CommandName.ToLower().Equals("editagenda"))
+                {
+                    string strIds = Convert.ToString(e.CommandArgument);
+                    string[] strId = strIds.Split(',');
+                    //check edit permission
+                    if (objUser.IsEdit(Guid.Parse(strId[3])))
+                    {
+                        AgendaDomain objAgenda = AgendaDataProvider.Instance.Get(Guid.Parse(strId[0]));
+                        //ddlEntity.SelectedValue = strId[3];
+                        //ddlEntity_SelectedIndexChanged(sender, e);
+
+                        //ddlForum.SelectedValue = strId[2];
+                        //ddlForum_SelectedIndexChanged(sender, e);
+
+                        ddlMeeting.SelectedValue = strId[1];
+                        ddlMeeting_SelectedIndexChanged(sender, e);
+                        hdnAgendaId.Value = objAgenda.AgendaId.ToString();
+
+                        txtAgendaNote.Text = objAgenda.AgendaNote;
+                        txtTitle.Text = objAgenda.AgendaName;
+                        //if (objAgenda.AgendaChecker != Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                        //{
+                        // ddlUser.SelectedValue = Convert.ToString(objAgenda.AgendaChecker);
+                        //}
+
+                        if (ddlUser.Items.FindByValue(
+Convert.ToString(objAgenda.AgendaChecker)) != null)
+                        {
+                            ddlUser.SelectedValue = objAgenda.AgendaChecker.ToString();
+                        }
+                        else
+                        {
+                            ddlUser.SelectedValue = "0";
+                        }
+                        if (objAgenda.UploadedAgendaNote != null)
+                        {
+                            if (objAgenda.UploadedAgendaNote.Length > 0)
+                            {
+                                ViewState["file"] = objAgenda.UploadedAgendaNote;
+                                lnkView.Visible = true;
+                            }
+                        }
+                        btnSubmit.Text = "Update";
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                        Error.Visible = true;
+                    }
+                }
+                if (e.CommandName.ToLower().Equals("delete"))
+                {
+                    bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                    if (isMaker)
+                    {
+                        string AgendaId = Convert.ToString(e.CommandArgument);
+                        string[] ids = AgendaId.Split(',');
+                        //check delete permission
+                        if (objUser.isDelete(Guid.Parse(ids[2])))
+                        {
+                            bool status = AgendaDataProvider.Instance.Delete(Guid.Parse(ids[0]));
+                            ((Label)Info.FindControl("lblName")).Text = "Agenda deleted successfully";
+                            if (ids[1] != null && ids[1].Length > 0)
+                            {
+                                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+
+                                //Delete existing image                                               
+                                //  File.Delete(Server.MapPath(savePath + ids[1]));
+                            }
+                            BindAgendaMeeting();
+                            BindAgenda();
+                            Info.Visible = true;
+                            ClearData();
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = " Sorry Access denied ";
+                            Error.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                        Error.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Grid view delete event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdAgenda_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Grid view sorting agenda
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdAgenda_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            try
+            {
+                Guid MeetingId = Guid.Parse(ddlAgendaMeeting.SelectedValue);
+
+                DataTable dt = (DataTable)AgendaDataProvider.Instance.GetAgendabyMeetingId(MeetingId).AsDataTable();
+                DataView dv = new DataView(dt);
+                if (Convert.ToString(ViewState["sortDirection"]) == "asc")
+                {
+                    ViewState["sortDirection"] = "dsc";
+                    dv.Sort = e.SortExpression + " DESC";
+                }
+                else
+                {
+                    ViewState["sortDirection"] = "asc";
+                    dv.Sort = e.SortExpression + " ASC";
+                }
+
+                grdAgenda.DataSource = dv;
+                grdAgenda.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Gridview page index change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdAgenda_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdAgenda.PageIndex = e.NewPageIndex;
+                BindAgenda();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list selected index change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void ddlAgendaMeeting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlAgendaMeeting.SelectedValue != null || ddlAgendaMeeting.SelectedValue != "0")
+                {
+                    Guid MeetingId = Guid.Parse(ddlAgendaMeeting.SelectedValue);
+                    IList<AgendaDomain> objAgenda = AgendaDataProvider.Instance.GetAgendabyMeetingId(MeetingId);
+                    if (objAgenda.Count > 0)
+                    {
+                        var objParentAgenda = from agend in objAgenda
+                                              where (agend.ParentAgendaId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                                              select agend;
+
+                        grdAgenda.DataSource = objParentAgenda.AsDataTable();
+                        grdAgenda.DataBind();
+                    }
+                    else
+                    {
+                        grdAgenda.DataSource = null;
+                        grdAgenda.DataBind();
+                    }
+                    hylnkAgenda.NavigateUrl = "AgendaMaster.aspx?id=" + MeetingId;
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// View uploaded file
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Convert.ToString(ViewState["file"]);
+
+                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Agenda"]);
+
+                //Set the appropriate ContentType.
+                Response.ContentType = "application/octet-stream";
+                //Get the physical path to the file.
+                string FilePath = Server.MapPath(savePath + fileName);
+
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.WriteFile(FilePath);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+    }
+}

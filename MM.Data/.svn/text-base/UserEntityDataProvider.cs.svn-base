@@ -1,0 +1,150 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+namespace MM.Data
+{
+  public  class UserEntityDataProvider : DataProvider
+    {
+         #region "Singleton"
+      private static volatile UserEntityDataProvider _instance;
+      private static object _synRoot = new Object();
+
+      private UserEntityDataProvider()
+      {
+      }
+
+      public static UserEntityDataProvider Instance
+      {
+          get
+          {
+              if (_instance == null)
+              {
+                  lock (_synRoot)
+                  {
+                      if (_instance == null)
+                      {
+                          _instance = new UserEntityDataProvider();
+                      }
+                  }
+              }
+              return _instance;
+          }          
+      }
+      #endregion
+
+         #region "Fill"
+      /// <summary>
+      /// Fill user entity details
+      /// </summary>
+      /// <param name="dr">IDataReader sepcifing dr</param>
+      /// <returns></returns>
+      private UserEntityDomain ToUserEntityDomain(IDataReader dr)
+      {
+          return new UserEntityDomain()
+          {
+              UserEntityId = Null.SetNullGuid(dr["UserEntityId"]),
+              EntityId = Null.SetNullGuid(dr["EntityId"]),
+              UserId = Null.SetNullGuid(dr["UserId"]),
+              CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+              UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+              UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+              CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+              EntityName = Encryptor.DecryptString(Null.SetNullString(dr["EntityName"])),
+              EntityLogo = Encryptor.DecryptString(Null.SetNullString(dr["EntityLogo"]))
+          };
+      }
+
+      /// <summary>
+      /// Get All User Entities
+      /// </summary>
+      /// <param name="dr">IDataReader sepcifing dr</param>
+      /// <returns></returns>
+      private IList<UserEntityDomain> ToUserEntityDoamins(IDataReader dr)
+      {
+          IList<UserEntityDomain> userEntityDoamins = new List<UserEntityDomain>();
+          while (dr.Read())
+          {
+              userEntityDoamins.Add(ToUserEntityDomain(dr));
+          }
+          return userEntityDoamins;
+      }
+      #endregion
+
+         #region "Get"
+      /// <summary>
+      /// Get Entity Details By UserId
+      /// </summary>
+      /// <param name="EntityId">Guid specifying EntityId</param>
+      /// <returns></returns>
+      public IList<UserEntityDomain> GetEntityListByUserId(Guid UserId)
+      {
+          IList<UserEntityDomain> userEntityDomain = null;
+          using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetEntityByUserId", UserId))
+          {             
+              userEntityDomain = ToUserEntityDoamins(dataReader);
+          }
+          return userEntityDomain;
+      }
+
+     /// <summary>
+      /// Get data for wcf services
+     /// </summary>
+      /// <param name="UserId">Guid specifying UserId</param>
+     /// <param name="StartTime">DateTime specifying StartTime</param>
+     /// <param name="EndTime">DateTime specifying EndTime</param>
+      /// <returns></returns>
+      public DataSet GetDetailsForWcf(Guid UserId, DateTime StartTime, DateTime EndTime, string Password)
+      {
+          DataSet ds = SqlHelper.ExecuteDataset(ConnectionString, "stp_AllDataForWcf", UserId, StartTime, EndTime, Encryptor.EncryptString(Password));
+          return ds;
+      }
+
+
+      /// <summary>
+      /// Get data with entity for wcf services
+      /// </summary>
+      /// <param name="UserId">Guid specifying UserId</param>
+      /// <param name="StartTime">DateTime specifying StartTime</param>
+      /// <param name="EndTime">DateTime specifying EndTime</param>
+      /// <returns></returns>
+      public DataSet GetDetailsForWcfByEntiy(Guid UserId, DateTime StartTime, DateTime EndTime, string UdId, Guid EntityId)
+      {
+          DataSet ds = SqlHelper.ExecuteDataset(ConnectionString, "stp_AllDataForWcfNew", UserId, StartTime, EndTime, UdId, EntityId);
+          return ds;
+      }
+
+      /// <summary>
+      /// Get data for wcf services
+      /// </summary>
+      /// <param name="UserId">Guid specifying UserId</param>
+      /// <param name="StartTime">string specifying StartTime</param>
+      /// <param name="EndTime">string specifying EndTime</param>
+      /// <returns></returns>
+      public DataSet GetDetailsForWcfData(Guid UserId,  string Password)
+      {
+          DataSet ds = SqlHelper.ExecuteDataset(ConnectionString, "stp_AllDataForWcfData", UserId, Encryptor.EncryptString(Password));
+          return ds;
+      }
+
+      /// <summary>
+      /// Get data with entity for wcf services
+      /// </summary>
+      /// <param name="UserId">Guid specifying UserId</param>
+      /// <param name="UdId">string specifying UdId</param>
+      /// <param name="EndTime">Guid specifying EntityId</param>
+      /// <returns></returns>
+      public DataSet GetDetailsForWcfDataByEntity(Guid UserId, string UdId, Guid EntityId)
+      {
+          DataSet ds = SqlHelper.ExecuteDataset(ConnectionString, "stp_AllDataForWcfDataNew", UserId, UdId, EntityId );
+          return ds;
+      } 
+      #endregion
+    }
+}

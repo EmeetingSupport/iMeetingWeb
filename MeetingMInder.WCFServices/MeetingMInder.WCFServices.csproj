@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58041E7B-6400-4EDE-931C-889C965C4E0F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MeetingMInder.WCFServices</RootNamespace>
+    <AssemblyName>MeetingMInder.WCFServices</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GZipEncoder">
+      <HintPath>C:\Samples\WCFWFCardSpace\WCF\Extensibility\MessageEncoder\Compression\CS\GZipEncoder\bin\GZipEncoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MeetingMinder.Web\bin\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\Ubiety.Dns.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\netstandard2.1\Zstandard.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SBIService.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LogError.cs" />
+    <Compile Include="MessageInterceptor\CustomMessageInspector.cs" />
+    <Compile Include="MessageInterceptor\MessageInspectorBehavior.cs" />
+    <Compile Include="Request\AgendaAckRequest.cs" />
+    <Compile Include="Request\AgendaCounterServiceRequest.cs" />
+    <Compile Include="Request\AgendaMarkerRequest.cs" />
+    <Compile Include="Request\AgendaRequest.cs" />
+    <Compile Include="Request\AttendanceRequest.cs" />
+    <Compile Include="Request\ChangePasswordRequest.cs" />
+    <Compile Include="Request\CheckUpdateRequest.cs" />
+    <Compile Include="Request\DataCleanRequest.cs" />
+    <Compile Include="Request\DraftMOMRequest.cs" />
+    <Compile Include="Request\EmailRequest.cs" />
+    <Compile Include="Request\ForumRequest.cs" />
+    <Compile Include="Request\MeetingRequest.cs" />
+    <Compile Include="Request\MessageLoggerDb.cs" />
+    <Compile Include="Request\Proceeding.cs" />
+    <Compile Include="Request\UserLockRequest.cs" />
+    <Compile Include="Request\UserStatusRequest.cs" />
+    <Compile Include="Request\VerifyOTPRequest.cs" />
+    <Compile Include="Response\AgendaAckResponse.cs" />
+    <Compile Include="Response\AgendaCounterResponse.cs" />
+    <Compile Include="Response\AgendaMarkerResponse.cs" />
+    <Compile Include="Response\AgendaResponse.cs" />
+    <Compile Include="Response\ChangePasswordResponse.cs" />
+    <Compile Include="Request\EventAddRequest.cs" />
+    <Compile Include="Request\ForgetPasswordRequest.cs" />
+    <Compile Include="Request\ForgotPasswordRequest.cs" />
+    <Compile Include="Request\GetAuthenticateDataRequest.cs" />
+    <Compile Include="Request\GetUserEventsRequest.cs" />
+    <Compile Include="Request\KeyInformationRequest.cs" />
+    <Compile Include="Request\LoginRequest.cs" />
+    <Compile Include="Request\MOMUpdateRequest.cs" />
+    <Compile Include="Request\PhotoGalleryRequest.cs" />
+    <Compile Include="Request\ResetPasswordRequest.cs" />
+    <Compile Include="Response\AgendaDetails.cs" />
+    <Compile Include="Response\AttendanceResponse.cs" />
+    <Compile Include="Response\BoardOfDirectors.cs" />
+    <Compile Include="Response\CheckUpdateResponse.cs" />
+    <Compile Include="Response\DraftMOMDetails.cs" />
+    <Compile Include="Response\DraftMOMResponse.cs" />
+    <Compile Include="Response\EmailResponse.cs" />
+    <Compile Include="Response\EntityDetails.cs" />
+    <Compile Include="Response\EventResponse.cs" />
+    <Compile Include="Response\ForgetPasswordResponse.cs" />
+    <Compile Include="Response\ForgotPasswordResponse.cs" />
+    <Compile Include="Response\ForgotPasswordResponse_old.cs" />
+    <Compile Include="Response\ForumDetails.cs" />
+    <Compile Include="Response\ForumResponse.cs" />
+    <Compile Include="Response\GetAuthenticateDataResponse.cs" />
+    <Compile Include="Response\GetUserEventsResponse.cs" />
+    <Compile Include="Response\GlobalTabResponse.cs" />
+    <Compile Include="Response\KeyInformationResponse.cs" />
+    <Compile Include="Response\LoginResponse.cs" />
+    <Compile Include="Response\MeetingDetails.cs" />
+    <Compile Include="Response\MeetingResponse.cs" />
+    <Compile Include="Response\MinutesDetails.cs" />
+    <Compile Include="Response\NoticeDetails.cs" />
+    <Compile Include="Response\Pdfs.cs" />
+    <Compile Include="Response\PhotoGallery.cs" />
+    <Compile Include="Response\PhotoGalleryResponse.cs" />
+    <Compile Include="Response\ProceedingResponse.cs" />
+    <Compile Include="Response\ResetPasswordResponse.cs" />
+    <Compile Include="Response\SecurityQuestionsResponse.cs" />
+    <Compile Include="Response\ServerResponse.cs" />
+    <Compile Include="Response\Tabs.cs" />
+    <Compile Include="Response\UserLockResponse.cs" />
+    <Compile Include="Response\UserStatusResponse.cs" />
+    <Compile Include="Response\VerifyOTPResponse.cs" />
+    <Compile Include="UserManager.cs" />
+    <Compile Include="SBIService.svc.cs">
+      <DependentUpon>SBIService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ISBIService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\App_Data\" />
+    <Folder Include="Upload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MM.Core\MM.Core.csproj">
+      <Project>{bdd1beeb-072f-42e2-998c-e4480511ac53}</Project>
+      <Name>MM.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Data\MM.Data.csproj">
+      <Project>{3a72521b-0664-415c-b4c8-cd77c3be5ad9}</Project>
+      <Name>MM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Domain\MM.Domain.csproj">
+      <Project>{73dd6684-8147-4a50-a6f7-bfe3945a0a83}</Project>
+      <Name>MM.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Extended\MM.Extended.csproj">
+      <Project>{9096365c-1964-47c8-bc69-9757f4f3c0ef}</Project>
+      <Name>MM.Extended</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MM.Services\MM.Services.csproj">
+      <Project>{aec170b8-7115-4a2d-b488-fa6b85a4f04e}</Project>
+      <Name>MM.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55692</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55612/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

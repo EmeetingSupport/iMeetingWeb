@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Core
+END
+MM.Core.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Core/MM.Core.csproj
+END
+PrintHelper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Core/PrintHelper.cs
+END
+Extensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Core/Extensions.cs
+END
+Config.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Core/Config.cs
+END
+Encryptor.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/scm/svn/MeetingMinder/!svn/ver/51/MM.Core/Encryptor.cs
+END
+Class1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Core/Class1.cs
+END
+UnixTimestamp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/scm/svn/MeetingMinder/!svn/ver/143/MM.Core/UnixTimestamp.cs
+END
+MM.Core.csproj.user
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/114/MM.Core/MM.Core.csproj.user
+END
+Null.cs
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/scm/svn/MeetingMinder/!svn/ver/1/MM.Core/Null.cs
+END

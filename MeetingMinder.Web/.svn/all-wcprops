@@ -1,0 +1,629 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/scm/svn/MeetingMinder/!svn/ver/127/MeetingMinder.Web
+END
+ViewAttendance.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewAttendance.aspx.cs
+END
+CreateAgenda.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/CreateAgenda.aspx.designer.cs
+END
+AccessRightAdmin.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/180/MeetingMinder.Web/AccessRightAdmin.aspx
+END
+ForumMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/ForumMaster.aspx.cs
+END
+About.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/About.aspx
+END
+ChangePassword.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/scm/svn/MeetingMinder/!svn/ver/122/MeetingMinder.Web/ChangePassword.aspx.designer.cs
+END
+Login.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/40/MeetingMinder.Web/Login.aspx.designer.cs
+END
+AccessRightAdmin.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/AccessRightAdmin.aspx.cs
+END
+ViewAgenda.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/ViewAgenda.aspx.designer.cs
+END
+CreateMeeting.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/scm/svn/MeetingMinder/!svn/ver/128/MeetingMinder.Web/CreateMeeting.aspx.designer.cs
+END
+ViewAgendaDetails.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/ViewAgendaDetails.aspx
+END
+ViewMinutes.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/ViewMinutes.aspx.designer.cs
+END
+CheckerMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/75/MeetingMinder.Web/CheckerMaster.aspx.designer.cs
+END
+AdminMasterPage.Master.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/scm/svn/MeetingMinder/!svn/ver/189/MeetingMinder.Web/AdminMasterPage.Master.designer.cs
+END
+ViewAgendaDetails.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/ViewAgendaDetails.aspx.cs
+END
+AdminMasterPage.Master.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/AdminMasterPage.Master.cs
+END
+Global.asax.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/Global.asax.cs
+END
+ForgotPassword.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/ForgotPassword.aspx.designer.cs
+END
+Web.Release.config
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/Web.Release.config
+END
+UserAcess.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/87/MeetingMinder.Web/UserAcess.cs
+END
+Default.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/scm/svn/MeetingMinder/!svn/ver/59/MeetingMinder.Web/Default.aspx.designer.cs
+END
+EntityMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/EntityMaster.aspx
+END
+AgendaMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/AgendaMaster.aspx
+END
+CreateSubSubAgenda.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/CreateSubSubAgenda.aspx.cs
+END
+EntityMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/EntityMaster.aspx.cs
+END
+UserMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/193/MeetingMinder.Web/UserMaster.aspx.cs
+END
+Reports.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/scm/svn/MeetingMinder/!svn/ver/150/MeetingMinder.Web/Reports.aspx
+END
+ApprovalMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/193/MeetingMinder.Web/ApprovalMaster.aspx
+END
+ViewAttendance.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewAttendance.aspx
+END
+CreateAgenda.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/CreateAgenda.aspx
+END
+ApprovalMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/193/MeetingMinder.Web/ApprovalMaster.aspx.cs
+END
+Web.config
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/scm/svn/MeetingMinder/!svn/ver/148/MeetingMinder.Web/Web.config
+END
+ChangePassword.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/122/MeetingMinder.Web/ChangePassword.aspx
+END
+Login.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/scm/svn/MeetingMinder/!svn/ver/128/MeetingMinder.Web/Login.aspx
+END
+MeetingSchedule.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/MeetingSchedule.aspx.designer.cs
+END
+MeetingSchedule.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/MeetingSchedule.aspx.cs
+END
+ViewAgenda.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewAgenda.aspx
+END
+CreateMeeting.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/CreateMeeting.aspx
+END
+Login.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/Login.aspx.cs
+END
+ChangePassword.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ChangePassword.aspx.cs
+END
+ViewMinutes.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewMinutes.aspx
+END
+CheckerMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/75/MeetingMinder.Web/CheckerMaster.aspx
+END
+CreateMeeting.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/CreateMeeting.aspx.cs
+END
+Global.asax
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/Global.asax
+END
+AdminMasterPage.Master
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/AdminMasterPage.Master
+END
+ForgotPassword.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/ForgotPassword.aspx
+END
+CheckerMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/CheckerMaster.aspx.cs
+END
+Default.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/59/MeetingMinder.Web/Default.aspx
+END
+RollMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/scm/svn/MeetingMinder/!svn/ver/102/MeetingMinder.Web/RollMaster.aspx.designer.cs
+END
+Site.Master.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/Site.Master.designer.cs
+END
+Default.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/59/MeetingMinder.Web/Default.aspx.cs
+END
+MeetingMinder.Web.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/scm/svn/MeetingMinder/!svn/ver/114/MeetingMinder.Web/MeetingMinder.Web.csproj
+END
+AnswerQuestion.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/AnswerQuestion.aspx.designer.cs
+END
+UploadMinutes.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/scm/svn/MeetingMinder/!svn/ver/128/MeetingMinder.Web/UploadMinutes.aspx.designer.cs
+END
+UploadMinutes.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/UploadMinutes.aspx.cs
+END
+UserMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/scm/svn/MeetingMinder/!svn/ver/128/MeetingMinder.Web/UserMaster.aspx.designer.cs
+END
+AgendaMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/AgendaMaster.aspx.cs
+END
+NoticeMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/NoticeMaster.aspx.designer.cs
+END
+NoticeMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/NoticeMaster.aspx.cs
+END
+AccessRightsMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/scm/svn/MeetingMinder/!svn/ver/181/MeetingMinder.Web/AccessRightsMaster.aspx.cs
+END
+GlobalSetting.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/GlobalSetting.aspx.cs
+END
+MeetingMinder.Web.csproj.user
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/114/MeetingMinder.Web/MeetingMinder.Web.csproj.user
+END
+MeetingSchedule.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/MeetingSchedule.aspx
+END
+MeetingMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/88/MeetingMinder.Web/MeetingMaster.aspx.designer.cs
+END
+CreateAgenda.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/CreateAgenda.aspx.cs
+END
+About.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/About.aspx.cs
+END
+ViewNotice.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/ViewNotice.aspx.designer.cs
+END
+CreateSubAgenda.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/scm/svn/MeetingMinder/!svn/ver/169/MeetingMinder.Web/CreateSubAgenda.aspx.designer.cs
+END
+CreateSubAgenda.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/CreateSubAgenda.aspx.cs
+END
+ViewMinutes.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewMinutes.aspx.cs
+END
+RollMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/128/MeetingMinder.Web/RollMaster.aspx
+END
+Site.Master
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/Site.Master
+END
+ForgotPassword.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ForgotPassword.aspx.cs
+END
+AnswerQuestion.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/AnswerQuestion.aspx
+END
+RollMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/196/MeetingMinder.Web/RollMaster.aspx.cs
+END
+Site.Master.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/Site.Master.cs
+END
+UploadMinutes.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/190/MeetingMinder.Web/UploadMinutes.aspx
+END
+UserMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/176/MeetingMinder.Web/UserMaster.aspx
+END
+CreateSubSubAgenda.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/scm/svn/MeetingMinder/!svn/ver/169/MeetingMinder.Web/CreateSubSubAgenda.aspx.designer.cs
+END
+Web.Debug.config
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/Web.Debug.config
+END
+NoticeMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/193/MeetingMinder.Web/NoticeMaster.aspx
+END
+AccessRightsMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/scm/svn/MeetingMinder/!svn/ver/73/MeetingMinder.Web/AccessRightsMaster.aspx.designer.cs
+END
+GlobalSetting.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/scm/svn/MeetingMinder/!svn/ver/152/MeetingMinder.Web/GlobalSetting.aspx.designer.cs
+END
+Reports.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/Reports.aspx.cs
+END
+MeetingMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/scm/svn/MeetingMinder/!svn/ver/88/MeetingMinder.Web/MeetingMaster.aspx
+END
+ForumMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/scm/svn/MeetingMinder/!svn/ver/128/MeetingMinder.Web/ForumMaster.aspx.designer.cs
+END
+MeetingMaster.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/MeetingMaster.aspx.cs
+END
+AccessRightAdmin.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/AccessRightAdmin.aspx.designer.cs
+END
+ViewNotice.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewNotice.aspx
+END
+About.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/1/MeetingMinder.Web/About.aspx.designer.cs
+END
+CreateSubAgenda.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/CreateSubAgenda.aspx
+END
+ViewAgenda.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewAgenda.aspx.cs
+END
+ViewNotice.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/ViewNotice.aspx.cs
+END
+ViewAgendaDetails.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/scm/svn/MeetingMinder/!svn/ver/129/MeetingMinder.Web/ViewAgendaDetails.aspx.designer.cs
+END
+CreateSubSubAgenda.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/CreateSubSubAgenda.aspx
+END
+EntityMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/EntityMaster.aspx.designer.cs
+END
+AnswerQuestion.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/179/MeetingMinder.Web/AnswerQuestion.aspx.cs
+END
+AccessRightsMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/MeetingMinder/!svn/ver/80/MeetingMinder.Web/AccessRightsMaster.aspx
+END
+AgendaMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/AgendaMaster.aspx.designer.cs
+END
+GlobalSetting.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/scm/svn/MeetingMinder/!svn/ver/152/MeetingMinder.Web/GlobalSetting.aspx
+END
+Reports.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/Reports.aspx.designer.cs
+END
+ApprovalMaster.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/ApprovalMaster.aspx.designer.cs
+END
+ForumMaster.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/scm/svn/MeetingMinder/!svn/ver/141/MeetingMinder.Web/ForumMaster.aspx
+END
+ViewAttendance.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/scm/svn/MeetingMinder/!svn/ver/151/MeetingMinder.Web/ViewAttendance.aspx.designer.cs
+END

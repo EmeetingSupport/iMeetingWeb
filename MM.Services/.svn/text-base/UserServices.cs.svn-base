@@ -1,0 +1,304 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+
+namespace MM.Services
+{
+    public class UserServices
+    {
+        /// <summary>
+        /// Get user List
+        /// </summary>
+        /// <returns></returns>
+        public IList<UserDomain> GetUserList()
+        {
+            IList<UserDomain> objUserList = new List<UserDomain>();
+            objUserList = UserDataProvider.Instance.Get();
+            return objUserList;
+        }
+
+        /// <summary>
+        ///  Get User By user id
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public UserDomain GetUserById(Guid UserId)
+        {
+            UserDomain objUserDomain = new UserDomain();
+            objUserDomain = UserDataProvider.Instance.Get(UserId);
+            return objUserDomain;
+        }
+        
+        /// <summary>
+        ///  Insert User details
+        /// </summary>
+        /// <param name="FirstName">string specifying FirstName</param>
+        /// <param name="LastName">string specifying LastName</param>
+        /// <param name="UserName">string specifying UserName</param>
+        /// <param name="Password">string specifying Password</param>
+        /// <param name="PANNo">string specifying PANNo</param>
+        /// <param name="CreatedBy">Guid specifying CreatedBy</param>
+        /// <param name="UpdatedBy">Guid specifying UpdatedBy</param>
+        /// <param name="Photograph">string specifying Photograph</param>
+        /// <param name="OfficeAddress">string specifying OfficeAddress</param>
+        /// <param name="ResidentialAddress">string specifying ResidentialAddress</param>
+        /// <param name="DINNumber">string specifying DINNumber</param>
+        /// <param name="OfficePhone">string specifying OfficePhone</param>
+        /// <param name="ResidencePhone">string specifying ResidencePhone</param>
+        /// <param name="Mobile">string specifying Mobile</param>
+        /// <param name="EmailID1">string specifying EmailID1</param>
+        /// <param name="EmailID2">string specifying EmailID2</param>
+        /// <param name="SecretaryName">string specifying SecretaryName</param>
+        /// <param name="SecretaryResidentalPhone">string specifying SecretaryResidentalPhone</param>
+        /// <param name="SecretaryOfficePhone">string specifying SecretaryOfficePhone</param>
+        /// <param name="SecretaryMobile">string specifying SecretaryMobile</param>
+        /// <param name="SecretaryEmailID1">string specifying SecretaryEmailID1</param>
+        /// <param name="SecretaryEmailID2">string specifying SecretaryEmailID2</param>
+        /// <param name="Designation">string specifying Designation</param>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <param name="Entity">string specifying Entity</param>
+        /// <param name="IsMaker">bool specifying IsMaker</param>
+        /// <param name="IsEnabledOnIpad">bool specifying IsEnabledOnIpad</param>
+        /// <param name="IsEnabledOnWebApp">bool specifying IsEnabledOnWebApp</param>
+        /// <param name="UserChecker">Guid specifying UserChecker</param>
+        /// <returns></returns>
+        public UserDomain InserUser(string FirstName, string LastName,
+                 string UserName, string Password, string PANNo, Guid  CreatedBy, Guid UpdatedBy, string Photograph, string OfficeAddress, string ResidentialAddress, string DINNumber, string OfficePhone, string ResidencePhone, string Mobile, string EmailID1, string EmailID2, string SecretaryName, string SecretaryResidentalPhone, string SecretaryOfficePhone, string SecretaryMobile, string SecretaryEmailID1, string SecretaryEmailID2, string Designation, Guid UserId, string Entity, bool
+            IsMaker, bool IsChecker, bool IsEnabledOnIpad, bool IsEnabledOnWebApp, Guid UserChecker )
+        {
+            UserDomain objUserDomain = new UserDomain();
+            objUserDomain.FirstName = FirstName;
+            objUserDomain.LastName = LastName;
+            objUserDomain.CreatedBy = CreatedBy;
+            objUserDomain.UpdatedBy = UpdatedBy;
+            objUserDomain.Designation = Designation;
+            objUserDomain.DINNumber = DINNumber;
+            objUserDomain.EmailID1 = EmailID1;
+            objUserDomain.EmailID2 = EmailID2;
+            objUserDomain.Mobile = Mobile;
+            objUserDomain.OfficeAddress = OfficeAddress;
+            objUserDomain.OfficePhone = OfficePhone;
+            objUserDomain.PANNo = PANNo;
+            objUserDomain.Password = Password;
+            objUserDomain.Photograph = Photograph;
+            objUserDomain.ResidencePhone = ResidencePhone;
+            objUserDomain.ResidentialAddress = ResidentialAddress;
+            objUserDomain.SecretaryEmailID1 = SecretaryEmailID1;
+            objUserDomain.SecretaryEmailID2 = SecretaryEmailID2;
+            objUserDomain.SecretaryMobile = SecretaryMobile;
+            objUserDomain.SecretaryName = SecretaryName;
+            objUserDomain.SecretaryOfficePhone = SecretaryOfficePhone;
+            objUserDomain.SecretaryResidentalPhone = SecretaryResidentalPhone;
+           // objUserDomain.UserId = UserId;
+            objUserDomain.UserName = UserName;
+            objUserDomain.IsChecker = IsChecker;
+            objUserDomain.IsMaker = IsMaker;
+            objUserDomain.IsEnabledOnIpad = IsEnabledOnIpad;
+            objUserDomain.IsEnabledOnWebApp = IsEnabledOnWebApp;
+            objUserDomain.UserChecker = UserChecker;
+            
+            objUserDomain = UserDataProvider.Instance.Insert(objUserDomain, Entity, UserId);
+            return objUserDomain;
+        }
+
+
+        /// <summary>
+        ///  Update user details by id
+        /// </summary>
+        /// <param name="FirstName">string specifying FirstName</param>
+        /// <param name="LastName">string specifying LastName</param>
+        /// <param name="UserName">string specifying UserName</param>
+        /// <param name="Password">string specifying Password</param>
+        /// <param name="PANNo">string specifying PANNo</param>
+        /// <param name="CreatedBy">Guid specifying CreatedBy</param>
+        /// <param name="UpdatedBy">Guid specifying UpdatedBy</param>
+        /// <param name="Photograph">string specifying Photograph</param>
+        /// <param name="OfficeAddress">string specifying OfficeAddress</param>
+        /// <param name="ResidentialAddress">string specifying ResidentialAddress</param>
+        /// <param name="DINNumber">string specifying DINNumber</param>
+        /// <param name="OfficePhone">string specifying OfficePhone</param>
+        /// <param name="ResidencePhone">string specifying ResidencePhone</param>
+        /// <param name="Mobile">string specifying Mobile</param>
+        /// <param name="EmailID1">string specifying EmailID1</param>
+        /// <param name="EmailID2">string specifying EmailID2</param>
+        /// <param name="SecretaryName">string specifying SecretaryName</param>
+        /// <param name="SecretaryResidentalPhone">string specifying SecretaryResidentalPhone</param>
+        /// <param name="SecretaryOfficePhone">string specifying SecretaryOfficePhone</param>
+        /// <param name="SecretaryMobile">string specifying SecretaryMobile</param>
+        /// <param name="SecretaryEmailID1">string specifying SecretaryEmailID1</param>
+        /// <param name="SecretaryEmailID2">string specifying SecretaryEmailID2</param>
+        /// <param name="Designation">string specifying Designation</param>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <param name="Entity">string specifying Entity</param>
+        /// <param name="strDeleteEntityIds">string specifying strDeleteEntityIds</param>
+        /// <param name="IsMaker">bool specifying IsMaker</param>
+        /// <param name="IsEnabledOnIpad">bool specifying IsEnabledOnIpad</param>
+        /// <param name="IsEnabledOnWebApp">bool specifying IsEnabledOnWebApp</param>
+        /// <param name="UserChecker">Guid specifying UserChecker</param>
+        /// <returns></returns>
+        public bool UpdateUser(string FirstName, string LastName,
+                    string UserName, string Password, string PANNo, string CreatedBy, string UpdatedBy, string Photograph, string OfficeAddress, string ResidentialAddress, string DINNumber, string OfficePhone, string ResidencePhone, string Mobile, string EmailID1, string EmailID2, string SecretaryName, string SecretaryResidentalPhone, string SecretaryOfficePhone, string SecretaryMobile, string SecretaryEmailID1, string SecretaryEmailID2, string Designation, string UserId, string EntityIds, string strDeleteEntityIds, bool IsMaker, bool IsChecker, bool IsEnabledOnIpad, bool IsEnabledOnWebApp, Guid UserChecker)
+        {
+            UserDomain objUserDomain = new UserDomain();
+            objUserDomain.FirstName = FirstName;
+            objUserDomain.LastName = LastName;
+            objUserDomain.CreatedBy = Guid.Parse(CreatedBy);
+            objUserDomain.UpdatedBy = Guid.Parse(UpdatedBy);
+            objUserDomain.Designation = Designation;
+            objUserDomain.DINNumber = DINNumber;
+            objUserDomain.EmailID1 = EmailID1;
+            objUserDomain.EmailID2 = EmailID2;
+            objUserDomain.Mobile = Mobile;
+            objUserDomain.OfficeAddress = OfficeAddress;
+            objUserDomain.OfficePhone = OfficePhone;
+            objUserDomain.PANNo = PANNo;
+            objUserDomain.Password = Password;
+            objUserDomain.Photograph = Photograph;
+            objUserDomain.ResidencePhone = ResidencePhone;
+            objUserDomain.ResidentialAddress = ResidentialAddress;
+            objUserDomain.SecretaryEmailID1 = SecretaryEmailID1;
+            objUserDomain.SecretaryEmailID2 = SecretaryEmailID2;
+            objUserDomain.SecretaryMobile = SecretaryMobile;
+            objUserDomain.SecretaryName = SecretaryName;
+            objUserDomain.SecretaryOfficePhone = SecretaryOfficePhone;
+            objUserDomain.SecretaryResidentalPhone = SecretaryResidentalPhone;
+            objUserDomain.UserId = Guid.Parse(UserId);
+            objUserDomain.UserName = UserName;
+
+            objUserDomain.IsChecker = IsChecker;
+            objUserDomain.IsMaker = IsMaker;
+
+            objUserDomain.IsEnabledOnIpad = IsEnabledOnIpad;
+            objUserDomain.IsEnabledOnWebApp = IsEnabledOnWebApp;
+            objUserDomain.UserChecker = UserChecker;
+
+            return UserDataProvider.Instance.Update(objUserDomain,  EntityIds,  strDeleteEntityIds);
+        }
+
+        /// <summary>
+        /// Delete user details by user id
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public bool DeleteUser(Guid UserId)
+        {
+            return UserDataProvider.Instance.Delete(UserId);
+        }
+
+        /// <summary>
+        /// Delete seleted user details
+        /// </summary>
+        /// <param name="UserIds">string specifying UserIds</param>
+        /// <returns></returns>
+        public bool DeleteSelectedUser(string UserIds)
+        {
+            return UserDataProvider.Instance.DeleteSelected(UserIds);
+        }
+
+        /// <summary>
+        /// Change user password
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <param name="OldPass">string specifying OldPass</param>
+        /// <param name="NewPass">string specifying NewPass</param>
+        /// <returns></returns>
+        public bool ChangePassword(Guid UserId, string OldPass, string NewPass)
+        {
+            return UserDataProvider.Instance.ChangePassword(UserId, OldPass, NewPass);
+        }
+        
+        /// <summary>
+        /// Get User Password by user name
+        /// </summary>
+        /// <param name="UserName">string specifying UserName</param>
+        /// <returns></returns>
+        public UserDomain GetPassword(string UserName, Guid QuestionId, string Answer)
+        {
+            return UserDataProvider.Instance.GetPassword(UserName, QuestionId, Answer);
+        }
+        /// <summary>
+        /// get user security question with answer
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public SecurityQuestionDomain GetSecurityQuestion(Guid UserId)
+        {
+            return SecurityQuestionDataProvider.Instance.GetSecurityQuestion(UserId);
+        }
+
+        /// <summary>
+        /// User login by user name and password
+        /// </summary>
+        /// <param name="UserName">string specifying UserName</param>
+        /// <param name="Password">string specifying Password</param>
+        /// <returns></returns>
+        public UserDomain UserLogin(string UserName, string Password)
+        {
+            return UserDataProvider.Instance.UserLogin(UserName, Password);
+        }
+
+        /// <summary>
+        /// User login by user name and password
+        /// </summary>
+        /// <param name="UserName">string specifying userName</param>
+        /// <param name="Password">string specifying password</param>
+        /// <returns></returns>
+        public UserDomain UserLoginIpad(string UserName, string Password, string UdId)
+        {
+            return UserDataProvider.Instance.UserLoginIpad(UserName, Password, UdId);
+        }
+
+        /// <summary>
+        /// Get All User For access rights
+        /// </summary>
+        /// <returns></returns>
+        public IList<UserDomain> GetAllUserByAccessRight()
+        {
+            return UserDataProvider.Instance.GetAllUserByAccessRight();
+        }
+
+        /// <summary>
+        /// Get All User For Access rights
+        /// </summary>
+        /// <returns></returns>
+        public IList<UserDomain> GetAllUserForUserId()
+        {
+            return UserDataProvider.Instance.GetAllUserForAccessRight();
+        }
+        /// <summary>
+        /// Get All Checker List
+        /// </summary>
+        /// <returns></returns>
+        public IList<UserDomain> GetAllChecker()
+        {
+            return UserDataProvider.Instance.GetAllChecker();
+        }
+
+        /// <summary>
+        /// Forget password service
+        /// </summary>
+        /// <param name="UserName">string specifying UserName</param>
+        /// <param name="QuestionId">Guid specifying QuestionId</param>
+        /// <param name="Answer">string specifying Answer</param>
+        /// <returns></returns>
+        public string ForgetPassword(string UserName, Guid QuestionId, string Answer)
+        {
+            return UserDataProvider.Instance.GetForgetPassword(UserName, QuestionId, Answer);
+        }
+
+        /// <summary>
+        /// Get Password by user name
+        /// </summary>
+        /// <param name="UserName">string specifying UserName </param>
+        /// <returns></returns>
+        public DataTable GetPasswordByUserName(string UserName)
+        {
+            return UserDataProvider.Instance.GetPasswordByUsername(UserName);
+        }
+      
+    }
+}

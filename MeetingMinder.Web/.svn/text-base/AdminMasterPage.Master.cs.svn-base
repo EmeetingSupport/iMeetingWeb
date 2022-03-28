@@ -1,0 +1,157 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using MM.Core;
+
+namespace MeetingMinder.Web
+{
+    public partial class AdminMasterPage : System.Web.UI.MasterPage
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //check user user session
+            if (Session["UserId"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                //Check user has changed password
+                if (Session["IsAuthorized"] != null)
+                {
+                    bool IsAuthorized = (bool)Session["IsAuthorized"];
+                    if (!IsAuthorized)
+                    {
+                        Response.Redirect("AnswerQuestion.aspx");
+                    }
+                }
+
+                lblLoginName.Text = Convert.ToString(Session["UserName"]);
+                //check session roll existance
+                if (Session["Roll"] == null)
+                {
+                    RollDomain objRoll = RollDataProvider.Instance.GetRollByUserId(Guid.Parse(Session["UserId"].ToString()));
+
+                    Session["Roll"] = objRoll;
+                    BindRolls();
+
+                }
+                else
+                {
+                    BindRolls();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Bind links according to rolls
+        /// </summary>
+        private void BindRolls()
+        {
+            try
+            {
+                RollDomain objRoll = (RollDomain)Session["Roll"];
+                string strPath = Path.GetFileName(Request.PhysicalPath);
+                if (objRoll != null)
+                {
+
+
+                    trAccessRights.Visible = objRoll.AccessRightMaster;
+
+                    // trApprovalMaster.Visible = objRoll.ApprovalMaster;
+                    trUserMaster.Visible = objRoll.UserMaster;
+                    trEntityMaster.Visible = objRoll.EntityMaster;
+                    trRollMaster.Visible = objRoll.RollMaster;
+                    if (!objRoll.AccessRightMaster && !objRoll.ApprovalMaster && !objRoll.UserMaster && !objRoll.EntityMaster && !objRoll.RollMaster)
+                    {
+
+                        searchlink.Visible = false;
+                    }
+
+                    lnkReports.Visible = objRoll.Report;
+                    lnkTransactions.Visible = objRoll.Transaction;
+                    lnkView.Visible = objRoll.View;
+
+                    // lnkApprovals.Visible = objRoll.Approval;
+                    lnkApprovals.Visible = objRoll.Approval;
+
+                    if (!objRoll.AccessRightMaster && strPath.ToLower().Equals("accessrightadmin.aspx"))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    if (!objRoll.UserMaster && strPath.ToLower().Equals("usermaster.aspx"))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    if (!objRoll.EntityMaster && strPath.ToLower().Equals("entitymaster.aspx"))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    if (!objRoll.RollMaster && strPath.ToLower().Equals("rollmaster.aspx"))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    if (!objRoll.Report && strPath.ToLower().Equals("reports.aspx"))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    if (!objRoll.Transaction && (strPath.ToLower().Equals("createmeeting.aspx") || strPath.ToLower().Equals("NoticeMaster.aspx") || strPath.ToLower().Equals("createagenda.aspx") || strPath.ToLower().Equals("uploadminutes.aspx")))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    if (!objRoll.View && (strPath.ToLower().Equals("meetingschedule.aspx") || strPath.ToLower().Equals("viewnotice.aspx") || strPath.ToLower().Equals("viewagenda.aspx") || strPath.ToLower().Equals("viewminutes.aspx")))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    //if (!objRoll.ApprovalMaster && strPath.ToLower().Equals("reports.aspx"))
+                    //{
+                    //    Response.Redirect("Default.aspx");
+                    //}
+                }
+                else
+                {
+                    searchlink.Visible = false;
+                    lnkReports.Visible = false;
+                    lnkTransactions.Visible = false;
+                    lnkView.Visible = false;
+
+                    lnkApprovals.Visible = false;
+
+                    trAccessRights.Visible = false;
+                    // trApprovalMaster.Visible = objRoll.ApprovalMaster;
+                    trUserMaster.Visible = false;
+                    trEntityMaster.Visible = false;
+                    trRollMaster.Visible = false;
+
+                    if (!(strPath.ToLower().Equals("default.aspx") || strPath.ToLower().Equals("answerquestion.aspx") || strPath.ToLower().Equals("changepassword.aspx")))
+                    {
+                        Response.Redirect("default.aspx");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+    }
+}

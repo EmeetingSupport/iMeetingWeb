@@ -1,0 +1,237 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+using System.Text;
+using System.IO;
+
+namespace MeetingMinder.Web
+{
+    public partial class Reports : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page laod event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //Bind Entity List
+                BindEntity();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+                ddlMember.Items.Insert(0, new ListItem("Select Forum/Members ", "0"));
+            }
+        }
+
+        /// <summary>
+        /// Bind Entity list to drop down
+        /// </summary>
+        private void BindEntity()
+        {
+            try
+            {
+                string UserId = Convert.ToString(Session["UserId"]);
+                ddlEntity.DataSource = UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId));
+                ddlEntity.DataBind();
+                ddlEntity.DataTextField = "EntityName";
+                ddlEntity.DataValueField = "EntityId";
+                ddlEntity.DataBind();
+                ddlEntity.Items.Insert(0, new ListItem("Select Entity", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+
+            }
+        }
+
+        /// <summary> 
+        /// Bind Forum List to drop down
+        /// </summary>
+        /// <param name="EntityId">string specifying EntityId</param>
+        private void BindForum(string EntityId)
+        {
+            try
+            {
+
+                ddlForum.Items.Clear();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                Guid entityId;
+                if (Guid.TryParse(EntityId, out entityId))
+                {
+                    IList<ForumDomain> objForum = ForumDataProvider.Instance.GetForumByEntityId(entityId);
+                    ddlForum.DataSource = objForum;
+                    ddlForum.DataBind();
+                    ddlForum.DataTextField = "ForumName";
+                    ddlForum.DataValueField = "ForumId";
+                    ddlForum.DataBind();
+                    ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Invalid forum search";
+                    Error.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list Selected Index Change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlEntity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strEntityId = ddlEntity.SelectedValue;
+                if (strEntityId != "0")
+                {
+                    lblView.Visible = false;
+                    lnkView.Visible = false;
+                    BindForum(strEntityId);
+                    ddlMember.Items.Clear();
+                    ddlMember.Items.Insert(0, new ListItem("Select Forum/Members ", "0"));
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// View uploaded file
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Convert.ToString(ViewState["Member"]);
+
+                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["MembesInfo"]);
+
+                //Set the appropriate ContentType.
+                Response.ContentType = "application/octet-stream";
+                //Get the physical path to the file.
+                string FilePath = Server.MapPath(savePath + fileName);
+
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.WriteFile(FilePath);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list  Selected Index Change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlForum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strForumId = ddlForum.SelectedValue;
+                if (strForumId != "0")
+                {
+                    ViewState["Member"] = null;
+                    ForumDomain objForum = ForumDataProvider.Instance.Get(Guid.Parse(ddlForum.SelectedValue));
+                    if (objForum != null)
+                    {
+                        if (objForum.MembersInfo != null)
+                        {
+                            if (objForum.MembersInfo.Length > 0)
+                            {
+                                ddlMember.Items.Clear();
+                                ddlMember.Items.Insert(0, new ListItem("Select Forum/Members ", "0"));
+                                ViewState["Member"] = objForum.MembersInfo;
+                                //lnkView.Visible = true;
+                                //lblView.Visible = false;
+                                lnkView.Visible = false;
+                                lblView.Visible = false;
+                                ddlMember.Items.Insert(1, new ListItem("View Details", objForum.MembersInfo));
+
+                            }
+                            else
+                            {
+                                ddlMember.Items.Clear();
+                                ddlMember.Items.Insert(0, new ListItem("Select Forum/Members ", "0"));
+                                lblView.Text = "No file uploaded";
+                                lblView.ForeColor = System.Drawing.Color.Red;
+                                // lblView.Visible = true;
+                                lblView.Visible = false;
+                                lnkView.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            lblView.Text = "No file uploaded";
+                            lblView.ForeColor = System.Drawing.Color.Red;
+                            lblView.Visible = false;
+                            // lblView.Visible = true;
+                            lnkView.Visible = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list selected index change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlMember_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileView = ddlMember.SelectedValue;
+                if (fileView.Length > 0 && fileView != "0")
+                {
+                    lnkView.Visible = true;
+                    lblView.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+    }
+}

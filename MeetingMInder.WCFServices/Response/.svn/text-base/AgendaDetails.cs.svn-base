@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Runtime.Serialization;
+
+namespace MeetingMInder.WCFServices.Response
+{
+    [DataContract]
+    public class AgendaDetails
+    {
+        [DataMember]
+      public Guid AgendaId { get; set; }
+      [DataMember]
+      public string AgendaName { get; set; }
+      [DataMember]
+      public string AgendaNote { get; set; }
+      [DataMember]
+      public Guid ParentAgendaId { get; set; }
+      [DataMember]
+      public string UploadedAgendaNote { get; set; }
+      [DataMember]
+      public bool IsPublished { get; set; }
+      //[DataMember]
+      //public Guid PublishedBy { get; set; }
+      [DataMember]
+      public DateTime CreatedOn { get; set; }
+      [DataMember]
+      public Guid CreatedBy { get; set; }
+      [DataMember]
+      public DateTime UpdateOn { get; set; }
+      [DataMember]
+      public Guid UpdatedBy { get; set; }
+      [DataMember]
+      public int AgendaOrder {  get; set;  }
+      [DataMember]
+      public Guid MeetingId {get; set; }
+        [DataMember]
+      public string EntityName { get; set;}
+        [DataMember]
+      public string MeetingVenue {get; set;}
+        [DataMember]
+      public string ForumName { get; set;}
+        [DataMember]
+      public Guid EntityId { get; set; }
+        [DataMember]
+      public Guid AgendaChecker { get; set; }
+       [DataMember]
+      public Guid ForumId { get; set; }
+        [DataMember]
+        public bool IsActive {get; set;}
+    }
+}

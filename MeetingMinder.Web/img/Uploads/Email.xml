@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<email>
+  <!-- <senderemail>emeeting.support@sbi.co.in</senderemail> -->
+  <!-- <password>e3XFFR/iX7g6XcViDdwt3w==</password> -->
+  <!-- <port>587</port> -->
+  <!-- <smtpclient>smtp.office365.com</smtpclient> -->
+  <!-- <ssl>True</ssl> -->
+  <senderemail>tralicdemo@gmail.com</senderemail>
+  <password>cXFv7xkzw4xgxJn3wXU8yF8ABym+/afagkajJDOiwbQ=</password>
+  <port>587</port>
+  <smtpclient>smtp.gmail.com</smtpclient>
+  <ssl>True</ssl>
+</email>

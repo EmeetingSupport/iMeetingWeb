@@ -1,0 +1,235 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+namespace MM.Data
+{
+    public class ForumDataProvider : DataProvider
+    {
+        #region "Singleton"
+        private static volatile ForumDataProvider _instance;
+        private static object _synRoot = new Object();
+
+        private ForumDataProvider()
+        {
+        }
+
+        public static ForumDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new ForumDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+        #region "Fill"
+        /// <summary>
+        /// To Fill Forum Details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private ForumDomain ToForumDomain(IDataReader dr)
+        {
+            return new ForumDomain()
+            {
+                ForumId = Null.SetNullGuid(dr["ForumId"]),
+                EntityId = Null.SetNullGuid(dr["EntityId"]),
+                ForumName = Encryptor.DecryptString(Null.SetNullString(dr["ForumName"])),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+                UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+                CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+                EntityName = Encryptor.DecryptString(Null.SetNullString(dr["EntityName"])),
+
+                ForumShortName = Encryptor.DecryptString(Null.SetNullString(dr["ForumShortName"])),
+                ForumChecker = Null.SetNullGuid(dr["ForumChecker"]),
+
+                IsEnable = Null.SetNullBoolean(dr["IsEnable"]),
+                MembersInfo = Null.SetNullString(dr["MembersInfo"])
+            };
+        }
+
+        /// <summary>
+        /// To Fill Forum Details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<ForumDomain> ToForumDomains(IDataReader dr)
+        {
+            IList<ForumDomain> forumDoamins = new List<ForumDomain>();
+            while (dr.Read())
+            {
+                forumDoamins.Add(ToForumDomain(dr));
+            }
+            return forumDoamins;
+        }
+
+        ///// <summary>
+        /////  To Fill Forum Details with entity name 
+        ///// </summary>
+        ///// <param name="dr"></param>
+        ///// <returns></returns>
+        //private ForumDomain ToForumDomainWithEntity(IDataReader dr)
+        //{
+        //    return new ForumDomain()
+        //    {
+        //        ForumId = Null.SetNullGuid(dr["ForumId"]),
+        //        EntityId = Null.SetNullGuid(dr["EntityId"]),
+        //        ForumName = Encryptor.DecryptString(Null.SetNullString(dr["ForumName"])),
+        //        CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+        //        UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+        //        UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+        //        CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+        //        EntityName = Encryptor.DecryptString(Null.SetNullString(dr["EntityName"]))
+
+        //    };
+        //}
+
+        ///// <summary>
+        ///// To Fill Forum Details with entity name
+        ///// </summary>
+        ///// <param name="dr"></param>
+        ///// <returns></returns>
+        //private IList<ForumDomain> ToForumDomainsWithEntity(IDataReader dr)
+        //{
+        //    IList<ForumDomain> forumDoamins = new List<ForumDomain>();
+        //    while (dr.Read())
+        //    {
+        //        forumDoamins.Add(ToForumDomainWithEntity(dr));
+        //    }
+        //    return forumDoamins;
+        //}
+        #endregion
+
+        #region "Get"
+        /// <summary>
+        /// Get Forum Details By ID
+        /// </summary>
+        /// <param name="ForumId">Guid specifying ForumId</param>
+        /// <returns></returns>
+        public ForumDomain Get(Guid ForumId)
+        {
+            ForumDomain entityDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetForumDetailsById", ForumId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                entityDomain = ToForumDomain(dataReader);
+            }
+            return entityDomain;
+        }
+
+       
+        /// <summary>
+        /// Get All Forum Details
+        /// </summary>
+        /// <returns></returns>
+        public IList<ForumDomain> Get()
+        {
+            IList<ForumDomain> forumDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllForumDetails"))
+            {
+                forumDomains = ToForumDomains(dataReader);
+            }
+            return forumDomains;
+        }
+
+        /// <summary>
+        /// Get Forums by User id 
+        /// </summary>
+        /// <param name="UserId">Guid specifying UserId</param>
+        /// <returns></returns>
+        public IList<ForumDomain> GetForumsByUserId(Guid UserId)
+        {
+            IList<ForumDomain> forumDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetForumByUserId", UserId))
+            {
+                forumDomains = ToForumDomains(dataReader);
+            }
+            return forumDomains;
+        }
+        /// <summary>
+        /// Get Forum Details By Entity ID
+        /// </summary>
+        /// <param name="EntityId">Guid specifying EntityId</param>
+        /// <returns></returns>
+        public IList<ForumDomain> GetForumByEntityId(Guid EntityId)
+        {
+            IList<ForumDomain> forumDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetForumDetailsByEntityId", EntityId))
+            {
+                forumDomains = ToForumDomains(dataReader);//ToForumDomainsWithEntity(dataReader);
+
+            }
+            return forumDomains;
+        }
+        #endregion
+
+
+        #region "Modify"
+
+        /// <summary>
+        /// Insert Forum Details
+        /// </summary>
+        /// <param name="forumDomain">Class object specifying forumDomain</param>
+        /// <returns></returns>
+        public ForumDomain Insert(ForumDomain forumDomain)
+        {
+
+            forumDomain.ForumId = (Guid)SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertForumDetails", Encryptor.EncryptString(forumDomain.ForumName), forumDomain.EntityId, forumDomain.CreatedBy, forumDomain.UpdatedBy, Encryptor.EncryptString(forumDomain.ForumShortName), forumDomain.ForumChecker, forumDomain.IsEnable,forumDomain.MembersInfo);
+
+            return forumDomain;
+        }
+        /// <summary>
+        /// Delete Forum Details BY Id
+        /// </summary>
+        /// <param name="ForumID">Guid specifying ForumId</param>
+        /// <returns></returns>
+        public bool Delete(Guid ForumID)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteForumById", ForumID)) > 0;
+        }
+
+        /// <summary>
+        /// Delete seletd Forum by id
+        /// </summary>
+        /// <param name="ForumIds">string specifying ForumIds</param>
+        /// <returns></returns>
+        public bool DeleteSelectedForum(string ForumIds)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteSelectedForumById", ForumIds)) > 0;
+        }
+        /// <summary>
+        /// Update Forum Details BY Id
+        /// </summary>
+        /// <param name="forumdomain">Class object speciying forumdomain</param>
+        /// <returns></returns>
+        public bool Update(ForumDomain forumdomain)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateForumDetailsById", forumdomain.ForumId, Encryptor.EncryptString(forumdomain.ForumName), forumdomain.UpdatedBy, Encryptor.EncryptString(forumdomain.ForumShortName), forumdomain.ForumChecker, forumdomain.IsEnable,forumdomain.MembersInfo)) > 0;
+        }
+
+
+
+        #endregion
+    }
+}

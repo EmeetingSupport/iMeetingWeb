@@ -1,0 +1,939 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using System.Data;
+using MM.Core;
+using System.Text;
+using System.Configuration;
+using System.Net.Mail;
+using System.Web.Services;
+using System.Diagnostics;
+
+namespace MeetingMinder.Web
+{
+    public partial class UserMaster : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!Page.IsPostBack)
+            {
+                //bind user list  to grid
+                BindUsers();
+
+                //bind entity list
+                BindEntity();
+
+                //Bind checkers list
+                BindCheckers();
+
+            }
+        }
+
+        /// <summary>
+        /// Check Email id existance in database.
+        /// </summary>
+        /// <param name="Email">string specifying Email</param>
+        /// <returns></returns>
+        [WebMethod]
+        public static string CheckEmail(string Email)
+        {
+            try
+            {
+                string strEmail = "";
+                int Count = UserDataProvider.Instance.CheckEmailExistance(Email);
+                if (Count > 0)
+                {
+                    strEmail = "<label style='color:red'> Email id already exists </label>";
+                }
+                else
+                {
+                    strEmail = "";
+                }
+                return strEmail;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// Check userName existance 
+        /// </summary>
+        /// <param name="Email">string specifying Email</param>
+        /// <returns></returns>
+        [WebMethod]
+        public static string CheckUserName(string UserName)
+        {
+            try
+            {
+                string strEmail = "";
+                int Count = UserDataProvider.Instance.CheckUserNameExistance(UserName);
+                if (Count > 0)
+                {
+                    strEmail = "<label style='color:red'> UserName already exists </label>";
+                }
+                else
+                {
+                    strEmail = "";
+                }
+                return strEmail;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// Bind User List to drop down
+        /// </summary>
+        private void BindCheckers()
+        {
+            try
+            {
+                ddlUser.DataSource = UserDataProvider.Instance.GetAllChecker();
+                ddlUser.DataBind();
+                ddlUser.DataValueField = "UserId";
+                ddlUser.DataTextField = "UserName";
+                ddlUser.DataBind();
+
+                //Remove logged in users id from drop down
+                // string UserId = Convert.ToString(Session["UserId"]);
+                //  ListItem UserIdToRemove = ddlUser.Items.FindByValue(UserId);
+                //  ddlUser.Items.Remove(UserIdToRemove);
+
+                ddlUser.Items.Insert(0, new ListItem("Select User", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Bind Entity names to drop down
+        /// </summary>
+        private void BindEntity()
+        {
+            try
+            {
+                //Literal ltl_bredcrumbs = (Literal)Master.FindControl("ltl_bredcrumbs");
+                //ltl_bredcrumbs.Text = "<a href='" + VirtualPathUtility.ToAbsolute("Default.aspx") + "' style='text-decoration:none;'>Home</a>&nbsp;";
+
+                ddlEntityList.DataSource = EntityDataProvider.Instance.Get();
+                ddlEntityList.DataBind();
+                ddlEntityList.DataTextField = "EntityName";
+                ddlEntityList.DataValueField = "EntityId";
+                ddlEntityList.DataBind();
+                //ddlEntityList.Items.Insert(0, new ListItem("Select Entity", "-1"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Bind User grid
+        /// </summary>
+        private void BindUsers()
+        {
+            try
+            {
+                Literal ltl_bredcrumbs = (Literal)Master.FindControl("ltl_bredcrumbs");
+                ltl_bredcrumbs.Text = "<a href='" + VirtualPathUtility.ToAbsolute("~/default.aspx") + "' >Home<a>&nbsp;";
+
+                IList<UserDomain> objUserList = UserDataProvider.Instance.Get();
+                grdUser.DataSource = objUserList;
+                grdUser.DataBind();
+            }
+            catch (Exception Ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Insert or edit values 
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnInsert_Click1(object sender, EventArgs e)
+        {
+
+            try
+            {
+                UserDomain objUserDomain = new UserDomain();
+                objUserDomain.UserName = txtUserName.Text;
+
+                objUserDomain.Designation = txtDesignation.Text;
+                objUserDomain.DINNumber = txtDinNo.Text;
+                objUserDomain.EmailID1 = txtEmail.Text;
+                objUserDomain.EmailID2 = txtEmailTwo.Text;
+
+                objUserDomain.FirstName = txtFirstName.Text;
+                objUserDomain.LastName = txtLastName.Text;
+                objUserDomain.Mobile = txtMobileNumebr.Text;
+                objUserDomain.OfficeAddress = txtOfficeAddress.Text;
+                objUserDomain.OfficePhone = txtOfficeContactNo.Text;
+                objUserDomain.PANNo = txtPanNo.Text;
+                objUserDomain.Password = txtConformPass.Text;
+
+                objUserDomain.ResidencePhone = txtContactNumber.Text;
+                objUserDomain.ResidentialAddress = txtAddress.Text;
+                objUserDomain.SecretaryEmailID1 = txtSecretoryEmail.Text;
+                objUserDomain.SecretaryEmailID2 = txtSecretoryEmailTwo.Text;
+                objUserDomain.SecretaryMobile = txtSecretoryMobile.Text;
+                objUserDomain.SecretaryName = txtSecretoryName.Text;
+                objUserDomain.SecretaryOfficePhone = txtSecreroryOffiCont.Text;
+                objUserDomain.SecretaryResidentalPhone = txtSecreroryResiCont.Text;
+                objUserDomain.UserId = Guid.NewGuid();
+
+                if (rdbCheckerNo.Checked)
+                {
+                    objUserDomain.IsChecker = false;
+                }
+                if (rdbCheker.Checked)
+                {
+                    objUserDomain.IsChecker = true;
+                }
+
+                if (rdbMaker.Checked)
+                {
+                    objUserDomain.IsMaker = true;
+                }
+
+                if (rdbMakerNo.Checked)
+                {
+                    objUserDomain.IsMaker = false;
+                }
+                if (chkIpad.Checked == true)
+                {
+                    objUserDomain.IsEnabledOnIpad = true;
+                }
+                if (chkWebApp.Checked == true)
+                {
+
+                    objUserDomain.IsEnabledOnWebApp = true;
+                }
+
+                objUserDomain.UserChecker = Guid.Parse(ddlUser.SelectedValue);
+
+                //insert default image name
+                string imageName = "sample_avatar.jpg";
+
+
+                objUserDomain.Photograph = imageName;
+                string UserId = Convert.ToString(Guid.NewGuid());
+                StringBuilder strEntity = new StringBuilder(",");
+                StringBuilder strDelete = new StringBuilder(",");
+
+                objUserDomain.CreatedBy = Guid.Parse(Convert.ToString(Session["UserId"]));
+                objUserDomain.UpdatedBy = Guid.Parse(Convert.ToString(Session["UserId"]));
+
+                if (objUserDomain.CreatedBy == objUserDomain.UserChecker)
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Checker and Maker cannot be same ";
+                    Error.Visible = true;
+                    return;
+                }
+                bool isMaker = Convert.ToBoolean(Session["IsMaker"].ToString());
+                if (isMaker)
+                {
+                    //Update user
+                    if (hdnUserId.Value != null && hdnUserId.Value != "")
+                    {
+                        if (fuPhotograph.HasFile)
+                        {
+                            string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["ImagePath"]);
+                            string contentType = fuPhotograph.PostedFile.ContentType;
+                            if (contentType.ToLower().Contains("image/"))
+                            {
+                                string ext = Path.GetExtension(fuPhotograph.FileName);
+
+                                imageName = DateTime.Now.Ticks + ext;
+                                fuPhotograph.PostedFile.SaveAs(Server.MapPath(savePath + imageName));
+
+                                if (ViewState["file"] != null)
+                                {
+                                    string fileName = Convert.ToString(ViewState["file"]);
+                                    if (fileName != "sample_avatar.jpg")
+                                        File.Delete(Server.MapPath(savePath + fileName));
+                                    ViewState["file"] = null;
+                                }
+                            }
+                            else
+                            {
+                                ((Label)Error.FindControl("lblError")).Text = "Invalid image Uploaded file";
+                                Error.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            if (ViewState["file"] != null)
+                            {
+                                imageName = Convert.ToString(ViewState["file"]);
+                            }
+                        }
+
+                        if (ViewState["selectedEntity"] != null)
+                        {
+                            List<string> selectedEntity = (List<string>)ViewState["selectedEntity"];
+
+                            foreach (ListItem lstItem in ddlEntityList.Items)
+                            {
+                                if (lstItem.Selected)
+                                {
+                                    if (!selectedEntity.Contains(lstItem.Value))        //if value not exist in current list add it
+                                    {
+                                        //                                    strEntity.Append(@" INSERT INTO UserEntity
+                                        //           ( UserEntityId, UserId, EntityId, CreatedBy, UpdatedBy, CreatedOn ,UpdatedOn)
+                                        //     VALUES (newid(),'" + hdnUserId.Value + @"' , '" + lstItem.Value + "','" + objUserDomain.CreatedBy + "', '" + objUserDomain.UpdatedBy + "', getdate(), getdate()) ");
+                                        strEntity.Append(lstItem.Value + ",");
+                                    }
+                                    else
+                                    {
+                                        selectedEntity.Remove(lstItem.Value);
+                                    }
+                                }
+                            }
+
+                            if (selectedEntity.Count != 0)
+                            {
+                                foreach (var item in selectedEntity)
+                                {
+                                    //Delete previous not selected entity
+                                    // strEntity.Append(@" DELETE FROM UserEntity WHERE EntityID = '"+item.ToString() +"' and UserId = '"+hdnUserId.Value+"' ");
+                                    strDelete.Append(item.ToString() + ",");
+                                }
+                            }
+
+                        }
+                        objUserDomain.UpdatedBy = Guid.Parse(Convert.ToString(Session["UserId"]));
+                        objUserDomain.UserId = Guid.Parse(hdnUserId.Value);
+                        bool status = UserDataProvider.Instance.Update(objUserDomain, strEntity.ToString(), strDelete.ToString());
+                        if (status)
+                        {
+                            ((Label)Info.FindControl("lblName")).Text = " User updated successfully";
+                            BindUsers();
+                            ClearFields();
+                            Info.Visible = true;
+                        }
+                        else
+                        {
+                            ((Label)Error.FindControl("lblError")).Text = "User updation failed";
+                            Error.Visible = true;
+                        }
+                    }
+                    //insert user
+                    else
+                    {
+                        if (fuPhotograph.HasFile)
+                        {
+                            string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["ImagePath"]);
+                            string contentType = fuPhotograph.PostedFile.ContentType;
+                            if (contentType.ToLower().Contains("image/"))
+                            {
+                                string ext = Path.GetExtension(fuPhotograph.FileName);
+
+                                imageName = DateTime.Now.Ticks + ext;
+                                fuPhotograph.PostedFile.SaveAs(Server.MapPath(savePath + imageName));
+
+                                if (ViewState["file"] != null)
+                                {
+                                    string fileName = Convert.ToString(ViewState["file"]);
+                                    if (fileName != "sample_avatar.jpg")
+                                        File.Delete(Server.MapPath(savePath + fileName));
+                                    ViewState["file"] = null;
+                                }
+                            }
+                            else
+                            {
+                                ((Label)Error.FindControl("lblError")).Text = "Invalid image Uploaded file";
+                                Error.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            if (ViewState["file"] != null)
+                            {
+                                imageName = Convert.ToString(ViewState["file"]);
+                            }
+                        }
+
+                        //Insert Multiple entity into entity table
+                        foreach (ListItem lstItem in ddlEntityList.Items)
+                        {
+                            if (lstItem.Selected)
+                            {
+                                //                            strEntity.Append(@" INSERT INTO UserEntity
+                                //           ( UserEntityId, UserId, EntityId, CreatedBy, UpdatedBy, CreatedOn ,UpdatedOn)
+                                //     VALUES (newid(),'" + UserId + @"' , '" + lstItem.Value + "','" + objUserDomain.CreatedBy + "', '" + objUserDomain.UpdatedBy + "', getdate(), getdate()) ");
+
+                                strEntity.Append(lstItem.Value + ",");
+                            }
+                        }
+
+
+
+
+                        UserDataProvider.Instance.Insert(objUserDomain, strEntity.ToString(), Guid.Parse(UserId));
+                        ((Label)Info.FindControl("lblName")).Text = "Success : User inserted successfully";
+                        BindUsers();
+                        ClearFields();
+                        Info.Visible = true;
+                        // SendEmail(objUserDomain.EmailID1, objUserDomain.UserName, objUserDomain.Password);
+                    }
+
+
+                }
+
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = " Sorry you are not maker ";
+                    Error.Visible = true;
+                }
+            }
+
+            catch (Exception Ex)
+            {
+                //// Get stack trace for the exception with source file information
+                //var st = new StackTrace(Ex, true);
+                //// Get the top stack frame
+                //var frame = st.GetFrame(0);
+                //// Get the line number from the stack frame
+                //var line = frame.GetMethod();
+                //if (line.ToString().ToLower().Equals("insert"))
+                //{
+                //((Label)Error.FindControl("lblError")).Text = "User insertion failed check email or umsername";
+                //Error.Visible = true;
+                //}
+                ((Label)Error.FindControl("lblError")).Text = "User insertion failed";
+                Error.Visible = true;
+            }
+
+        }
+        /// <summary>
+        /// Insertion or Updation cancel
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void btnCancel_Click1(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+        /// <summary>
+        /// Event That Fired on RowCommand
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdUser_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                // delete user
+                if (e.CommandName.ToLower().Equals("delete"))
+                {
+                    string UserID = Convert.ToString(e.CommandArgument.ToString());
+                    bool bStatus = UserDataProvider.Instance.Delete(Guid.Parse(UserID));
+                    if (bStatus == false)
+                    {
+                        ((Label)Info.FindControl("lblName")).Text = "User Deleted Successfully";
+                        Info.Visible = true;
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                        Error.Visible = true;
+                    }
+                    BindUsers();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Row deleting event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdUser_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Row editing event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdUser_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            try
+            {
+                ClearFields();
+
+                string UserId = grdUser.DataKeys[e.NewEditIndex].Value.ToString();
+                if (UserId.Length == 36)
+                {
+                    UserDomain objUserDomain = UserDataProvider.Instance.Get(Guid.Parse(UserId));
+                    txtAddress.Text = objUserDomain.ResidentialAddress;
+
+                    txtContactNumber.Text = objUserDomain.ResidencePhone;
+                    txtDesignation.Text = objUserDomain.Designation;
+                    txtDinNo.Text = objUserDomain.DINNumber;
+                    txtEmail.Text = objUserDomain.EmailID1;
+                    txtEmailTwo.Text = objUserDomain.EmailID2;
+                    txtFirstName.Text = objUserDomain.FirstName;
+                    txtLastName.Text = objUserDomain.LastName;
+                    txtMobileNumebr.Text = objUserDomain.Mobile;
+                    txtOfficeAddress.Text = objUserDomain.OfficeAddress;
+                    txtOfficeContactNo.Text = objUserDomain.OfficePhone;
+                    txtPanNo.Text = objUserDomain.PANNo;
+
+                    if (objUserDomain.Photograph != null)
+                    {
+                        if (objUserDomain.Photograph.Length > 0)
+                        {
+                            ViewState["file"] = objUserDomain.Photograph;
+                            lnkView.Visible = true;
+                        }
+                    }
+
+                    txtSecreroryOffiCont.Text = objUserDomain.SecretaryOfficePhone;
+                    txtSecreroryResiCont.Text = objUserDomain.SecretaryResidentalPhone;
+                    txtSecretoryEmail.Text = objUserDomain.SecretaryEmailID1;
+                    txtSecretoryEmailTwo.Text = objUserDomain.SecretaryEmailID2;
+                    txtSecretoryMobile.Text = objUserDomain.SecretaryMobile;
+                    txtSecretoryName.Text = objUserDomain.SecretaryName;
+
+                    txtUserName.Text = objUserDomain.UserName;
+
+                    bool IsChecker = objUserDomain.IsChecker;
+                    if (IsChecker)
+                    {
+                        rdbCheker.Checked = true;
+                        rdbCheckerNo.Checked = false;
+                    }
+                    else
+                    {
+                        rdbCheckerNo.Checked = true;
+                        rdbCheker.Checked = false;
+                    }
+
+
+                    bool IsMaker = objUserDomain.IsMaker;
+                    if (IsMaker)
+                    {
+                        rdbMaker.Checked = true;
+                        rdbMakerNo.Checked = false;
+                    }
+                    else
+                    {
+                        rdbMakerNo.Checked = true;
+                        rdbMaker.Checked = false;
+                    }
+
+                    if (objUserDomain.IsEnabledOnWebApp == true)
+                    {
+                        chkWebApp.Checked = true;
+                    }
+                    else
+                    {
+                        chkWebApp.Checked = false;
+                    }
+                    if (objUserDomain.IsEnabledOnIpad == true)
+                    {
+                        chkIpad.Checked = true;
+                    }
+                    else
+                    {
+                        chkIpad.Checked = false;
+                    }
+
+                 //   ddlUser.SelectedValue = Convert.ToString(objUserDomain.UserChecker);
+
+                    if (ddlUser.Items.FindByValue(
+   Convert.ToString(objUserDomain.UserChecker)) != null)
+                    {
+                        ddlUser.SelectedValue = Convert.ToString(objUserDomain.UserChecker);
+                    }
+                   
+                    //txtConformPass.Text = objUserDomain.Password;
+                    //txtPassword.Text = objUserDomain.Password;
+
+                    txtConformPass.Attributes.Add("value", objUserDomain.Password);
+                    txtPassword.Attributes.Add("value", objUserDomain.Password);
+
+                    hdnUserId.Value = UserId;
+                    hdnPhoto.Value = Convert.ToString(objUserDomain.Photograph);
+
+                    IList<UserEntityDomain> userEntityList = UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId));
+
+                    int entityCount = userEntityList.Count;
+                    if (entityCount > 0)
+                    {
+                        int itemIndex = 0;
+                        List<string> selectedVal = new List<string>();
+
+                        var selectedEntty = (from p in userEntityList
+                                             select new
+                                             {
+                                                 EntityId = p.EntityId
+                                             }).ToList();
+
+                        foreach (var id in selectedEntty)
+                        {
+                            selectedVal.Add(id.EntityId.ToString());
+                        }
+
+
+                        foreach (ListItem lstItem in ddlEntityList.Items)
+                        {
+                            if (entityCount == itemIndex)
+                            {
+                                //return after selecting all users entity
+                                break;
+                            }
+
+                            var objEntityId = (from p in userEntityList
+                                               where (p.EntityId == Guid.Parse(lstItem.Value))
+                                               select p).ToList();
+                            if (objEntityId.Count > 0)
+                            {
+                                //check list item is equal to user entity
+                                //if (lstItem.Value == userEntityList[itemIndex].EntityId.ToString())
+                                //{
+                                lstItem.Selected = true;
+                                // selectedVal.Add(lstItem.Value);
+                                itemIndex++;
+
+                                //}
+                            }
+                        }
+                        ViewState["selectedEntity"] = selectedVal;
+                    }
+                    btnInsert.Text = "Update";
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Code To SelectIndex Chage
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Function Used For Gridview Sorting
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdUser_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            try
+            {
+                if (ViewState["sortDirection"] == null)
+                {
+                    ViewState["sortDirection"] = "asc";
+                }
+
+
+                if (UserDataProvider.Instance.Get().Count > 0)
+                {
+                    DataTable dt = (DataTable)UserDataProvider.Instance.Get().AsDataTable();
+                    DataView dv = new DataView(dt);
+                    if (Convert.ToString(ViewState["sortDirection"]) == "asc")
+                    {
+                        ViewState["sortDirection"] = "dsc";
+                        dv.Sort = e.SortExpression + " DESC";
+                    }
+                    else
+                    {
+                        ViewState["sortDirection"] = "asc";
+                        dv.Sort = e.SortExpression + " ASC";
+                    }
+
+                    grdUser.DataSource = dv;
+                    grdUser.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Code to PageIndex Changing
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdUser.PageIndex = e.NewPageIndex;
+                BindUsers();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Used To Clear TextBoxes
+        /// </summary>
+        public void ClearFields()
+        {
+            try
+            {
+                txtAddress.Text = "";
+                txtConformPass.Text = "";
+                txtContactNumber.Text = "";
+                txtDesignation.Text = "";
+                txtDinNo.Text = "";
+                txtEmail.Text = "";
+                txtEmailTwo.Text = "";
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                txtMobileNumebr.Text = "";
+                txtOfficeAddress.Text = "";
+                txtOfficeContactNo.Text = "";
+                txtPanNo.Text = "";
+                txtPassword.Text = "";
+
+                txtConformPass.Text = "";
+
+                txtSecreroryOffiCont.Text = "";
+                txtSecreroryResiCont.Text = "";
+                txtSecretoryEmail.Text = "";
+                txtSecretoryEmailTwo.Text = "";
+                txtSecretoryMobile.Text = "";
+                txtSecretoryName.Text = "";
+                txtUserName.Text = "";
+                ddlEntityList.SelectedIndex = -1;
+
+                hdnPhoto.Value = "";
+                hdnUserId.Value = "";
+                btnInsert.Text = "Save";
+
+                rdbMakerNo.Checked = true;
+                rdbMaker.Checked = false;
+
+                rdbCheker.Checked = false;
+                rdbCheckerNo.Checked = true;
+
+                lnkView.Visible = false;
+                ViewState["file"] = null;
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+
+        }
+
+        /// <summary>
+        /// Remove selected User
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lbRemoveSelected_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //StringBuilder strQuery = new StringBuilder("");
+                StringBuilder strUserIds = new StringBuilder(",");
+                int count = 0;
+                //get all checked user
+                for (int i = 0; i < grdUser.Rows.Count; i++)
+                {
+                    CheckBox chkSelect = (CheckBox)grdUser.Rows[i].FindControl("chkSubAdmin");
+                    if (chkSelect.Checked)
+                    {
+                        count++;
+                        string UserID = Convert.ToString(grdUser.DataKeys[i].Value.ToString());
+                        //Delete all selected user
+                        //  strUserIds.Append("	UPDATE [User] SET IsActive = 0  WHERE  UserId= '" + UserID + "'  ");
+                        strUserIds.Append(UserID + ",");
+                    }
+                }
+                if (count > 0)
+                {
+                    bool bStatus = UserDataProvider.Instance.DeleteSelected(strUserIds.ToString());
+                    if (!bStatus)
+                    {
+                        ((Label)Info.FindControl("lblName")).Text = "User Deleted Successfully";
+                        Info.Visible = true;
+                        BindUsers();
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                        Error.Visible = true;
+                    }
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Please Select atleast one checkbox";
+                    Error.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Send email to username and password
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <param name="UserName"></param>
+        /// <param name="Pass"></param>
+        //public void SendEmail(string EmailId, string UserName, string Pass)
+        //{
+        //    try
+        //    {
+        //        if (txtUserName != null && txtUserName.Text != "")
+        //        {
+        //            UserDomain objUser = UserDataProvider.Instance.GetPassword(txtUserName.Text);
+        //            if (objUser != null)
+        //            {
+        //                Email user name and password
+
+        //                string ToEmail = EmailId;
+        //                string EmailFrom = ConfigurationManager.AppSettings["Email"];
+        //                string Password = ConfigurationManager.AppSettings["Password"];
+        //                string EmailSubject = "Your Username and Password";
+
+        //                string strlink = @"http:///Login.aspx";
+        //                string EmailBody = "<p>";
+        //                EmailBody += "<table style=\"border-style:none;\"><tr style=\" border-style:none;\"><td>";
+
+        //                <td><img src=" + ("http:// /images/logo.png") + "></img></td>
+        //                EmailBody += "<font color=\"Teal\"></b> MEETING MINDER  USERNAME AND PASSWORD</b></font></td></tr></table><BR />";
+        //                EmailBody += "Dear User <BR /><BR />";
+        //                EmailBody += "Following are your Login Details :-<BR />";
+
+        //                EmailBody += "<Table width=\"700px\" style=\"border-color:Teal; height:100px; width:50%; border-style:double;\">";
+        //                EmailBody += "<tr style=\" border-style:none;\"><td>";
+
+        //                EmailBody += "Login Email</td><td> :</td><td>" + UserName + "</td></tr>";
+        //                EmailBody += "<tr style=\" border-style:none;\"><td>Password</td><td> :</td><td>" + Pass + "</td></tr>";
+        //                EmailBody += "</table><br /><br /><br />";
+        //                EmailBody += "&nbsp; Regards <br /> Meeting Minder Admin Team";
+        //                EmailBody += "</p>";
+
+        //                MailMessage objmail = new MailMessage();//(EmailFrom, ToEmail, EmailSubject, EmailBody);
+        //                SmtpClient SMTPServer = new SmtpClient();
+
+        //                SMTPServer = new SmtpClient();
+        //                System.Net.NetworkCredential SMTPUserInfo = new System.Net.NetworkCredential(EmailFrom, Password);
+        //                SMTPServer.UseDefaultCredentials = false;
+        //                SMTPServer.Credentials = SMTPUserInfo;
+        //                SMTPServer.EnableSsl = true;
+        //                MailAddress fromAddress = new MailAddress(EmailFrom, "Meeting Minder");
+        //                objmail.From = fromAddress;
+        //                objmail.To.Add(ToEmail);
+        //                objmail.Body = EmailBody;
+        //                objmail.Subject = EmailSubject;
+
+        //                objmail.IsBodyHtml = true;
+
+
+
+        //                objmail.Headers.Add("NAME", "Admin");
+
+        //                SMTPServer.Host = "smtp.gmail.com";
+        //                SMTPServer.Port = 587;
+        //                SMTPServer.EnableSsl = true;
+        //                SMTPServer.Send(objmail);
+        //                objmail.To.Clear();
+
+        //            }
+        //            else
+        //            {
+
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+        //        Error.Visible = true;
+        //    }
+        //}
+
+
+        /// <summary>
+        /// View uploaded file
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Convert.ToString(ViewState["file"]);
+
+                string savePath = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["ImagePath"]);
+
+                //Set the appropriate ContentType.
+                Response.ContentType = "application/octet-stream";
+                //Get the physical path to the file.
+                string FilePath = Server.MapPath(savePath + fileName);
+
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.WriteFile(FilePath);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+    }
+}

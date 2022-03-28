@@ -1,0 +1,54 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewAgendaDetails.aspx.cs" Inherits="MeetingMinder.Web.ViewAgendaDetails" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        function AddValue() {
+            var vals = "";
+            $(".group").each(function () {
+                vals += this.id + ",";
+            });
+            $("#hdnListItems").val(vals);
+            return true;
+        }
+
+        $(function () {
+            $("#accordion")
+.accordion({
+    header: "> li > h3"
+})
+.sortable({
+    axis: "y",
+    handle: "h3",
+    stop: function (event, ui) {
+        // IE doesn't register the blur when sorting
+        // so trigger focusout handlers to remove .ui-state-focus
+        ui.item.children("h3").triggerHandler("focusout");
+    }
+});
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+      <%# strMenuList %>
+        
+        <asp:Label ID="lblList" runat="server" Text="Label"></asp:Label>
+        
+     
+        <asp:HiddenField ID="hdnListItems" ClientIDMode="Static" runat="server" />
+        
+        <asp:Button ID="btnSave" runat="server" Text="Save Changes" OnClientClick="AddValue();" 
+            OnClick="btnSave_Click"  />
+    </div>
+    </form>
+</body>
+</html>

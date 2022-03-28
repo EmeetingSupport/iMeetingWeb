@@ -1,0 +1,232 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+
+namespace MM.Data
+{
+    public class NoticeDataProvider : DataProvider
+    {
+        #region "Singleton"
+        private static volatile NoticeDataProvider _instance;
+        private static object _synRoot = new Object();
+
+        private NoticeDataProvider()
+        {
+        }
+
+        public static NoticeDataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new NoticeDataProvider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+        #region "Fill"
+        /// <summary>
+        /// Fill Notice details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private NoticeDomain ToNoticeDomain(IDataReader dr)
+        {
+            return new NoticeDomain
+            {
+                NoticeId = Null.SetNullGuid(dr["Noticeid"]),
+                MeetingId = Null.SetNullGuid(dr["MeetingId"]),
+                CreatedBy = Null.SetNullGuid(dr["CreatedBy"]),
+                UpdatedBy = Null.SetNullGuid(dr["UpdatedBy"]),
+                UpdatedOn = Null.SetNullDateTime(dr["UpdatedOn"]),
+                CreatedOn = Null.SetNullDateTime(dr["CreatedOn"]),
+                NoticeMessage = Null.SetNullString(dr["NoticeMessage"]),
+                NoticeChecker = Null.SetNullGuid(dr["NoticeChecker"])
+            };
+        }
+
+        /// <summary>
+        /// Fill Notice details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<NoticeDomain> ToNoticeDomains(IDataReader dr)
+        {
+            IList<NoticeDomain> objNotice = new List<NoticeDomain>();
+            while (dr.Read())
+            {
+                objNotice.Add(ToNoticeDomain(dr));
+            }
+            return objNotice;
+
+        }
+
+        /// <summary>
+        /// Fill Notice details with meeting
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<NoticeDomain> ToNoticeDomainsWithMeeting(IDataReader dr)
+        {
+            IList<NoticeDomain> noticeDomains = new List<NoticeDomain>();
+            NoticeDomain objNotice = null;
+
+            while (dr.Read())
+            {
+                objNotice = new NoticeDomain();
+                objNotice = ToNoticeDomain(dr);
+                objNotice.MeetingDate = Encryptor.DecryptString(Null.SetNullString(dr["MeetingDate"]));
+                objNotice.MeetingTime = Encryptor.DecryptString(Null.SetNullString(dr["MeetingTime"]));
+                objNotice.MeetingVenue = Encryptor.DecryptString(Null.SetNullString(dr["MeetingVenue"]));
+                objNotice.EntityId = Null.SetNullGuid(dr["EntityId"]);
+                objNotice.ForumId = Null.SetNullGuid(dr["ForumId"]);
+                objNotice.FirstName = Encryptor.DecryptString(Null.SetNullString(dr["FirstName"]));
+                objNotice.LastName = Encryptor.DecryptString(Null.SetNullString(dr["LastName"]));
+                objNotice.IsApproved = Null.SetNullString(dr["IsApproved"]);
+                noticeDomains.Add(objNotice);
+            }
+            return noticeDomains;
+        }
+        #endregion
+
+        #region "Get"
+        /// <summary>
+        /// Get Notice details by id
+        /// </summary>
+        /// <param name="NoticeId">Guid sepcifing NoticeId</param>
+        /// <returns></returns>
+        public NoticeDomain Get(Guid NoticeId)
+        {
+            NoticeDomain noticeDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetNoticeById", NoticeId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                noticeDomain = ToNoticeDomain(dataReader);
+            }
+            return noticeDomain;
+        }
+
+        /// <summary>
+        /// Get all notice details
+        /// </summary>
+        /// <returns></returns>
+        public IList<NoticeDomain> Get()
+        {
+            IList<NoticeDomain> noticeDomains = null;
+
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllNotceDetails"))
+            {
+                noticeDomains = ToNoticeDomains(dataReader);
+            }
+            return noticeDomains;
+        }
+
+        /// <summary>
+        /// Get notice details with meeting
+        /// </summary>
+        /// <param name="UserId">Guid sepcifing UserId</param>
+        /// <returns></returns>
+        public IList<NoticeDomain> GetNoticeWithMeeting(Guid UserId)
+        {
+            IList<NoticeDomain> noticeDomains = null;
+
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetNoticeWithMeeting", UserId))
+            {
+                noticeDomains = ToNoticeDomainsWithMeeting(dataReader);
+            }
+            return noticeDomains;
+
+        }
+
+        /// <summary>
+        /// Get notce by meeting id
+        /// </summary>
+        /// <param name="MeetingId">Guid sepcifing MeetingId</param>
+        /// <returns></returns>
+        public NoticeDomain GetNoticeByMeeting(Guid MeetingId)
+        {
+            NoticeDomain noticeDomain = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetNoticeByMeetingId", MeetingId))
+            {
+                if (!dataReader.Read())
+                {
+                    return null;
+                }
+                noticeDomain = ToNoticeDomain(dataReader);
+            }
+            return noticeDomain;
+        }
+        /// <summary>
+        /// Get notice details with meeting
+        /// </summary>
+        /// <param name="UserId">Guid sepcifing UserId</param>
+        /// <returns></returns>
+        public IList<NoticeDomain> GetUnapprovedNotice(Guid UserId)
+        {
+             IList<NoticeDomain> noticeDomains = null;
+
+             using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAllUnApprovedNotice", UserId))
+            {
+                noticeDomains = ToNoticeDomainsWithMeeting(dataReader);
+            }
+            return noticeDomains;
+
+        }
+        
+        #endregion
+
+        #region "Modify"
+        /// <summary>
+        /// Insert Notice details
+        /// </summary>
+        /// <param name="objNotice">Class object specifying objNotice</param>
+        /// <returns></returns>
+        public NoticeDomain Insert(NoticeDomain objNotice)
+        {
+            objNotice.NoticeId = (Guid)SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertNotice", objNotice.MeetingId, objNotice.NoticeMessage, objNotice.NoticeChecker, objNotice.CreatedBy, objNotice.UpdatedBy);
+
+            return objNotice;
+        }
+
+        /// <summary>
+        /// Update Notice details
+        /// </summary>
+        /// <param name="objNotice">Class object specifying objNotice</param>
+        /// <returns></returns>
+        public bool Update(NoticeDomain objNotice)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_UpdateNotice", objNotice.NoticeId, objNotice.MeetingId, objNotice.NoticeMessage, objNotice.NoticeChecker, objNotice.UpdatedBy)) > 0;
+        }
+
+        /// <summary>
+        /// Delete notice by id
+        /// </summary>
+        /// <param name="NoticeId">Guid specifying NoticeId</param>
+        /// <returns></returns>
+        public bool Delete(Guid NoticeId)
+        {
+            return Convert.ToInt32(SqlHelper.ExecuteNonQuery(ConnectionString, "stp_DeleteNoticeById", NoticeId)) > 0;
+        }
+        #endregion
+
+    }
+}

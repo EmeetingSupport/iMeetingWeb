@@ -1,0 +1,115 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MM.Core;
+using MM.Domain;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.ApplicationBlocks.Data;
+
+namespace MM.Data
+{
+    public class AttendanceDataprovider : DataProvider
+    {
+        #region "Singleton"
+        private static volatile AttendanceDataprovider _instance;
+        private static object _synRoot = new Object();
+
+        private AttendanceDataprovider()
+        {
+        }
+
+        public static AttendanceDataprovider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_synRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new AttendanceDataprovider();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        #endregion
+
+
+        #region "Fill"
+        /// <summary>
+        /// Get attendence details
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private AttendanceDomain ToAttendanceDomain(IDataReader dr)
+        {
+            return new AttendanceDomain
+            {
+                AttendanceId = Null.SetNullGuid(dr["AttendanceId"]),
+                MeetingId = Null.SetNullGuid(dr["MeetingId"]),
+                UserId = Null.SetNullGuid(dr["UserId"]),
+                Attending = Null.SetNullString(dr["Attending"]),
+                Reason = Null.SetNullString(dr["Reason"]),
+                FirstName =  Encryptor.DecryptString(Null.SetNullString(dr["FirstName"])),
+                LastName =  Encryptor.DecryptString(Null.SetNullString(dr["LastName"])),
+                MeetingVenue = Encryptor.DecryptString(Null.SetNullString(dr["MeetingVenue"])),
+                MeetingDate = Encryptor.DecryptString(Null.SetNullString(dr["MeetingDate"])),
+                MeetingTime = Encryptor.DecryptString(Null.SetNullString(dr["MeetingTime"])),
+            };
+        }
+
+        /// <summary>
+        /// Fill attendance list
+        /// </summary>
+        /// <param name="dr">IDataReader sepcifing dr</param>
+        /// <returns></returns>
+        private IList<AttendanceDomain> ToAttendanceDomains(IDataReader dr)
+        {
+            IList<AttendanceDomain> objAttendance = new List<AttendanceDomain>();
+            while (dr.Read())
+            {
+                objAttendance.Add(ToAttendanceDomain(dr));
+            }
+            return objAttendance;
+        }
+
+        #endregion
+
+        #region "Get"
+        /// <summary>
+        /// Get Attendace details by meeting id
+        /// </summary>
+        /// <param name="MeetingId">Guid sepcifing MeetingId</param>
+        /// <returns></returns>
+        public IList<AttendanceDomain> GetAttendanceByMeetingId(Guid MeetingId)
+        {
+            IList<AttendanceDomain> attendanceDomains = null;
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(ConnectionString, "stp_GetAttendanceByMeeting", MeetingId))
+            {
+                attendanceDomains = ToAttendanceDomains(dataReader);
+            }
+            return attendanceDomains;
+        }
+        #endregion
+
+        #region "Modify"
+        /// <summary>
+        /// Insert Attendance
+        /// </summary>
+        /// <param name="objAttendance">Class object sepcifing objAttendance</param>
+        /// <returns></returns>
+        public AttendanceDomain InsertAttendance(AttendanceDomain objAttendance)
+        {
+            objAttendance.AttendanceId = (Guid) SqlHelper.ExecuteScalar(ConnectionString, "stp_InsertOrUpdateAttendance", objAttendance.MeetingId, objAttendance.UserId, objAttendance.Attending ,objAttendance.Reason); 
+            return objAttendance;
+        }
+        #endregion
+
+    }
+
+}

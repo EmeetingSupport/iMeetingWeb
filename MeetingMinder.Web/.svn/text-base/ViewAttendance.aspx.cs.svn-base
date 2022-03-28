@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.IO;
+using System.Data;
+
+namespace MeetingMinder.Web
+{
+    public partial class ViewAttendance : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page laod event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                //Bind meeting drop down
+                BindMeetings();
+            }
+
+        }
+
+        /// <summary>
+        /// Bind meeting drop down
+        /// </summary>
+        private void BindMeetings()
+        {
+            try
+            {
+                ddlMeeting.Items.Clear();
+                ddlMeeting.Items.Insert(0, new ListItem("Select Meeting", "0"));
+
+                string UserId = Session["UserId"].ToString();
+                IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetApprovedMeetingByUser(Guid.Parse(UserId)); //MeetingDataProvider.Instance.GetMeetingByFroumID(forumId);
+
+                DateTime dtToday = DateTime.Now.Date;
+
+                foreach (MeetingDomain item in objMeeting)
+                {
+                    DateTime dtMeeting = Convert.ToDateTime(item.MeetingDate);
+                    ddlMeeting.Items.Add(new ListItem(dtMeeting.ToString("dd MMM yyyy") + ' ' + item.MeetingVenue + ' ' + item.MeetingTime, item.MeetingId.ToString()));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+
+        }
+
+        /// <summary>
+        /// Bind Attendance By Meeting 
+        /// </summary>
+        /// <param name="MeetingId">Guid specifying MeetingId</param>
+        private void BindAttendance(Guid MeetingId)
+        {
+            try
+            {
+                IList<AttendanceDomain> objAttendance = AttendanceDataprovider.Instance.GetAttendanceByMeetingId(MeetingId);
+                grdAttendance.DataSource = objAttendance;
+                grdAttendance.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlMeeting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strMeetingId = ddlMeeting.SelectedValue;
+                if (strMeetingId != "0")
+                {
+                    BindAttendance(Guid.Parse(strMeetingId));
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+    }
+}

@@ -1,0 +1,189 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MM.Core;
+using MM.Domain;
+using MM.Data;
+using System.Data;
+using System.Text;
+using System.IO;
+
+
+namespace MeetingMinder.Web
+{
+    public partial class MeetingSchedule : System.Web.UI.Page
+    {
+        /// <summary>
+        /// page laod event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Info.Visible = false;
+            Error.Visible = false;
+            Page.MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+                //Bind Entity List
+                BindEntity();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+            }
+        }
+
+
+
+        /// <summary>
+        /// Bind Entity list to drop down
+        /// </summary>
+        private void BindEntity()
+        {
+            try
+            {
+                string UserId = Convert.ToString(Session["UserId"]);
+                ddlEntity.DataSource = UserEntityDataProvider.Instance.GetEntityListByUserId(Guid.Parse(UserId));
+                ddlEntity.DataBind();
+                ddlEntity.DataTextField = "EntityName";
+                ddlEntity.DataValueField = "EntityId";
+                ddlEntity.DataBind();
+                ddlEntity.Items.Insert(0, new ListItem("Select Entity", "0"));
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+
+            }
+        }
+
+        /// <summary> 
+        /// Bind Forum List to drop down
+        /// </summary>
+        /// <param name="EntityId">string specifying EntityId</param>
+        private void BindForum(string EntityId)
+        {
+            try
+            {
+
+                ddlForum.Items.Clear();
+
+                ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+
+                Guid entityId;
+                if (Guid.TryParse(EntityId, out entityId))
+                {
+                    IList<ForumDomain> objForum = ForumDataProvider.Instance.GetForumByEntityId(entityId);
+                    ddlForum.DataSource = objForum;
+                    ddlForum.DataBind();
+                    ddlForum.DataTextField = "ForumName";
+                    ddlForum.DataValueField = "ForumId";
+                    ddlForum.DataBind();
+                    ddlForum.Items.Insert(0, new ListItem("Select Forum", "0"));
+                }
+                else
+                {
+                    ((Label)Error.FindControl("lblError")).Text = "Invalid forum search";
+                    Error.Visible = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Gridview pageindex change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdMeeting_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// gridview sorting event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">GridViewPageEventArgs specifying e </param>
+        protected void grdMeeting_Sorting(object sender, GridViewSortEventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
+        /// drop down list  Selected Index Change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlForum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strForumId = ddlForum.SelectedValue;
+                if (strForumId != "0")
+                {
+                    ForumDomain objForum = ForumDataProvider.Instance.Get(Guid.Parse(strForumId));
+
+                    Guid forumId;
+                    if (Guid.TryParse(strForumId, out forumId))
+                    {
+                        IList<MeetingDomain> objMeeting = MeetingDataProvider.Instance.GetMeetingByFroumID(forumId);
+
+                        grdMeeting.DataSource = objMeeting;
+
+                        grdMeeting.DataBind();
+                        grdMeeting.Visible = true;
+                        //if (objMeeting.Count > 0)
+                        //{
+                        //    EntityName = objMeeting[0].EntityName;
+                        //    EntityId = objMeeting[0].EntityId.ToString();
+                        //}
+                    }
+                    else
+                    {
+                        ((Label)Error.FindControl("lblError")).Text = "Invalid meeting search";
+                        Error.Visible = true;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// drop down list Selected Index Change event
+        /// </summary>
+        /// <param name="sender">Object specifying sender</param>
+        /// <param name="e">EventArgs specifying e </param>
+        protected void ddlEntity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string strEntityId = ddlEntity.SelectedValue;
+                if (strEntityId != "0")
+                {
+                    BindForum(strEntityId);
+                    grdMeeting.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ((Label)Error.FindControl("lblError")).Text = "Try again after some time";
+                Error.Visible = true;
+            }
+        }
+    }
+}

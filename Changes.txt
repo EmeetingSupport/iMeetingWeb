@@ -1,0 +1,89 @@
+******* 17 Sep 20 ***********
+1. updating 3.5.1 in Admin.MasterPage.Master
+>    <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js"></script>
+										
+above changes deployed on uat server 19 sep 20
+************************* 17 Oct 20 *******************************************		
+1. ExportToExcel implemented > AllUserMaster.aspx.cs
+2. copyID in login pages
+
+>> above functionality deployed on production server
+***********************************************************************
+
+SET SQL_SAFE_UPDATES=0;
+update mysql.user set ssl_type = 'ANY' where user = 'ssluser';
+SELECT user, host, ssl_type FROM mysql.user;
+
+***************** Meeting Retention 18 Jan 2021 **********************
+>> ASPX
+> MeetingRetention.aspx
+> RoleMaster.aspx
+> AdminMasterPage.master
+> UpcomingMeeting.aspx
+
+>> MM.Domain
+> MeetingDomain.cs
+> MeetingRetentionDomain.cs
+> RollDomain.cs
+
+>> MM.Data
+> MeetingDataProvider.cs
+> RollDataProvider.cs
+
+>> MeetingMinder.WCFServices
+> MeetingDetails.cs
+> SBIService.svc.cs
+
+>> SQL
+> alter table Meeting add PastMeeting int
+> create sp stp_UpdateMeetingRetention
+> changes stp_GetMeetingDetailsByForumId
+> changes stp_InsertMeetingDetails
+> alter table rollmaster add MeetingRetention tinyint(1);
+> changes sp stp_GetAllRolls
+> changes sp stp_InsertRoll
+> changes sp stp_GetRollById
+> changes sp stp_UpdateRoll
+> changes sp stp_GetRollByUserId
+> changes sp stp_AllDataForWcfDataNew
+> changes sp stp_AllDataForWcfNew
+> create sp stp_GetAllDepartmentMeetings
+> changes in sp stp_InsertMeetingDetails
+
+**************** Changes *******************
+MeetingRetention.aspx
+MMDataDomain
+MMDataProvider
+stp_UpdateMeetingRetention
+
+>> Above changes deployed on production environment 11 Feb 21
+**********************************************************************************************
+1. eMail notification utility
+>> SQL
+> changes in stp_GetAllDepartmentMeeting
+> create sp stp_GetAllDepartmentMeetingInUtility
+> alter table meeting add NotificationStatus tinyint(1);
+> create sp stp_UpdateMeetingNotification
+> changes sp stp_UpdateMeetingDetailsById
+> changes sp stp_UpdateMeetingRetention
+
+
+>> Above changes deployed on production environment
+***************************************App Sec 16 March 21********************************************
+>> Directory Enumeration
+> changes in error.aspx.cs page
+
+**** Above changes are deployed on production server *****
+1. changes in stp_GetUserpasswordByUsername
+2. maintain plain username in web logs table
+3. capture first name and last name in device logs
+4. capture userid in device logs
+> alter table Devicelogs add UserIpAddress nvarchar(50);
+> alter table Devicelogs add UserName nvarchar(100);
+> changes in sp stp_InsertDeviceLog_New
+5. rename cookies name
+> <forms loginUrl="~/Login.aspx" timeout="20" domain="emeeting" path="emeeting" requireSSL="true" name=".iMeet"/>
+> <sessionState sessionIDManagerType="MeetingMinder.Web.SessionManager, MeetingMinder.Web" cookieName="iMeet"/>
+
+
+

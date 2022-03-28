@@ -1,0 +1,104 @@
+﻿<?xml version="1.0"?>
+<configuration>
+	<connectionStrings>
+		<!--<add name="Connstr" connectionString="Data Source=.\SQLEXP2008R2ADV; Initial Catalog=Travelmoksh;Integrated Security = true"/>-->
+		<add name="MeetingMinderConnectionString" connectionString="Data Source=180.149.240.49;Initial Catalog=MeetingMinder;uid=meeting_dbUser;password=pass123!@#" providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+  <appSettings>
+    <add key ="ImagePath" value="img/Uploads/ProfilePic/"/>
+    <add key="Email" value="ravijadeja473@gmail.com"/>
+    <add key="Password" value="ravi123!@#"/>
+    <add key="EntityLogo" value="img/Uploads/EntityLogo/"/>
+    <add key="UploadMinutes" value="img/Uploads/UploadMinutes/"/>
+    <add key="Agenda" value="img/Uploads/Agenda/"/>
+    <add key="MembesInfo" value="img/Uploads/Forum/"/>
+
+  </appSettings>
+  <system.web>
+    <compilation debug="true" targetFramework="4.0" />
+  </system.web>
+	<system.serviceModel>
+		<services>
+			<service name="MeetingMInder.WCFServices.Service1" behaviorConfiguration="MeetingMInder.WCFServicesBehaviour">
+				<endpoint address="" binding="basicHttpBinding" contract="MeetingMInder.WCFServices.IService1" name=""/>
+				<endpoint address="json" binding="webHttpBinding"   contract="MeetingMInder.WCFServices.IService1" behaviorConfiguration="JsonBehavior"></endpoint>
+				<endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange"/>
+			</service>
+		</services>
+
+		<behaviors>
+			<endpointBehaviors>
+				<behavior name="JsonBehavior">
+					<webHttp/>
+          
+				</behavior>
+			</endpointBehaviors>
+			<serviceBehaviors>
+				<behavior name="MeetingMInder.WCFServicesBehaviour">
+					<serviceDebug includeExceptionDetailInFaults="true"/>
+					<serviceMetadata httpGetEnabled="true"/>
+          <serviceCredentials>
+
+            <userNameAuthentication userNamePasswordValidationMode="Custom" customUserNamePasswordValidatorType="MM.Core.MyValidator, MM.Core"/>
+
+          </serviceCredentials>
+				</behavior>
+			</serviceBehaviors>
+		</behaviors>
+		<bindings>
+
+			<wsHttpBinding>
+
+				<binding name="WSHttpBinding_UploadImage" messageEncoding="Mtom">
+
+
+
+					<security mode="TransportWithMessageCredential" >
+						<message clientCredentialType="UserName"/>
+					</security>
+				</binding>
+
+
+			</wsHttpBinding>
+
+			<basicHttpBinding>
+				<binding receiveTimeout="00:25:00" sendTimeout="00:25:00" maxReceivedMessageSize="2147483647" maxBufferSize="2147483647">
+					<readerQuotas maxStringContentLength="2147483647" maxArrayLength="2147483647"
+								  maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647" maxDepth="2147483647" />
+					<security mode="TransportCredentialOnly">
+						<transport clientCredentialType="None"/>
+					</security>
+				</binding>
+			</basicHttpBinding>
+
+
+			<webHttpBinding>
+				<binding receiveTimeout="00:25:00" sendTimeout="00:25:00" maxReceivedMessageSize="2147483647" maxBufferSize="2147483647">
+					<readerQuotas maxStringContentLength="2147483647" maxArrayLength="2147483647"
+										  maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647" maxDepth="2147483647" />
+					<security mode="TransportCredentialOnly">
+						<transport clientCredentialType="None"/>
+					</security>
+				</binding>
+			</webHttpBinding>
+		</bindings>
+
+		<serviceHostingEnvironment  multipleSiteBindingsEnabled="true" />
+
+		<!--<behaviors>
+      <serviceBehaviors>
+        <behavior>
+          
+          <serviceMetadata httpGetEnabled="true"/>
+          
+          <serviceDebug includeExceptionDetailInFaults="false"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />-->
+	</system.serviceModel>
+ <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true"/>
+  </system.webServer>
+  
+</configuration>
